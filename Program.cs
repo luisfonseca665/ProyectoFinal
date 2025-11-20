@@ -1,3 +1,5 @@
+using ProyectoFinal.Frontend;
+
 namespace ProyectoFinal
 {
     internal static class Program

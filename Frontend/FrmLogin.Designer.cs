@@ -28,56 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            textBox1 = new TextBox();
-            button2 = new Button();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(114, 54);
-            button1.Margin = new Padding(4, 4, 4, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(118, 36);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(320, 74);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(150, 31);
-            textBox1.TabIndex = 1;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(120, 153);
-            button2.Name = "button2";
-            button2.Size = new Size(112, 34);
-            button2.TabIndex = 2;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
             // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(652, 562);
-            Controls.Add(button2);
-            Controls.Add(textBox1);
-            Controls.Add(button1);
-            Margin = new Padding(4, 4, 4, 4);
+            ClientSize = new Size(800, 450);
             Name = "FrmLogin";
             Text = "FrmLogin";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Button button1;
-        private TextBox textBox1;
-        private Button button2;
     }
 }
