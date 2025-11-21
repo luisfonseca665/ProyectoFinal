@@ -28,18 +28,150 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
+            label1 = new Label();
+            txtUsuario = new TextBox();
+            label2 = new Label();
+            txtPassword = new TextBox();
+            btniniciarsesion = new Button();
+            lblRegistro = new Label();
+            panel1 = new Panel();
+            label3 = new Label();
+            pictureBox1 = new PictureBox();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(71, 130);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 25);
+            label1.TabIndex = 0;
+            label1.Text = "Usuario:";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txtUsuario
+            // 
+            txtUsuario.BorderStyle = BorderStyle.FixedSingle;
+            txtUsuario.Location = new Point(153, 131);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(221, 31);
+            txtUsuario.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(71, 221);
+            label2.Name = "label2";
+            label2.Size = new Size(105, 25);
+            label2.TabIndex = 2;
+            label2.Text = "Contraseña:";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txtPassword
+            // 
+            txtPassword.BorderStyle = BorderStyle.FixedSingle;
+            txtPassword.Location = new Point(182, 221);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
+            txtPassword.Size = new Size(190, 31);
+            txtPassword.TabIndex = 3;
+            // 
+            // btniniciarsesion
+            // 
+            btniniciarsesion.BackColor = Color.FromArgb(136, 99, 79);
+            btniniciarsesion.FlatStyle = FlatStyle.Flat;
+            btniniciarsesion.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btniniciarsesion.ForeColor = Color.White;
+            btniniciarsesion.Location = new Point(116, 296);
+            btniniciarsesion.Name = "btniniciarsesion";
+            btniniciarsesion.Size = new Size(160, 34);
+            btniniciarsesion.TabIndex = 4;
+            btniniciarsesion.Text = "Iniciar Sesion.";
+            btniniciarsesion.UseVisualStyleBackColor = false;
+            btniniciarsesion.Click += btniniciarsesion_Click;
+            // 
+            // lblRegistro
+            // 
+            lblRegistro.AutoSize = true;
+            lblRegistro.Location = new Point(173, 354);
+            lblRegistro.Name = "lblRegistro";
+            lblRegistro.Size = new Size(216, 25);
+            lblRegistro.TabIndex = 5;
+            lblRegistro.Text = "¿No tienes cuenta? Da clic";
+            lblRegistro.Click += lblRegistro_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(136, 99, 75);
+            panel1.Controls.Add(label3);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(691, 96);
+            panel1.TabIndex = 6;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(182, 28);
+            label3.Name = "label3";
+            label3.Size = new Size(310, 48);
+            label3.TabIndex = 7;
+            label3.Text = "Crumbu Cookies";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox1.Location = new Point(423, 130);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(219, 200);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
             // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.Wheat;
+            ClientSize = new Size(691, 404);
+            Controls.Add(pictureBox1);
+            Controls.Add(panel1);
+            Controls.Add(lblRegistro);
+            Controls.Add(btniniciarsesion);
+            Controls.Add(txtPassword);
+            Controls.Add(label2);
+            Controls.Add(txtUsuario);
+            Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmLogin";
+            Load += FrmLogin_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
+        private TextBox txtUsuario;
+        private Label label2;
+        private TextBox txtPassword;
+        private Button btniniciarsesion;
+        private Label lblRegistro;
+        private Panel panel1;
+        private Label label3;
+        private PictureBox pictureBox1;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoFinal.Backend;
 
 namespace ProyectoFinal.Frontend
 {
@@ -15,6 +16,50 @@ namespace ProyectoFinal.Frontend
         public FrmLogin()
         {
             InitializeComponent();
+        }
+
+        private void btniniciarsesion_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("Por favor, ingrese el usuario y la contraseña.", "Campos Requeridos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            EmpleadoController consulta = new EmpleadoController();
+            Empleado empleadoLogueado = consulta.Login(txtUsuario.Text.Trim(), txtPassword.Text.Trim());
+
+            if (empleadoLogueado != null && empleadoLogueado.Id > 0)
+            {
+                MessageBox.Show($"Bienvenido, {empleadoLogueado.Nombre} ({empleadoLogueado.Tipo}).", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                using (FrmMenu menu = new FrmMenu(empleadoLogueado))
+                {
+                    if (menu.ShowDialog() == DialogResult.OK)
+                    {
+                        this.Show();
+                        txtPassword.Clear();
+                        txtUsuario.Clear();
+                        txtUsuario.Focus();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Usuario o contraseña incorrectos. Verifique sus credenciales e intente de nuevo.", "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Clear();
+                txtPassword.Focus();
+            }
+        }
+
+        private void lblRegistro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
