@@ -1,7 +1,6 @@
 create database ventas;
 use ventas;
 
-
 -- Tabla empleados
 create table empleados(
 	id int AUTO_INCREMENT primary key,
@@ -12,12 +11,59 @@ create table empleados(
 	usuario varchar(50) unique,
 	password varchar(100),
 	tipo enum('admin','cajero'),	
-	foto BLOB,
+	foto LONGBLOB,  -- ¡CAMBIO AQUÍ!
     activo boolean default true
 );
 
+-- Tabla productos
+create table productos(
+	codigo varchar(13) primary key,
+	nombre varchar(100),
+	descripcion varchar(200),
+	precio decimal(10,2),
+	stock int,
+	descontinuado boolean default false,
+	foto LONGBLOB -- Ya estaba correcto.
+);
+
+
+-- Tabla auditoriaproductos
+create table auditoriaproductos(
+	id int AUTO_INCREMENT primary key,
+	codigo varchar(13),
+	accion enum('insert','update','delete'),
+	valoranterior varchar(500),
+	valornuevo varchar(500),
+	usuario varchar(100),
+	fecha timestamp default CURRENT_TIMESTAMP,
+	foreign key (codigo) references productos(codigo)
+);
+
+-- Tabla ventas
+create table ventas(
+	id int AUTO_INCREMENT primary key,
+	fecha datetime default CURRENT_TIMESTAMP,
+	idempleado int,
+	total decimal(10,2),
+    foreign key(idempleado) references empleados(id) 
+);
+
+
+-- Tabla detalleventas
+create table detalleventas(
+	id int AUTO_INCREMENT primary key,
+	idventa int,
+	codigoproducto varchar(13),
+	cantidad int,
+	precio decimal(10,2),
+	foreign key(idventa) references ventas(id),
+	foreign key(codigoproducto) references productos(codigo)
+);
+
+
 insert into empleados(nombre, apellidos, telefono, correo, usuario, password, tipo, foto, activo)	
 values('Luis Enrique', 'Fonseca Sosa', '4451108686','i49483190@gmail.com', 'dickgrayson',sha2('12345678',256),'admin' ,null, true);
+
 
 
 -- Procedimiento: spinsertempleado
@@ -30,7 +76,7 @@ create procedure spinsertempleado(
 	in pusuario varchar(50),
 	in ppassword varchar(100),
 	in ptipo varchar(10),	
-	in pfoto BLOB	
+	in pfoto LONGBLOB
 )
 begin
 	insert into empleados(nombre, apellidos, telefono, correo, usuario, password, tipo, foto)	
@@ -50,7 +96,7 @@ create procedure spupdateempleado(
 	in pusuario varchar(50),
 	in ppassword varchar(100),
 	in ptipo varchar(10),	
-	in pfoto BLOB,
+	in pfoto LONGBLOB, 
     in pactivo boolean
 )
 begin
@@ -76,6 +122,7 @@ begin
     from detalleventas dv
     join ventas v on dv.idventa = v.id
     where v.idempleado = pid;
+    
     delete from ventas 
     where idempleado = pid;
 
@@ -86,29 +133,66 @@ end$$
 delimiter ;
 
 
--- Tabla productos
-create table productos(
-	codigo varchar(13) primary key,
-	nombre varchar(100),
-	descripcion varchar(200),
-	precio decimal(10,2),
-	stock int,
-	descontinuado boolean default false,
-	foto BLOB not null
-);
+-- Procedimiento: spinsertproducto
+delimiter $$
+CREATE PROCEDURE spinsertproducto(
+	IN pcodigo VARCHAR(13),
+	IN pnombre VARCHAR(100),
+	IN pdescripcion VARCHAR(200),
+	IN pprecio DECIMAL(10,2),
+	IN pstock INT,
+    in pfoto LONGBLOB  -- ¡CAMBIO AQUÍ!
+)
+BEGIN
+	INSERT INTO productos(codigo, nombre, descripcion, precio, stock, foto)
+	VALUES(pcodigo, pnombre, pdescripcion, pprecio, pstock, pfoto);
+END$$
+delimiter ;
 
 
--- Tabla auditoriaproductos (CORREGIDA)
-create table auditoriaproductos(
-	id int AUTO_INCREMENT primary key,
-	codigo varchar(13),
-	accion enum('insert','update','delete'),
-	valoranterior varchar(500),
-	valornuevo varchar(500),
-	usuario varchar(100),
-	fecha timestamp default CURRENT_TIMESTAMP,
-	foreign key (codigo) references productos(codigo)
-);
+-- Procedimiento: spgetproductos
+delimiter $$
+CREATE PROCEDURE spgetproductos()
+BEGIN
+	SELECT codigo, nombre, descripcion, precio, stock, descontinuado, foto
+	FROM productos
+	WHERE descontinuado = FALSE;
+END$$
+delimiter ;
+
+
+-- Procedimiento: spupdateproducto 
+delimiter $$
+CREATE PROCEDURE spupdateproducto(
+	IN pcodigo VARCHAR(13),
+	IN pnombre VARCHAR(100),
+	IN pdescripcion VARCHAR(200),
+	IN pprecio DECIMAL(10,2),
+	IN pstock INT,
+	IN pdescontinuado BOOLEAN,
+	IN pfoto LONGBLOB
+)
+BEGIN
+	UPDATE productos SET
+		nombre = pnombre,
+		descripcion = pdescripcion,
+		precio = pprecio,
+		stock = pstock,
+		descontinuado = pdescontinuado,
+		foto = pfoto
+	WHERE codigo = pcodigo;
+END$$
+delimiter ;
+
+-- Procedimiento: spdeleteproducto
+delimiter $$
+CREATE PROCEDURE spdeleteproducto(IN pcodigo VARCHAR(13))
+BEGIN
+    UPDATE productos
+    SET descontinuado = TRUE
+    WHERE codigo = pcodigo;
+END$$
+delimiter ;
 
 
 -- Trigger: trgprodinsert
@@ -162,35 +246,7 @@ begin
 end$$
 delimiter ;
 
-
--- Tabla ventas
-create table ventas(
-	id int AUTO_INCREMENT primary key,
-	fecha datetime default CURRENT_TIMESTAMP,
-	idempleado int,
-	total decimal(10,2),
-    foreign key(idempleado) references empleados(id) 
-);
-
-
--- Tabla detalleventas
-create table detalleventas(
-	id int AUTO_INCREMENT primary key,
-	idventa int,
-	codigoproducto varchar(13),
-	cantidad int,
-	precio decimal(10,2),
-	foreign key(idventa) references ventas(id),
-	foreign key(codigoproducto) references productos(codigo)
-);
-
-
--- Datos de Prueba ()
-insert into productos values
-('0001','café americano','vaso mediano',35,50, false, ''),
-('0002','café latte','con leche entera',45,40, false, ''),
-('0003','capuchino','espumoso',42,30, false, ''),
-('0004','muffin chocolate','grande',28,20, false, ''),
-('0005','galleta avena','integral',15,25, false, '');
-
-Select * from productos;
+INSERT INTO productos (codigo, nombre, descripcion, precio, stock, descontinuado, foto) VALUES
+('CC-001-2025-A', 'Crumbu Chispas Gourmet', 'Galleta con tres tipos de chocolate y sal marina.', 35.00, 180, false, NULL),
+('CC-002-2025-B', 'Cheesecake de Limón', 'Base de galleta de vainilla rellena de crema ácida de limón.', 38.50, 90, false, NULL),
+('CC-020-2025-T', 'Mapache de Arce', 'Galleta de sirope de arce con trozos de nuez pecana y glaseado.', 35.50, 90, false, NULL);
