@@ -212,7 +212,7 @@
             pnlApp.Dock = DockStyle.Fill;
             pnlApp.Location = new Point(277, 0);
             pnlApp.Name = "pnlApp";
-            pnlApp.Size = new Size(782, 659);
+            pnlApp.Size = new Size(823, 659);
             pnlApp.TabIndex = 1;
             pnlApp.Paint += pnlApp_Paint;
             // 
@@ -220,7 +220,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1059, 659);
+            ClientSize = new Size(1100, 659);
             Controls.Add(pnlApp);
             Controls.Add(pnlMenu);
             FormBorderStyle = FormBorderStyle.None;

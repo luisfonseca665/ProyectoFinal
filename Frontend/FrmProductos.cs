@@ -14,12 +14,18 @@ namespace ProyectoFinal.Frontend
     public partial class FrmProductos : Form
     {
         private ProductosController _productos = new ProductosController();
+        private Form factivo = null;
+        public event Action ola;
         public FrmProductos()
         {
             InitializeComponent();
             CargarProductos();
         }
 
+        private void VolverAProductos()
+        {
+            FormPanel(new FrmProductos());
+        }
         private void CargarProductos()
         {
             List<Producto> lista = _productos.ObtenerProductos();
@@ -32,9 +38,30 @@ namespace ProyectoFinal.Frontend
             dvgProductos.Columns["Foto"].Visible = false;
         }
 
+        private void FormPanel(Form activo)
+        {
+            if (factivo != null)
+            {
+                factivo.Close();
+                factivo.Dispose();
+
+            }
+            factivo = activo;
+            activo.TopLevel = false;
+            activo.FormBorderStyle = FormBorderStyle.None;
+            activo.Dock = DockStyle.Fill;
+
+            pnlApp.Controls.Clear();
+            pnlApp.Controls.Add(activo);
+
+            activo.BringToFront();
+            activo.Show();
+        }
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dvgProductos.CurrentRow == null) {
+            if (dvgProductos.CurrentRow == null)
+            {
                 MessageBox.Show("Por favor, seleccione un producto de la lista.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -42,7 +69,7 @@ namespace ProyectoFinal.Frontend
             string producto = dvgProductos.CurrentRow.Cells["Codigo"].Value.ToString();
             string nombre = dvgProductos.CurrentRow.Cells["Nombre"].Value.ToString();
 
-            var ola = MessageBox.Show($"¿Está seguro de DESCONTINUAR el producto '{nombre}'?","Confirmar Eliminación",
+            var ola = MessageBox.Show($"¿Está seguro de DESCONTINUAR el producto '{nombre}'?", "Confirmar Eliminación",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (ola == DialogResult.Yes)
             {
@@ -57,5 +84,37 @@ namespace ProyectoFinal.Frontend
                 }
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmAgregarProducto ola = new FrmAgregarProducto();
+            ola.ProductoAgregadoCallback = VolverAProductos;
+            FormPanel(ola);
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (dvgProductos.CurrentRow == null)
+            {
+                MessageBox.Show("Por favor, seleccione un producto de la lista para actualizar.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Producto producto = dvgProductos.CurrentRow.DataBoundItem as Producto;
+
+            if (producto != null)
+            {
+                FrmActuProducto frmActu = new FrmActuProducto();
+                frmActu.CargarProducto(producto);
+                frmActu.ProductoActualizadoCallback = VolverAProductos;
+                FormPanel(frmActu);
+            }
+            else
+            {
+                MessageBox.Show("Error al obtener los datos del producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }

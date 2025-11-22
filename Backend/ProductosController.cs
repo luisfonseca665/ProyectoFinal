@@ -62,7 +62,6 @@ namespace ProyectoFinal.Backend
         {
             if (string.IsNullOrEmpty(producto.Codigo) || producto.Precio <= 0)
             {
-                // Podrías lanzar una excepción o registrar un error aquí
                 return false;
             }
 
@@ -73,19 +72,39 @@ namespace ProyectoFinal.Backend
                 {
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(spName, conn);
+
+                    // 💡 CORRECCIÓN CRÍTICA: Debes especificar que el comando es un Procedimiento Almacenado.
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    // Parámetros de datos estándar
                     cmd.Parameters.AddWithValue("pcodigo", producto.Codigo);
                     cmd.Parameters.AddWithValue("pnombre", producto.Nombre);
                     cmd.Parameters.AddWithValue("pdescripcion", producto.Descripcion);
                     cmd.Parameters.AddWithValue("pprecio", producto.Precio);
                     cmd.Parameters.AddWithValue("pstock", producto.Stock);
 
+                    // Parámetro de la foto (BLOB)
+                    MySqlParameter fotoParam = new MySqlParameter("pfoto", MySqlDbType.Blob);
+
+                    if (producto.Foto != null && producto.Foto.Length > 0)
+                    {
+                        fotoParam.Value = producto.Foto;
+                    }
+                    else
+                    {
+                        // Envía DBNull.Value para NULL en la base de datos
+                        fotoParam.Value = DBNull.Value;
+                    }
+
+                    // Añade el parámetro de la foto al comando
+                    cmd.Parameters.Add(fotoParam);
+
+                    // Ejecuta el comando
                     return cmd.ExecuteNonQuery() > 0;
                 }
                 catch (MySqlException ex)
                 {
-                    System.Console.WriteLine($"Error al insertar producto ({spName}): {ex.Message}");
+                    System.Windows.Forms.MessageBox.Show($"Error de Base de Datos: {ex.Message}", "Error SQL", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     return false;
                 }
             }
@@ -98,6 +117,20 @@ namespace ProyectoFinal.Backend
         /// <returns></returns>
         public bool ActualizarProducto(Producto producto)
         {
+            // Validación clave para la actualización
+            if (string.IsNullOrEmpty(producto.Codigo))
+            {
+                MessageBox.Show("Error: El Código del producto es obligatorio para la actualización.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Opcional: Validación de precio, si es obligatorio
+            if (producto.Precio <= 0)
+            {
+                MessageBox.Show("Error: El Precio debe ser mayor a cero.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             string spName = "spupdateproducto";
             using (MySqlConnection conn = Conexion.ObtenerConexion())
             {
@@ -106,20 +139,25 @@ namespace ProyectoFinal.Backend
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(spName, conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-
                     cmd.Parameters.AddWithValue("pcodigo", producto.Codigo);
                     cmd.Parameters.AddWithValue("pnombre", producto.Nombre);
                     cmd.Parameters.AddWithValue("pdescripcion", producto.Descripcion);
                     cmd.Parameters.AddWithValue("pprecio", producto.Precio);
                     cmd.Parameters.AddWithValue("pstock", producto.Stock);
                     cmd.Parameters.AddWithValue("pdescontinuado", producto.Descontinuado);
-                    cmd.Parameters.AddWithValue("pfoto", producto.Foto ?? (object)DBNull.Value);
+
+                    MySqlParameter fotoParam = new MySqlParameter("pfoto", MySqlDbType.Blob);
+                    fotoParam.Value = (producto.Foto != null && producto.Foto.Length > 0)
+                                      ? (object)producto.Foto
+                                      : DBNull.Value;
+
+                    cmd.Parameters.Add(fotoParam);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
                 catch (MySqlException ex)
                 {
-                    System.Console.WriteLine($"Error al actualizar producto ({spName}): {ex.Message}");
+                    MessageBox.Show($"Error de Base de Datos al actualizar:\n{ex.Message}", "Error SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }

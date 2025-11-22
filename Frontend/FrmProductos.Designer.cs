@@ -36,7 +36,9 @@
             btnEliminar = new Button();
             btnActualizar = new Button();
             dvgProductos = new DataGridView();
+            pnlApp = new Panel();
             ((System.ComponentModel.ISupportInitialize)dvgProductos).BeginInit();
+            pnlApp.SuspendLayout();
             SuspendLayout();
             // 
             // btnAgregar
@@ -48,13 +50,14 @@
             btnAgregar.ForeColor = Color.White;
             btnAgregar.Image = (Image)resources.GetObject("btnAgregar.Image");
             btnAgregar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregar.Location = new Point(34, 569);
+            btnAgregar.Location = new Point(12, 521);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(160, 60);
+            btnAgregar.Size = new Size(160, 108);
             btnAgregar.TabIndex = 10;
             btnAgregar.Text = "Agregar";
             btnAgregar.TextAlign = ContentAlignment.MiddleRight;
             btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // btnEliminar
             // 
@@ -65,9 +68,9 @@
             btnEliminar.ForeColor = Color.White;
             btnEliminar.Image = (Image)resources.GetObject("btnEliminar.Image");
             btnEliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminar.Location = new Point(278, 569);
+            btnEliminar.Location = new Point(340, 521);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(146, 60);
+            btnEliminar.Size = new Size(146, 108);
             btnEliminar.TabIndex = 11;
             btnEliminar.Text = "Eliminar";
             btnEliminar.TextAlign = ContentAlignment.MiddleRight;
@@ -83,16 +86,18 @@
             btnActualizar.ForeColor = Color.White;
             btnActualizar.Image = (Image)resources.GetObject("btnActualizar.Image");
             btnActualizar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnActualizar.Location = new Point(485, 569);
+            btnActualizar.Location = new Point(634, 521);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(173, 60);
+            btnActualizar.Size = new Size(173, 108);
             btnActualizar.TabIndex = 12;
             btnActualizar.Text = "Actualizar";
             btnActualizar.TextAlign = ContentAlignment.MiddleRight;
             btnActualizar.UseVisualStyleBackColor = false;
+            btnActualizar.Click += btnActualizar_Click;
             // 
             // dvgProductos
             // 
+            dvgProductos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dvgProductos.BackgroundColor = Color.FromArgb(255, 224, 192);
             dvgProductos.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -112,7 +117,7 @@
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dvgProductos.DefaultCellStyle = dataGridViewCellStyle2;
-            dvgProductos.Location = new Point(23, 33);
+            dvgProductos.Location = new Point(0, 0);
             dvgProductos.Name = "dvgProductos";
             dvgProductos.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -126,16 +131,24 @@
             dvgProductos.RowHeadersVisible = false;
             dvgProductos.RowHeadersWidth = 62;
             dvgProductos.ScrollBars = ScrollBars.None;
-            dvgProductos.Size = new Size(755, 519);
+            dvgProductos.Size = new Size(795, 484);
             dvgProductos.TabIndex = 13;
+            // 
+            // pnlApp
+            // 
+            pnlApp.Controls.Add(dvgProductos);
+            pnlApp.Location = new Point(12, 12);
+            pnlApp.Name = "pnlApp";
+            pnlApp.Size = new Size(795, 484);
+            pnlApp.TabIndex = 14;
             // 
             // FrmProductos
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(828, 659);
-            Controls.Add(dvgProductos);
+            ClientSize = new Size(828, 647);
+            Controls.Add(pnlApp);
             Controls.Add(btnActualizar);
             Controls.Add(btnEliminar);
             Controls.Add(btnAgregar);
@@ -143,6 +156,7 @@
             Name = "FrmProductos";
             Text = "FrmProductos";
             ((System.ComponentModel.ISupportInitialize)dvgProductos).EndInit();
+            pnlApp.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -151,5 +165,6 @@
         private Button btnEliminar;
         private Button btnActualizar;
         private DataGridView dvgProductos;
+        private Panel pnlApp;
     }
 }
