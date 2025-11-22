@@ -50,9 +50,6 @@ namespace ProyectoFinal.Frontend
                 txtPrecio.Focus();
                 return;
             }
-
-            /// El control numStock ya devuelve un decimal, lo convertimos a int o lo dejamos como decimal
-            /// Asumimos que el Stock del modelo es 'int'.
             int stock = (int)nudStock.Value;
 
             /// Cree el objeto Producto
