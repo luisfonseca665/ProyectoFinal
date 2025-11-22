@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenu));
             pnlMenu = new Panel();
             btnSalir = new Button();
-            button5 = new Button();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
-            btnTienda = new Button();
+            btnReportes = new Button();
+            btnUsuarios = new Button();
+            btnAuditorias = new Button();
+            btnEmpleados = new Button();
+            btnProductos = new Button();
+            btnComprar = new Button();
             pnlUsuario = new Panel();
             lblusuario = new Label();
             pcbUsuario = new PictureBox();
@@ -50,12 +50,12 @@
             // 
             pnlMenu.BackColor = Color.FromArgb(136, 99, 75);
             pnlMenu.Controls.Add(btnSalir);
-            pnlMenu.Controls.Add(button5);
-            pnlMenu.Controls.Add(button4);
-            pnlMenu.Controls.Add(button3);
-            pnlMenu.Controls.Add(button2);
-            pnlMenu.Controls.Add(button1);
-            pnlMenu.Controls.Add(btnTienda);
+            pnlMenu.Controls.Add(btnReportes);
+            pnlMenu.Controls.Add(btnUsuarios);
+            pnlMenu.Controls.Add(btnAuditorias);
+            pnlMenu.Controls.Add(btnEmpleados);
+            pnlMenu.Controls.Add(btnProductos);
+            pnlMenu.Controls.Add(btnComprar);
             pnlMenu.Controls.Add(pnlUsuario);
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
@@ -77,96 +77,101 @@
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
             // 
-            // button5
+            // btnReportes
             // 
-            button5.Dock = DockStyle.Top;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.White;
-            button5.Image = Properties.Resources.icons8_report_50;
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(0, 445);
-            button5.Name = "button5";
-            button5.Size = new Size(277, 59);
-            button5.TabIndex = 6;
-            button5.Text = "Reportes";
-            button5.UseVisualStyleBackColor = true;
+            btnReportes.Dock = DockStyle.Top;
+            btnReportes.FlatStyle = FlatStyle.Flat;
+            btnReportes.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReportes.ForeColor = Color.White;
+            btnReportes.Image = Properties.Resources.icons8_report_50;
+            btnReportes.ImageAlign = ContentAlignment.MiddleLeft;
+            btnReportes.Location = new Point(0, 445);
+            btnReportes.Name = "btnReportes";
+            btnReportes.Size = new Size(277, 59);
+            btnReportes.TabIndex = 6;
+            btnReportes.Text = "Reportes";
+            btnReportes.UseVisualStyleBackColor = true;
+            btnReportes.Click += btnReportes_Click;
             // 
-            // button4
+            // btnUsuarios
             // 
-            button4.Dock = DockStyle.Top;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.White;
-            button4.Image = Properties.Resources.icons8_users_50;
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(0, 386);
-            button4.Name = "button4";
-            button4.Size = new Size(277, 59);
-            button4.TabIndex = 5;
-            button4.Text = "Usuarios";
-            button4.UseVisualStyleBackColor = true;
+            btnUsuarios.Dock = DockStyle.Top;
+            btnUsuarios.FlatStyle = FlatStyle.Flat;
+            btnUsuarios.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnUsuarios.ForeColor = Color.White;
+            btnUsuarios.Image = Properties.Resources.icons8_users_50;
+            btnUsuarios.ImageAlign = ContentAlignment.MiddleLeft;
+            btnUsuarios.Location = new Point(0, 386);
+            btnUsuarios.Name = "btnUsuarios";
+            btnUsuarios.Size = new Size(277, 59);
+            btnUsuarios.TabIndex = 5;
+            btnUsuarios.Text = "Usuarios";
+            btnUsuarios.UseVisualStyleBackColor = true;
+            btnUsuarios.Click += btnUsuarios_Click;
             // 
-            // button3
+            // btnAuditorias
             // 
-            button3.Dock = DockStyle.Top;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.White;
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(0, 327);
-            button3.Name = "button3";
-            button3.Size = new Size(277, 59);
-            button3.TabIndex = 4;
-            button3.Text = "Auditorias";
-            button3.UseVisualStyleBackColor = true;
+            btnAuditorias.Dock = DockStyle.Top;
+            btnAuditorias.FlatStyle = FlatStyle.Flat;
+            btnAuditorias.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAuditorias.ForeColor = Color.White;
+            btnAuditorias.Image = (Image)resources.GetObject("btnAuditorias.Image");
+            btnAuditorias.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAuditorias.Location = new Point(0, 327);
+            btnAuditorias.Name = "btnAuditorias";
+            btnAuditorias.Size = new Size(277, 59);
+            btnAuditorias.TabIndex = 4;
+            btnAuditorias.Text = "Auditorias";
+            btnAuditorias.UseVisualStyleBackColor = true;
+            btnAuditorias.Click += btnAuditorias_Click;
             // 
-            // button2
+            // btnEmpleados
             // 
-            button2.Dock = DockStyle.Top;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Image = Properties.Resources.icons8_employees_48;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(0, 268);
-            button2.Name = "button2";
-            button2.Size = new Size(277, 59);
-            button2.TabIndex = 3;
-            button2.Text = "Empleados";
-            button2.UseVisualStyleBackColor = true;
+            btnEmpleados.Dock = DockStyle.Top;
+            btnEmpleados.FlatStyle = FlatStyle.Flat;
+            btnEmpleados.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEmpleados.ForeColor = Color.White;
+            btnEmpleados.Image = Properties.Resources.icons8_employees_48;
+            btnEmpleados.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEmpleados.Location = new Point(0, 268);
+            btnEmpleados.Name = "btnEmpleados";
+            btnEmpleados.Size = new Size(277, 59);
+            btnEmpleados.TabIndex = 3;
+            btnEmpleados.Text = "Empleados";
+            btnEmpleados.UseVisualStyleBackColor = true;
+            btnEmpleados.Click += button2_Click;
             // 
-            // button1
+            // btnProductos
             // 
-            button1.Dock = DockStyle.Top;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Image = Properties.Resources.icons8_products_48;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(0, 209);
-            button1.Name = "button1";
-            button1.Size = new Size(277, 59);
-            button1.TabIndex = 2;
-            button1.Text = "Productos";
-            button1.UseVisualStyleBackColor = true;
+            btnProductos.Dock = DockStyle.Top;
+            btnProductos.FlatStyle = FlatStyle.Flat;
+            btnProductos.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnProductos.ForeColor = Color.White;
+            btnProductos.Image = Properties.Resources.icons8_products_48;
+            btnProductos.ImageAlign = ContentAlignment.MiddleLeft;
+            btnProductos.Location = new Point(0, 209);
+            btnProductos.Name = "btnProductos";
+            btnProductos.Size = new Size(277, 59);
+            btnProductos.TabIndex = 2;
+            btnProductos.Text = "Productos";
+            btnProductos.UseVisualStyleBackColor = true;
+            btnProductos.Click += btnProductos_Click;
             // 
-            // btnTienda
+            // btnComprar
             // 
-            btnTienda.Dock = DockStyle.Top;
-            btnTienda.FlatStyle = FlatStyle.Flat;
-            btnTienda.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTienda.ForeColor = Color.White;
-            btnTienda.Image = Properties.Resources.icons8_buy_50;
-            btnTienda.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTienda.Location = new Point(0, 150);
-            btnTienda.Name = "btnTienda";
-            btnTienda.Size = new Size(277, 59);
-            btnTienda.TabIndex = 0;
-            btnTienda.Text = "Comprar";
-            btnTienda.UseVisualStyleBackColor = true;
-            btnTienda.Click += btnTienda_Click;
+            btnComprar.Dock = DockStyle.Top;
+            btnComprar.FlatStyle = FlatStyle.Flat;
+            btnComprar.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnComprar.ForeColor = Color.White;
+            btnComprar.Image = Properties.Resources.icons8_buy_50;
+            btnComprar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnComprar.Location = new Point(0, 150);
+            btnComprar.Name = "btnComprar";
+            btnComprar.Size = new Size(277, 59);
+            btnComprar.TabIndex = 0;
+            btnComprar.Text = "Comprar";
+            btnComprar.UseVisualStyleBackColor = true;
+            btnComprar.Click += btnTienda_Click;
             // 
             // pnlUsuario
             // 
@@ -236,12 +241,12 @@
         private Panel pnlUsuario;
         private PictureBox pcbUsuario;
         private Panel pnlApp;
-        private Button btnTienda;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button btnComprar;
+        private Button btnReportes;
+        private Button btnUsuarios;
+        private Button btnAuditorias;
+        private Button btnEmpleados;
+        private Button btnProductos;
         private Button btnSalir;
         private Label lblusuario;
     }
