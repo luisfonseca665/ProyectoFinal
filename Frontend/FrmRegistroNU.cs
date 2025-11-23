@@ -42,16 +42,39 @@ namespace ProyectoFinal.Frontend
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            
+
+            // Validar campos obligatorios
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidos.Text) ||
                 string.IsNullOrWhiteSpace(txtUsuario.Text) ||
-                string.IsNullOrWhiteSpace(txtContraseña.Text))
+                string.IsNullOrWhiteSpace(txtContraseña.Text) ||
+                string.IsNullOrWhiteSpace(txtTelefono.Text) ||
+                string.IsNullOrWhiteSpace(txtCorreo.Text))
             {
                 MessageBox.Show("Complete todos los campos obligatorios.", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            // Validar longitud del nombre y apellidos
+            if (txtNombre.Text.Trim().Length < 2)
+            {
+                MessageBox.Show("El nombre debe tener al menos 2 caracteres.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNombre.Focus();
+                return;
+            }
+
+            if (txtApellidos.Text.Trim().Length < 2)
+            {
+                MessageBox.Show("Los apellidos deben tener al menos 2 caracteres.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtApellidos.Focus();
+                return;
+            }
+
+            // Validar tipo de empleado
             if (cnbTipo.SelectedItem == null)
             {
                 MessageBox.Show("Seleccione un tipo de empleado.", "Aviso",
@@ -59,28 +82,48 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            if (!string.IsNullOrWhiteSpace(txtTelefono.Text) && !Regex.IsMatch(txtTelefono.Text, @"^\d+$"))
+            // Validar teléfono (exactamente 10 dígitos numéricos)
+            if (!Regex.IsMatch(txtTelefono.Text.Trim(), @"^\d{10}$"))
             {
-                MessageBox.Show("El teléfono solo debe contener números.", "Aviso",
+                MessageBox.Show("El teléfono debe contener exactamente 10 dígitos.", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTelefono.Focus();
                 return;
             }
 
+            // Validar correo
             string patronCorreo = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (!string.IsNullOrWhiteSpace(txtCorreo.Text) && !Regex.IsMatch(txtCorreo.Text, patronCorreo))
+            if (!Regex.IsMatch(txtCorreo.Text.Trim(), patronCorreo))
             {
                 MessageBox.Show("Por favor ingrese un correo electrónico válido (ejemplo: usuario@gmail.com).", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCorreo.Focus();
                 return;
             }
 
-            if (txtContraseña.Text.Trim().Length < 8)
+            // Validar usuario (mínimo 3 caracteres)
+            if (txtUsuario.Text.Trim().Length < 3)
             {
-                MessageBox.Show("La contraseña debe tener al menos 8 caracteres.", "Aviso",
+                MessageBox.Show("El usuario debe tener al menos 3 caracteres.", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsuario.Focus();
                 return;
             }
 
+            // Validar contraseña (mínimo 8 caracteres, al menos mayúscula, minúscula y número)
+            string password = txtContraseña.Text.Trim();
+            if (password.Length < 8 ||
+                !Regex.IsMatch(password, @"[A-Z]") ||
+                !Regex.IsMatch(password, @"[a-z]") ||
+                !Regex.IsMatch(password, @"[0-9]"))
+            {
+                MessageBox.Show("La contraseña debe tener al menos 8 caracteres, incluyendo una mayúscula, una minúscula y un número.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtContraseña.Focus();
+                return;
+            }
+
+            // Crear objeto empleado
             Empleado emp = new Empleado()
             {
                 Nombre = txtNombre.Text.Trim(),
@@ -88,15 +131,17 @@ namespace ProyectoFinal.Frontend
                 Telefono = txtTelefono.Text.Trim(),
                 Correo = txtCorreo.Text.Trim(),
                 Usuario = txtUsuario.Text.Trim(),
-                Password = txtContraseña.Text.Trim(),
+                Password = password,
                 Tipo = cnbTipo.SelectedItem.ToString(),
                 Foto = fotoBytes
             };
 
+            // Registrar
             if (controller.Registrar(emp))
             {
                 MessageBox.Show("Empleado registrado correctamente", "Éxito",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 FrmLogin login = new FrmLogin();
                 login.Show();
                 this.Close();
@@ -104,9 +149,9 @@ namespace ProyectoFinal.Frontend
             else
             {
                 MessageBox.Show("Error al registrar el empleado. Verifique que el usuario no esté duplicado.", "Error",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void FrmRegistroNU_Load(object sender, EventArgs e)

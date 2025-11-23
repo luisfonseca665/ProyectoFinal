@@ -43,16 +43,73 @@ namespace ProyectoFinal.Frontend
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-            /// Valido los datos de entrada
-            if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
+
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
+         string.IsNullOrWhiteSpace(txtNombre.Text) ||
+         string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
+         string.IsNullOrWhiteSpace(txtPrecio.Text))
+            {
+                MessageBox.Show("Todos los campos son obligatorios.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            
+            if (txtCodigo.Text.Trim().Length != 13)
+            {
+                MessageBox.Show("El Código debe tener exactamente 13 caracteres.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCodigo.Focus();
+                return;
+            }
+
+            
+            if (txtNombre.Text.Trim().Length < 4)
+            {
+                MessageBox.Show("El Nombre debe tener al menos 4 caracteres.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNombre.Focus();
+                return;
+            }
+
+            
+            if (string.IsNullOrWhiteSpace(txtDescripcion.Text.Trim()))
+            {
+                MessageBox.Show("La Descripción es obligatoria.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDescripcion.Focus();
+                return;
+            }
+
+            
+            if (!decimal.TryParse(txtPrecio.Text.Trim(), out decimal precio))
             {
                 MessageBox.Show("El Precio debe ser un número válido.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPrecio.Focus();
                 return;
             }
-            int stock = (int)nudStock.Value;
 
-            /// Cree el objeto Producto
+            if (precio <= 0)
+            {
+                MessageBox.Show("El Precio debe ser mayor a 0.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPrecio.Focus();
+                return;
+            }
+
+            
+            if (decimal.Round(precio, 2) != precio)
+            {
+                MessageBox.Show("El Precio no puede tener más de 2 decimales.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPrecio.Focus();
+                return;
+            }
+
+            
+            int stock = (int)nudStock.Value;
+            if (stock <= 0)
+            {
+                MessageBox.Show("El Stock debe ser mayor a 0.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                nudStock.Focus();
+                return;
+            }
+
+            
             Producto nuevoProducto = new Producto
             {
                 Codigo = txtCodigo.Text.Trim(),
@@ -63,16 +120,9 @@ namespace ProyectoFinal.Frontend
                 Foto = _foto
             };
 
-            /// Validamos campos obligatorios que la función no chequea (Nombre, Descripción, etc.)
-            if (string.IsNullOrEmpty(nuevoProducto.Nombre) || string.IsNullOrEmpty(nuevoProducto.Descripcion))
-            {
-                MessageBox.Show("El Nombre y la Descripción son obligatorios.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            ///  Llamamos a la lógica de la base de datos
-            ProductosController ola = new ProductosController();
-            if (ola.InsertarProducto(nuevoProducto))
+            
+            ProductosController controller = new ProductosController();
+            if (controller.InsertarProducto(nuevoProducto))
             {
                 MessageBox.Show("Producto agregado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
