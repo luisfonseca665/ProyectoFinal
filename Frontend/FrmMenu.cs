@@ -50,8 +50,6 @@ namespace ProyectoFinal.Frontend
             {
                 btnEmpleados.Enabled = false;
                 btnAuditorias.Enabled = false;
-                btnProductos.Enabled = false;
-                btnComprar.Enabled = true;
 
             }
         }
