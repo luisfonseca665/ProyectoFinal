@@ -11,14 +11,7 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
 
         #region Windows Form Designer generated code
 
@@ -50,7 +43,6 @@
             btnModificar.Text = "Modificar";
             btnModificar.TextAlign = ContentAlignment.MiddleRight;
             btnModificar.UseVisualStyleBackColor = false;
-            btnModificar.Click += button1_Click;
             // 
             // btnEliminar
             // 
@@ -66,7 +58,6 @@
             btnEliminar.Text = "Eliminar";
             btnEliminar.TextAlign = ContentAlignment.MiddleRight;
             btnEliminar.UseVisualStyleBackColor = false;
-            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnAgregar
             // 
@@ -82,7 +73,6 @@
             btnAgregar.Text = "Agregar";
             btnAgregar.TextAlign = ContentAlignment.MiddleRight;
             btnAgregar.UseVisualStyleBackColor = false;
-            btnAgregar.Click += btnAgregar_Click;
             // 
             // TablaEmpleados
             // 
@@ -93,20 +83,11 @@
             TablaEmpleados.RowHeadersWidth = 51;
             TablaEmpleados.Size = new Size(623, 360);
             TablaEmpleados.TabIndex = 3;
-            TablaEmpleados.CellContentClick += dataGridView1_CellContentClick;
             // 
             // FrmEmpleados
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(669, 510);
-            Controls.Add(TablaEmpleados);
-            Controls.Add(btnAgregar);
-            Controls.Add(btnEliminar);
-            Controls.Add(btnModificar);
+            ClientSize = new Size(536, 336);
             Name = "FrmEmpleados";
-            Text = "FrmEmpleados";
             ((System.ComponentModel.ISupportInitialize)TablaEmpleados).EndInit();
             ResumeLayout(false);
         }
