@@ -30,8 +30,6 @@ namespace ProyectoFinal.Frontend
         {
             List<Producto> lista = _productos.ObtenerProductos();
             dvgProductos.DataSource = lista;
-
-            dvgProductos.Columns["Codigo"].HeaderText = "CLAVE";
             dvgProductos.Columns["Precio"].DefaultCellStyle.Format = "C";
 
             dvgProductos.Columns["Descontinuado"].Visible = false;
@@ -116,6 +114,11 @@ namespace ProyectoFinal.Frontend
         }
 
         private void dvgProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void FrmProductos_Load(object sender, EventArgs e)
         {
 
         }

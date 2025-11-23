@@ -82,7 +82,7 @@ namespace ProyectoFinal.Frontend
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //FormPanel(new FrmEmpleados());
+            FormPanel(new FrmEmpleados());
         }
 
         private void btnProductos_Click(object sender, EventArgs e)
@@ -97,7 +97,7 @@ namespace ProyectoFinal.Frontend
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            //FormPanel(new FrmEmpleados());
+            FormPanel(new FrmEmpleados());
         }
 
         private void btnReportes_Click(object sender, EventArgs e)

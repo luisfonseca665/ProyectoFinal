@@ -7,7 +7,6 @@ namespace ProyectoFinal.Backend
 {
     public class EmpleadoController
     {
-        /// Inicio de sesión buscando el usuario y la contraseña (hasheada con SHA2-256) y que esté activo.
         public Empleado Login(string usuario, string contra)
         {
             Empleado empleado = null;
@@ -19,7 +18,7 @@ namespace ProyectoFinal.Backend
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@usuario", usuario);
-                cmd.Parameters.AddWithValue("@contra", contra); 
+                cmd.Parameters.AddWithValue("@contra", contra);
 
                 MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
@@ -48,30 +47,57 @@ namespace ProyectoFinal.Backend
             return empleado;
         }
 
-        /// Registra un nuevo empleado en la base de datos, hasheando la contraseña automáticamente.
+        /// <summary>
+        /// Registrar un nuevo empleado usando un Stored Procedure.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
         public bool Registrar(Empleado e)
         {
-            string query = "call spinsertempleado(@pnombre, @papellidos, @ptelefono, @pcorreo, @pusuario, SHA2(@ppassword, 256), @ptipo, @pfoto)";
+            if (string.IsNullOrEmpty(e.Nombre) || string.IsNullOrEmpty(e.Usuario) || string.IsNullOrEmpty(e.Password))
+            {
+                return false;
+            }
+
+            string spName = "spinsertempleado";
 
             using (MySqlConnection conn = Conexion.ObtenerConexion())
             {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, conn);
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(spName, conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("pnombre", e.Nombre);
+                    cmd.Parameters.AddWithValue("papellidos", e.Apellidos);
+                    cmd.Parameters.AddWithValue("ptelefono", e.Telefono);
+                    cmd.Parameters.AddWithValue("pcorreo", e.Correo);
+                    cmd.Parameters.AddWithValue("pusuario", e.Usuario);
+                    cmd.Parameters.AddWithValue("ptipo", e.Tipo);
+                    cmd.Parameters.AddWithValue("ppassword", e.Password);
+                    MySqlParameter fotoParam = new MySqlParameter("pfoto", MySqlDbType.LongBlob);
 
-                cmd.Parameters.AddWithValue("@pnombre", e.Nombre);
-                cmd.Parameters.AddWithValue("@papellidos", e.Apellidos);
-                cmd.Parameters.AddWithValue("@ptelefono", e.Telefono);
-                cmd.Parameters.AddWithValue("@pcorreo", e.Correo);
-                cmd.Parameters.AddWithValue("@pusuario", e.Usuario);
+                    if (e.Foto != null && e.Foto.Length > 0)
+                    {
+                        fotoParam.Value = e.Foto;
+                    }
+                    else
+                    {
+                        fotoParam.Value = DBNull.Value;
+                    }
 
-                cmd.Parameters.AddWithValue("@ppassword", e.Password);
-                cmd.Parameters.AddWithValue("@ptipo", e.Tipo);
+                    cmd.Parameters.Add(fotoParam);
 
-                cmd.Parameters.Add("@pfoto", MySqlDbType.Blob, e.Foto?.Length ?? 0).Value = e.Foto ?? (object)DBNull.Value;
-
-                return cmd.ExecuteNonQuery() > 0;
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show($"Error de Base de Datos: {ex.Message}", "Error SQL", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    return false;
+                }
             }
         }
+
 
 
         /// Obtenemos todos los empleados (activos e inactivos) en un DataTable.
@@ -85,17 +111,13 @@ namespace ProyectoFinal.Backend
                 using (MySqlConnection conn = Conexion.ObtenerConexion())
                 {
                     conn.Open();
-                    MessageBox.Show("✅ Conexión OK");
-
                     MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                     da.Fill(dt);
-
-                    MessageBox.Show("Filas cargadas: " + dt.Rows.Count);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ ERROR: " + ex.Message);
+                MessageBox.Show("ERROR: " + ex.Message);
             }
 
             return dt;
@@ -104,22 +126,35 @@ namespace ProyectoFinal.Backend
 
         public bool Eliminar(int id)
         {
+            if (id <= 0)
+            {
+                return false;
+            }
+
+            string spName = "spdeleteempleado";
+
             using (MySqlConnection conn = Conexion.ObtenerConexion())
             {
                 try
                 {
                     conn.Open();
-                    MySqlCommand cmd = new MySqlCommand("spdeleteempleado", conn);
+                    MySqlCommand cmd = new MySqlCommand(spName, conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@pid", id);
-
+                    cmd.Parameters.AddWithValue("pid", id);
                     int filas = cmd.ExecuteNonQuery();
                     return filas > 0;
                 }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show($"No se pudo eliminar el registro. Error: {ex.Message}",
+                                                         "Error de Base de Datos",
+                                                         MessageBoxButtons.OK,
+                                                         MessageBoxIcon.Error);
+                    return false;
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show($"Error inesperado: {ex.Message}", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     return false;
                 }
             }
@@ -141,9 +176,8 @@ namespace ProyectoFinal.Backend
                 cmd.Parameters.AddWithValue("@pusuario", e.Usuario);
                 cmd.Parameters.AddWithValue("@ppassword", e.Password);
                 cmd.Parameters.AddWithValue("@ptipo", e.Tipo);
-                cmd.Parameters.Add("@pfoto", MySqlDbType.Blob, e.Foto?.Length ?? 0).Value = e.Foto ?? (object)DBNull.Value;
+                cmd.Parameters.Add("@pfoto", MySqlDbType.LongBlob, e.Foto?.Length ?? 0).Value = e.Foto ?? (object)DBNull.Value;
                 cmd.Parameters.AddWithValue("@pactivo", true);
-
                 return cmd.ExecuteNonQuery() > 0;
             }
         }

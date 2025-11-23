@@ -72,8 +72,6 @@ namespace ProyectoFinal.Backend
                 {
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(spName, conn);
-
-                    // 💡 CORRECCIÓN CRÍTICA: Debes especificar que el comando es un Procedimiento Almacenado.
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Parámetros de datos estándar

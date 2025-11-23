@@ -16,11 +16,15 @@ namespace ProyectoFinal.Frontend
         private EmpleadoController controller = new EmpleadoController();
         private byte[] fotoBytes = null;
 
+        public Action EmpleadoAgregadoCallback { get; set; }
+
         private void FrmAgregarEmpleado_Load(object sender, EventArgs e)
         {
             cnbTipo.Items.Clear();
             cnbTipo.Items.Add("admin");
             cnbTipo.Items.Add("cajero");
+            cnbTipo.SelectedIndex = 0;
+
         }
         public FrmAgregarEmpleado()
         {
@@ -51,9 +55,9 @@ namespace ProyectoFinal.Frontend
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-        string.IsNullOrWhiteSpace(txtApellidos.Text) ||
-        string.IsNullOrWhiteSpace(txtUsuario.Text) ||
-        string.IsNullOrWhiteSpace(txtContraseña.Text))
+                string.IsNullOrWhiteSpace(txtApellidos.Text) ||
+                string.IsNullOrWhiteSpace(txtUsuario.Text) ||
+                string.IsNullOrWhiteSpace(txtContraseña.Text))
             {
                 MessageBox.Show("Complete todos los campos obligatorios.", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -75,25 +79,19 @@ namespace ProyectoFinal.Frontend
                 Telefono = txtTelefono.Text.Trim(),
                 Correo = txtCorreo.Text.Trim(),
                 Usuario = txtUsuario.Text.Trim(),
-                Password = txtContraseña.Text.Trim(),
+                Password = txtContraseña.Text.Trim(), // La encriptación se hace en BD
                 Tipo = cnbTipo.SelectedItem.ToString(),
                 Foto = fotoBytes
             };
 
-            // Registrar empleado
-            bool ok = controller.Registrar(emp);
-
-            if (ok)
+            // Registrar
+            if (controller.Registrar(emp))
             {
                 MessageBox.Show("Empleado registrado correctamente ✅", "Éxito",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                LimpiarFormulario();
-            }
-            else
-            {
-                MessageBox.Show("No se pudo registrar el empleado ❌", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Volver al listado principal
+                EmpleadoAgregadoCallback?.Invoke();
             }
         }
 
@@ -136,10 +134,12 @@ namespace ProyectoFinal.Frontend
             {
                 Image img = Image.FromFile(ofd.FileName);
                 pictureFoto.Image = img;
+                pictureFoto.SizeMode = PictureBoxSizeMode.StretchImage; // Ajustar imagen
 
                 using (var ms = new MemoryStream())
                 {
-                    img.Save(ms, img.RawFormat);
+                    // Guardamos en formato original o PNG por defecto
+                    img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                     fotoBytes = ms.ToArray();
                 }
             }
