@@ -9,6 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Frontend\FrmEmpleados.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Frontend\FrmEmpleados.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="9.5.0" />
   </ItemGroup>
 

@@ -50,9 +50,10 @@
             btnAgregar.ForeColor = Color.White;
             btnAgregar.Image = (Image)resources.GetObject("btnAgregar.Image");
             btnAgregar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregar.Location = new Point(12, 521);
+            btnAgregar.Location = new Point(10, 417);
+            btnAgregar.Margin = new Padding(2, 2, 2, 2);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(160, 108);
+            btnAgregar.Size = new Size(128, 86);
             btnAgregar.TabIndex = 10;
             btnAgregar.Text = "Agregar";
             btnAgregar.TextAlign = ContentAlignment.MiddleRight;
@@ -68,9 +69,10 @@
             btnEliminar.ForeColor = Color.White;
             btnEliminar.Image = (Image)resources.GetObject("btnEliminar.Image");
             btnEliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminar.Location = new Point(340, 521);
+            btnEliminar.Location = new Point(272, 417);
+            btnEliminar.Margin = new Padding(2, 2, 2, 2);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(146, 108);
+            btnEliminar.Size = new Size(117, 86);
             btnEliminar.TabIndex = 11;
             btnEliminar.Text = "Eliminar";
             btnEliminar.TextAlign = ContentAlignment.MiddleRight;
@@ -86,9 +88,10 @@
             btnActualizar.ForeColor = Color.White;
             btnActualizar.Image = (Image)resources.GetObject("btnActualizar.Image");
             btnActualizar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnActualizar.Location = new Point(634, 521);
+            btnActualizar.Location = new Point(507, 417);
+            btnActualizar.Margin = new Padding(2, 2, 2, 2);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(173, 108);
+            btnActualizar.Size = new Size(138, 86);
             btnActualizar.TabIndex = 12;
             btnActualizar.Text = "Actualizar";
             btnActualizar.TextAlign = ContentAlignment.MiddleRight;
@@ -118,6 +121,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dvgProductos.DefaultCellStyle = dataGridViewCellStyle2;
             dvgProductos.Location = new Point(0, 0);
+            dvgProductos.Margin = new Padding(2, 2, 2, 2);
             dvgProductos.Name = "dvgProductos";
             dvgProductos.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -131,28 +135,31 @@
             dvgProductos.RowHeadersVisible = false;
             dvgProductos.RowHeadersWidth = 62;
             dvgProductos.ScrollBars = ScrollBars.None;
-            dvgProductos.Size = new Size(795, 484);
+            dvgProductos.Size = new Size(636, 387);
             dvgProductos.TabIndex = 13;
+            dvgProductos.CellContentClick += dvgProductos_CellContentClick;
             // 
             // pnlApp
             // 
             pnlApp.Controls.Add(dvgProductos);
-            pnlApp.Location = new Point(12, 12);
+            pnlApp.Location = new Point(10, 10);
+            pnlApp.Margin = new Padding(2, 2, 2, 2);
             pnlApp.Name = "pnlApp";
-            pnlApp.Size = new Size(795, 484);
+            pnlApp.Size = new Size(636, 387);
             pnlApp.TabIndex = 14;
             // 
             // FrmProductos
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(828, 647);
+            ClientSize = new Size(662, 518);
             Controls.Add(pnlApp);
             Controls.Add(btnActualizar);
             Controls.Add(btnEliminar);
             Controls.Add(btnAgregar);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2, 2, 2, 2);
             Name = "FrmProductos";
             Text = "FrmProductos";
             ((System.ComponentModel.ISupportInitialize)dvgProductos).EndInit();

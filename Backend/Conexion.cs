@@ -9,7 +9,7 @@ namespace ProyectoFinal.Backend
 {
     public class Conexion
     {
-        private static string cadena = "server=localhost;database=ventas;user=root;password=1111;";
+        private static string cadena = "server=localhost;database=ventas;user=root;password=1234;";
         public static MySqlConnection ObtenerConexion()
         {
             return new MySqlConnection(cadena);

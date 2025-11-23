@@ -49,110 +49,123 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(47, 79);
+            label1.Location = new Point(38, 63);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(75, 25);
+            label1.Size = new Size(61, 20);
             label1.TabIndex = 0;
             label1.Text = "Codigo:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(47, 140);
+            label2.Location = new Point(38, 112);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(82, 25);
+            label2.Size = new Size(67, 20);
             label2.TabIndex = 1;
             label2.Text = "Nombre:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(502, 82);
+            label3.Location = new Point(402, 66);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(59, 25);
+            label3.Size = new Size(48, 20);
             label3.TabIndex = 2;
             label3.Text = "Stock:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(47, 417);
+            label4.Location = new Point(38, 334);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(64, 25);
+            label4.Size = new Size(53, 20);
             label4.TabIndex = 3;
             label4.Text = "Precio:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(47, 211);
+            label5.Location = new Point(38, 169);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(108, 25);
+            label5.Size = new Size(90, 20);
             label5.TabIndex = 4;
             label5.Text = "Descripcion:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(502, 146);
+            label6.Location = new Point(402, 117);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(53, 25);
+            label6.Size = new Size(42, 20);
             label6.TabIndex = 5;
             label6.Text = "Foto:";
             // 
             // txtCodigo
             // 
             txtCodigo.BorderStyle = BorderStyle.FixedSingle;
-            txtCodigo.Location = new Point(128, 79);
+            txtCodigo.Location = new Point(102, 63);
+            txtCodigo.Margin = new Padding(2, 2, 2, 2);
             txtCodigo.Name = "txtCodigo";
-            txtCodigo.Size = new Size(305, 31);
+            txtCodigo.Size = new Size(244, 27);
             txtCodigo.TabIndex = 6;
             // 
             // txtNombre
             // 
             txtNombre.BorderStyle = BorderStyle.FixedSingle;
-            txtNombre.Location = new Point(135, 140);
+            txtNombre.Location = new Point(108, 112);
+            txtNombre.Margin = new Padding(2, 2, 2, 2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(298, 31);
+            txtNombre.Size = new Size(239, 27);
             txtNombre.TabIndex = 7;
             // 
             // txtDescripcion
             // 
             txtDescripcion.BorderStyle = BorderStyle.FixedSingle;
-            txtDescripcion.Location = new Point(47, 259);
+            txtDescripcion.Location = new Point(38, 207);
+            txtDescripcion.Margin = new Padding(2, 2, 2, 2);
             txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(386, 112);
+            txtDescripcion.Size = new Size(309, 90);
             txtDescripcion.TabIndex = 8;
             // 
             // nudStock
             // 
-            nudStock.Location = new Point(578, 80);
+            nudStock.Location = new Point(462, 64);
+            nudStock.Margin = new Padding(2, 2, 2, 2);
             nudStock.Name = "nudStock";
-            nudStock.Size = new Size(180, 31);
+            nudStock.Size = new Size(144, 27);
             nudStock.TabIndex = 9;
             // 
             // txtPrecio
             // 
             txtPrecio.BorderStyle = BorderStyle.FixedSingle;
-            txtPrecio.Location = new Point(117, 417);
+            txtPrecio.Location = new Point(94, 334);
+            txtPrecio.Margin = new Padding(2, 2, 2, 2);
             txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(316, 31);
+            txtPrecio.Size = new Size(253, 27);
             txtPrecio.TabIndex = 10;
             // 
             // pbProducto
             // 
-            pbProducto.Location = new Point(502, 186);
+            pbProducto.Location = new Point(402, 149);
+            pbProducto.Margin = new Padding(2, 2, 2, 2);
             pbProducto.Name = "pbProducto";
-            pbProducto.Size = new Size(256, 200);
+            pbProducto.Size = new Size(205, 160);
             pbProducto.TabIndex = 11;
             pbProducto.TabStop = false;
             // 
             // btnFoto
             // 
-            btnFoto.Location = new Point(561, 146);
+            btnFoto.Location = new Point(449, 117);
+            btnFoto.Margin = new Padding(2, 2, 2, 2);
             btnFoto.Name = "btnFoto";
-            btnFoto.Size = new Size(197, 34);
+            btnFoto.Size = new Size(158, 27);
             btnFoto.TabIndex = 12;
             btnFoto.Text = "Seleccionar foto.";
             btnFoto.UseVisualStyleBackColor = true;
@@ -160,9 +173,10 @@
             // 
             // btnAgregarProducto
             // 
-            btnAgregarProducto.Location = new Point(502, 417);
+            btnAgregarProducto.Location = new Point(402, 334);
+            btnAgregarProducto.Margin = new Padding(2, 2, 2, 2);
             btnAgregarProducto.Name = "btnAgregarProducto";
-            btnAgregarProducto.Size = new Size(256, 34);
+            btnAgregarProducto.Size = new Size(205, 27);
             btnAgregarProducto.TabIndex = 13;
             btnAgregarProducto.Text = "Agregar Producto.";
             btnAgregarProducto.UseVisualStyleBackColor = true;
@@ -170,10 +184,10 @@
             // 
             // FrmAgregarProducto
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 131, 133);
-            ClientSize = new Size(795, 484);
+            ClientSize = new Size(636, 387);
             Controls.Add(btnAgregarProducto);
             Controls.Add(btnFoto);
             Controls.Add(pbProducto);
@@ -189,8 +203,10 @@
             Controls.Add(label2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2, 2, 2, 2);
             Name = "FrmAgregarProducto";
             Text = "FrmActualizarProducto";
+            Load += FrmAgregarProducto_Load;
             ((System.ComponentModel.ISupportInitialize)nudStock).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbProducto).EndInit();
             ResumeLayout(false);

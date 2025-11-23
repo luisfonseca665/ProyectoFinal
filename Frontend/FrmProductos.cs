@@ -115,6 +115,9 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+        private void dvgProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }

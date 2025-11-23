@@ -84,7 +84,8 @@ namespace ProyectoFinal.Frontend
             }
         }
 
-        private void limpiarCampos() {
+        private void limpiarCampos()
+        {
             txtCodigo.Clear();
             txtNombre.Clear();
             txtDescripcion.Clear();
@@ -92,6 +93,11 @@ namespace ProyectoFinal.Frontend
             nudStock.Value = 0;
             pbProducto.Image = null;
             _foto = null;
+        }
+
+        private void FrmAgregarProducto_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
