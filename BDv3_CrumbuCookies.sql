@@ -250,3 +250,34 @@ INSERT INTO productos (codigo, nombre, descripcion, precio, stock, descontinuado
 ('CC-001-2025-A', 'Crumbu Chispas Gourmet', 'Galleta con tres tipos de chocolate y sal marina.', 35.00, 180, false, NULL),
 ('CC-002-2025-B', 'Cheesecake de Limón', 'Base de galleta de vainilla rellena de crema ácida de limón.', 38.50, 90, false, NULL),
 ('CC-020-2025-T', 'Mapache de Arce', 'Galleta de sirope de arce con trozos de nuez pecana y glaseado.', 35.50, 90, false, NULL);
+
+
+-- new ->>
+DELIMITER $$
+CREATE PROCEDURE spinsertventa(
+    IN pidempleado INT,
+    IN ptotal DECIMAL(10,2),
+    OUT pidventa INT
+)
+BEGIN
+    INSERT INTO ventas(idempleado, total) VALUES(pidempleado, ptotal);
+    SET pidventa = LAST_INSERT_ID();
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE spinsertdetalle_updatestock(
+    IN pidventa INT,
+    IN pcodigo VARCHAR(13),
+    IN pcantidad INT,
+    IN pprecio DECIMAL(10,2)
+)
+BEGIN
+    INSERT INTO detalleventas(idventa, codigoproducto, cantidad, precio) 
+    VALUES(pidventa, pcodigo, pcantidad, pprecio);
+
+    UPDATE productos 
+    SET stock = stock - pcantidad 
+    WHERE codigo = pcodigo;
+END$$
+DELIMITER ;
