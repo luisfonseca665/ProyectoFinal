@@ -48,9 +48,8 @@ namespace ProyectoFinal.Frontend
 
             if (_empleadoActual.Tipo.ToLower() == "cajero")
             {
-                btnEmpleados.Enabled = false;
-                btnAuditorias.Enabled = false;
-
+                btnEmpleados.Visible = false;
+                btnAuditorias.Visible = false;
             }
         }
 
@@ -90,7 +89,7 @@ namespace ProyectoFinal.Frontend
 
         private void btnAuditorias_Click(object sender, EventArgs e)
         {
-            //FormPanel(new FrmAuditoria());
+            FormPanel(new FrmAuditoria());
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)

@@ -15,6 +15,7 @@ namespace ProyectoFinal.Frontend
     {
         private byte[] _fotoActual;
         private ProductosController _producto = new ProductosController();
+
         public Action ProductoActualizadoCallback { get; set; }
         public FrmActuProducto()
         {

@@ -28,12 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FrmAuditoria";
+            dvgAuditorias = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dvgAuditorias).BeginInit();
+            SuspendLayout();
+            // 
+            // dvgAuditorias
+            // 
+            dvgAuditorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dvgAuditorias.Location = new Point(31, 104);
+            dvgAuditorias.Name = "dvgAuditorias";
+            dvgAuditorias.RowHeadersWidth = 62;
+            dvgAuditorias.Size = new Size(739, 324);
+            dvgAuditorias.TabIndex = 0;
+            // 
+            // FrmAuditoria
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Wheat;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dvgAuditorias);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FrmAuditoria";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FrmAuditoria";
+            Load += FrmAuditoria_Load;
+            ((System.ComponentModel.ISupportInitialize)dvgAuditorias).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dvgAuditorias;
     }
 }

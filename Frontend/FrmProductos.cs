@@ -16,6 +16,7 @@ namespace ProyectoFinal.Frontend
         private ProductosController _productos = new ProductosController();
         private Form factivo = null;
         public event Action ola;
+        Empleado _em = new Empleado();
         public FrmProductos()
         {
             InitializeComponent();
