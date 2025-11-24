@@ -15,6 +15,31 @@ namespace ProyectoFinal.Backend
         ///  Funcion para obtener productos
         /// </summary>
         /// <returns></returns>
+        /// 
+        private Conexion Conexion = new Conexion();
+        public DataTable ObtenerProductosParaVenta()
+        {
+            using (MySqlConnection conn = Conexion.ObtenerConexion())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT codigo, nombre, precio, stock, foto FROM productos WHERE descontinuado = FALSE AND stock > 0";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener productos: " + ex.Message);
+                    return null;
+                }
+            }
+        }
+
         public List<Producto> ObtenerProductos()
         {
             List<Producto> productos = new List<Producto>();
@@ -53,6 +78,7 @@ namespace ProyectoFinal.Backend
             return productos;
         }
 
+
         /// <summary>
         /// Funcion para insertar productos
         /// </summary>
@@ -74,14 +100,12 @@ namespace ProyectoFinal.Backend
                     MySqlCommand cmd = new MySqlCommand(spName, conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    // Parámetros de datos estándar
                     cmd.Parameters.AddWithValue("pcodigo", producto.Codigo);
                     cmd.Parameters.AddWithValue("pnombre", producto.Nombre);
                     cmd.Parameters.AddWithValue("pdescripcion", producto.Descripcion);
                     cmd.Parameters.AddWithValue("pprecio", producto.Precio);
                     cmd.Parameters.AddWithValue("pstock", producto.Stock);
 
-                    // Parámetro de la foto (BLOB)
                     MySqlParameter fotoParam = new MySqlParameter("pfoto", MySqlDbType.Blob);
 
                     if (producto.Foto != null && producto.Foto.Length > 0)
@@ -90,14 +114,11 @@ namespace ProyectoFinal.Backend
                     }
                     else
                     {
-                        // Envía DBNull.Value para NULL en la base de datos
                         fotoParam.Value = DBNull.Value;
                     }
 
-                    // Añade el parámetro de la foto al comando
                     cmd.Parameters.Add(fotoParam);
 
-                    // Ejecuta el comando
                     return cmd.ExecuteNonQuery() > 0;
                 }
                 catch (MySqlException ex)
@@ -115,14 +136,12 @@ namespace ProyectoFinal.Backend
         /// <returns></returns>
         public bool ActualizarProducto(Producto producto)
         {
-            // Validación clave para la actualización
             if (string.IsNullOrEmpty(producto.Codigo))
             {
                 MessageBox.Show("Error: El Código del producto es obligatorio para la actualización.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            // Opcional: Validación de precio, si es obligatorio
             if (producto.Precio <= 0)
             {
                 MessageBox.Show("Error: El Precio debe ser mayor a cero.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
