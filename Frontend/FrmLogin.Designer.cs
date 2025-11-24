@@ -38,6 +38,7 @@
             panel1 = new Panel();
             label3 = new Label();
             pictureBox1 = new PictureBox();
+            btnCerrarApp = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -106,6 +107,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(136, 99, 75);
+            panel1.Controls.Add(btnCerrarApp);
             panel1.Controls.Add(label3);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -135,6 +137,18 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
+            // 
+            // btnCerrarApp
+            // 
+            btnCerrarApp.Dock = DockStyle.Right;
+            btnCerrarApp.FlatStyle = FlatStyle.Popup;
+            btnCerrarApp.Image = (Image)resources.GetObject("btnCerrarApp.Image");
+            btnCerrarApp.Location = new Point(595, 0);
+            btnCerrarApp.Name = "btnCerrarApp";
+            btnCerrarApp.Size = new Size(96, 96);
+            btnCerrarApp.TabIndex = 8;
+            btnCerrarApp.UseVisualStyleBackColor = true;
+            btnCerrarApp.Click += btnCerrarApp_Click;
             // 
             // FrmLogin
             // 
@@ -173,5 +187,6 @@
         private Panel panel1;
         private Label label3;
         private PictureBox pictureBox1;
+        private Button btnCerrarApp;
     }
 }

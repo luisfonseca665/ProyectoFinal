@@ -54,12 +54,21 @@ namespace ProyectoFinal.Frontend
 
         private void lblRegistro_Click(object sender, EventArgs e)
         {
+            FrmRegistroNU registro = new FrmRegistroNU();
+            registro.Show();
+            this.Hide();
+            registro.FormClosed += (s, args) => this.Show();
 
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCerrarApp_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

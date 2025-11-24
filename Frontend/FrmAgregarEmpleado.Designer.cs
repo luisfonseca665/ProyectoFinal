@@ -52,7 +52,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(60, 71);
+            label1.Location = new Point(10, 18);
             label1.Name = "label1";
             label1.Size = new Size(71, 20);
             label1.TabIndex = 0;
@@ -61,7 +61,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(60, 108);
+            label2.Location = new Point(10, 54);
             label2.Name = "label2";
             label2.Size = new Size(79, 20);
             label2.TabIndex = 1;
@@ -70,7 +70,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(60, 257);
+            label3.Location = new Point(10, 203);
             label3.Name = "label3";
             label3.Size = new Size(66, 20);
             label3.TabIndex = 2;
@@ -79,7 +79,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(57, 156);
+            label4.Location = new Point(7, 102);
             label4.Name = "label4";
             label4.Size = new Size(74, 20);
             label4.TabIndex = 3;
@@ -89,7 +89,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(60, 200);
+            label5.Location = new Point(10, 146);
             label5.Name = "label5";
             label5.Size = new Size(61, 20);
             label5.TabIndex = 4;
@@ -98,7 +98,7 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(137, 68);
+            txtNombre.Location = new Point(87, 14);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(254, 27);
             txtNombre.TabIndex = 5;
@@ -106,7 +106,7 @@
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(137, 153);
+            txtTelefono.Location = new Point(87, 99);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(254, 27);
             txtTelefono.TabIndex = 6;
@@ -114,7 +114,7 @@
             // 
             // txtApellidos
             // 
-            txtApellidos.Location = new Point(137, 108);
+            txtApellidos.Location = new Point(87, 54);
             txtApellidos.Name = "txtApellidos";
             txtApellidos.Size = new Size(254, 27);
             txtApellidos.TabIndex = 7;
@@ -122,7 +122,7 @@
             // 
             // txtCorreo
             // 
-            txtCorreo.Location = new Point(137, 200);
+            txtCorreo.Location = new Point(87, 146);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(254, 27);
             txtCorreo.TabIndex = 8;
@@ -130,7 +130,7 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(137, 250);
+            txtUsuario.Location = new Point(87, 196);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(254, 27);
             txtUsuario.TabIndex = 9;
@@ -138,16 +138,17 @@
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(156, 309);
+            txtContraseña.Location = new Point(106, 255);
             txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(261, 27);
+            txtContraseña.PasswordChar = '*';
+            txtContraseña.Size = new Size(234, 27);
             txtContraseña.TabIndex = 10;
             txtContraseña.TextChanged += txtContraseña_TextChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(60, 309);
+            label6.Location = new Point(10, 255);
             label6.Name = "label6";
             label6.Size = new Size(90, 20);
             label6.TabIndex = 11;
@@ -156,7 +157,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(482, 71);
+            label7.Location = new Point(369, 19);
             label7.Name = "label7";
             label7.Size = new Size(46, 20);
             label7.TabIndex = 12;
@@ -165,7 +166,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(482, 128);
+            label8.Location = new Point(369, 76);
             label8.Name = "label8";
             label8.Size = new Size(46, 20);
             label8.TabIndex = 13;
@@ -174,7 +175,7 @@
             // cnbTipo
             // 
             cnbTipo.FormattingEnabled = true;
-            cnbTipo.Location = new Point(549, 63);
+            cnbTipo.Location = new Point(436, 18);
             cnbTipo.Name = "cnbTipo";
             cnbTipo.Size = new Size(157, 28);
             cnbTipo.TabIndex = 14;
@@ -182,16 +183,16 @@
             // 
             // pictureFoto
             // 
-            pictureFoto.Location = new Point(549, 168);
+            pictureFoto.Location = new Point(377, 106);
             pictureFoto.Name = "pictureFoto";
-            pictureFoto.Size = new Size(157, 150);
+            pictureFoto.Size = new Size(216, 117);
             pictureFoto.TabIndex = 15;
             pictureFoto.TabStop = false;
             pictureFoto.Click += pictureFoto_Click;
             // 
             // btnFoto
             // 
-            btnFoto.Location = new Point(549, 124);
+            btnFoto.Location = new Point(436, 71);
             btnFoto.Name = "btnFoto";
             btnFoto.Size = new Size(157, 29);
             btnFoto.TabIndex = 16;
@@ -204,7 +205,7 @@
             btnAgregar.BackColor = Color.White;
             btnAgregar.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
             btnAgregar.ForeColor = Color.Black;
-            btnAgregar.Location = new Point(589, 409);
+            btnAgregar.Location = new Point(417, 255);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(175, 29);
             btnAgregar.TabIndex = 17;
@@ -217,7 +218,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 131, 133);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(615, 330);
             Controls.Add(btnAgregar);
             Controls.Add(btnFoto);
             Controls.Add(pictureFoto);

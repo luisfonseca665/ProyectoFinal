@@ -15,6 +15,7 @@ namespace ProyectoFinal.Frontend
     {
         private byte[] _fotoActual;
         private ProductosController _producto = new ProductosController();
+
         public Action ProductoActualizadoCallback { get; set; }
         public FrmActuProducto()
         {
@@ -67,19 +68,72 @@ namespace ProyectoFinal.Frontend
 
         private void btnActualizarProducto_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtCodigo.Text)) {
-                MessageBox.Show("El Código no puede estar vacío.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
+                string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
+                string.IsNullOrWhiteSpace(txtPrecio.Text))
+            {
+                MessageBox.Show("Todos los campos son obligatorios.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            
+            if (txtCodigo.Text.Trim().Length != 13)
+            {
+                MessageBox.Show("El Código debe tener exactamente 13 caracteres.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCodigo.Focus();
                 return;
             }
-            if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
+
+            if (txtNombre.Text.Trim().Length < 4)
+            {
+                MessageBox.Show("El Nombre debe tener al menos 4 caracteres.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNombre.Focus();
+                return;
+            }
+
+            
+            if (string.IsNullOrWhiteSpace(txtDescripcion.Text.Trim()))
+            {
+                MessageBox.Show("La Descripción es obligatoria.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDescripcion.Focus();
+                return;
+            }
+
+           
+            if (!decimal.TryParse(txtPrecio.Text.Trim(), out decimal precio))
             {
                 MessageBox.Show("El Precio debe ser un número válido.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPrecio.Focus();
                 return;
             }
-            bool descontinuado = false;
+
+            if (precio <= 0)
+            {
+                MessageBox.Show("El Precio debe ser mayor a 0.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPrecio.Focus();
+                return;
+            }
+
+            
+            if (decimal.Round(precio, 2) != precio)
+            {
+                MessageBox.Show("El Precio no puede tener más de 2 decimales.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPrecio.Focus();
+                return;
+            }
+
+           
             int stock = (int)nudStock.Value;
+            if (stock <= 0)
+            {
+                MessageBox.Show("El Stock debe ser mayor a 0.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                nudStock.Focus();
+                return;
+            }
+
+           
             Producto productoActualizado = new Producto
             {
                 Codigo = txtCodigo.Text.Trim(),
@@ -88,16 +142,18 @@ namespace ProyectoFinal.Frontend
                 Precio = precio,
                 Stock = stock,
                 Foto = _fotoActual,
-                Descontinuado = descontinuado
+                Descontinuado = false
             };
 
-            if (_producto.ActualizarProducto(productoActualizado)) {
+            
+            if (_producto.ActualizarProducto(productoActualizado))
+            {
                 MessageBox.Show("Producto actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
                 ProductoActualizadoCallback?.Invoke();
-
-
-            } else{
+            }
+            else
+            {
                 MessageBox.Show("Error al actualizar el producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -48,11 +48,8 @@ namespace ProyectoFinal.Frontend
 
             if (_empleadoActual.Tipo.ToLower() == "cajero")
             {
-                btnEmpleados.Enabled = false;
-                btnAuditorias.Enabled = false;
-                btnProductos.Enabled = false;
-                btnComprar.Enabled = true;
-
+                btnEmpleados.Visible = false;
+                btnAuditorias.Visible = false;
             }
         }
 
