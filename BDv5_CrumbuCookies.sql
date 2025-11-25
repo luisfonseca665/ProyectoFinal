@@ -241,3 +241,29 @@ VALUES('Luis Enrique', 'Fonseca Sosa', '4451108686','i49483190@gmail.com', 'admi
 INSERT INTO productos (codigo, nombre, descripcion, precio, stock, descontinuado, foto) VALUES
 ('CC-001-2025-A', 'Crumbu Chispas Gourmet', 'Galleta con tres tipos de chocolate.', 35.00, 180, FALSE, NULL),
 ('CC-002-2025-B', 'Cheesecake de Limón', 'Base de galleta de vainilla.', 38.50, 90, FALSE, NULL);
+
+-- reporte nuevo NUEVOO!!
+
+DROP PROCEDURE IF EXISTS spReporteVentasPorProducto;
+
+DELIMITER $$
+
+CREATE PROCEDURE spReporteVentasPorProducto(
+    IN pInicio DATETIME, 
+    IN pFin DATETIME
+)
+BEGIN
+    SELECT 
+        P.codigo AS 'Clave',
+        P.nombre AS 'Nombre',
+        SUM(DV.cantidad) AS 'Unidades',
+        SUM(DV.cantidad * DV.precio) AS 'Monto'
+    FROM ventas V
+    INNER JOIN detalleventas DV ON V.id = DV.idventa
+    INNER JOIN productos P ON DV.codigoproducto = P.codigo
+    WHERE V.fecha BETWEEN pInicio AND pFin
+    GROUP BY P.codigo, P.nombre
+    ORDER BY Monto DESC;
+END$$
+
+DELIMITER ;

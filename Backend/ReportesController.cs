@@ -7,35 +7,26 @@ namespace ProyectoFinal.Backend
     public class ReportesController
     {
         private Conexion Conexion = new Conexion();
+
         public DataTable ObtenerVentasPorRango(DateTime inicio, DateTime fin)
         {
             DataTable dt = new DataTable();
 
             using (MySqlConnection conn = Conexion.ObtenerConexion())
             {
-                string fechaInicio = inicio.ToString("yyyy-MM-dd 00:00:00");
-                string fechaFin = fin.ToString("yyyy-MM-dd 23:59:59");
-
-                string query = @"
-                    SELECT 
-                        P.codigo AS 'Clave',
-                        P.nombre AS 'Nombre',
-                        SUM(DV.cantidad) AS 'Unidades',
-                        SUM(DV.cantidad * DV.precio) AS 'Monto'
-                    FROM ventas V
-                    INNER JOIN detalleventas DV ON V.id = DV.idventa
-                    INNER JOIN productos P ON DV.codigoproducto = P.codigo
-                    WHERE V.fecha BETWEEN @Inicio AND @Fin
-                    GROUP BY P.codigo, P.nombre
-                    ORDER BY Monto DESC";
+                DateTime pInicio = inicio.Date;
+                DateTime pFin = fin.Date.AddDays(1).AddSeconds(-1);
 
                 try
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+
+                    using (MySqlCommand cmd = new MySqlCommand("spReporteVentasPorProducto", conn))
                     {
-                        cmd.Parameters.AddWithValue("@Inicio", fechaInicio);
-                        cmd.Parameters.AddWithValue("@Fin", fechaFin);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("pInicio", pInicio);
+                        cmd.Parameters.AddWithValue("pFin", pFin);
 
                         MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                         adapter.Fill(dt);
