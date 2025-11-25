@@ -68,7 +68,7 @@ namespace ProyectoFinal.Frontend
 
         private void btnActualizarProducto_Click(object sender, EventArgs e)
         {
-            
+
             if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
                 string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
@@ -78,7 +78,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            
+
             if (txtCodigo.Text.Trim().Length != 13)
             {
                 MessageBox.Show("El Código debe tener exactamente 13 caracteres.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -93,7 +93,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            
+
             if (string.IsNullOrWhiteSpace(txtDescripcion.Text.Trim()))
             {
                 MessageBox.Show("La Descripción es obligatoria.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -101,7 +101,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-           
+
             if (!decimal.TryParse(txtPrecio.Text.Trim(), out decimal precio))
             {
                 MessageBox.Show("El Precio debe ser un número válido.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -116,7 +116,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            
+
             if (decimal.Round(precio, 2) != precio)
             {
                 MessageBox.Show("El Precio no puede tener más de 2 decimales.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -124,7 +124,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-           
+
             int stock = (int)nudStock.Value;
             if (stock <= 0)
             {
@@ -133,7 +133,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-           
+
             Producto productoActualizado = new Producto
             {
                 Codigo = txtCodigo.Text.Trim(),
@@ -145,7 +145,7 @@ namespace ProyectoFinal.Frontend
                 Descontinuado = false
             };
 
-            
+
             if (_producto.ActualizarProducto(productoActualizado))
             {
                 MessageBox.Show("Producto actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -156,6 +156,21 @@ namespace ProyectoFinal.Frontend
             {
                 MessageBox.Show("Error al actualizar el producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

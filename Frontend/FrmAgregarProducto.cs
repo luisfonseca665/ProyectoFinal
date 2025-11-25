@@ -53,7 +53,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            
+
             if (txtCodigo.Text.Trim().Length != 13)
             {
                 MessageBox.Show("El Código debe tener exactamente 13 caracteres.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -61,7 +61,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            
+
             if (txtNombre.Text.Trim().Length < 4)
             {
                 MessageBox.Show("El Nombre debe tener al menos 4 caracteres.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -69,7 +69,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            
+
             if (string.IsNullOrWhiteSpace(txtDescripcion.Text.Trim()))
             {
                 MessageBox.Show("La Descripción es obligatoria.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -77,7 +77,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            
+
             if (!decimal.TryParse(txtPrecio.Text.Trim(), out decimal precio))
             {
                 MessageBox.Show("El Precio debe ser un número válido.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -92,7 +92,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            
+
             if (decimal.Round(precio, 2) != precio)
             {
                 MessageBox.Show("El Precio no puede tener más de 2 decimales.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -100,7 +100,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            
+
             int stock = (int)nudStock.Value;
             if (stock <= 0)
             {
@@ -109,7 +109,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            
+
             Producto nuevoProducto = new Producto
             {
                 Codigo = txtCodigo.Text.Trim(),
@@ -120,7 +120,7 @@ namespace ProyectoFinal.Frontend
                 Foto = _foto
             };
 
-            
+
             ProductosController controller = new ProductosController();
             if (controller.InsertarProducto(nuevoProducto))
             {
@@ -146,6 +146,36 @@ namespace ProyectoFinal.Frontend
         }
 
         private void FrmAgregarProducto_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbProducto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nudStock_ValueChanged(object sender, EventArgs e)
         {
 
         }

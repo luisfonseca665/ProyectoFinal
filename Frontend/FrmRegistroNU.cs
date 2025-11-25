@@ -42,7 +42,7 @@ namespace ProyectoFinal.Frontend
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            
+
 
             // Validar campos obligatorios
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
@@ -167,6 +167,16 @@ namespace ProyectoFinal.Frontend
             FrmLogin login = new FrmLogin();
             login.Show();
             this.Close();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

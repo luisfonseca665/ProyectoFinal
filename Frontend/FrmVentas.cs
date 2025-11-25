@@ -201,5 +201,10 @@ namespace ProyectoFinal.Frontend
             dgvVenta.Rows.Clear();
             txtTotal.Text = "0.00";
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

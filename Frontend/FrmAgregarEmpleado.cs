@@ -44,7 +44,7 @@ namespace ProyectoFinal.Frontend
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void pictureFoto_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace ProyectoFinal.Frontend
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            
+
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidos.Text) ||
                 string.IsNullOrWhiteSpace(txtUsuario.Text) ||
@@ -92,7 +92,7 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-           
+
             try
             {
                 string patronCorreo = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
@@ -147,7 +147,7 @@ namespace ProyectoFinal.Frontend
                 Telefono = txtTelefono.Text.Trim(),
                 Correo = txtCorreo.Text.Trim(),
                 Usuario = txtUsuario.Text.Trim(),
-                Password = txtContraseña.Text.Trim(), 
+                Password = txtContraseña.Text.Trim(),
                 Tipo = cnbTipo.SelectedItem.ToString(),
                 Foto = fotoBytes
             };
@@ -223,6 +223,11 @@ namespace ProyectoFinal.Frontend
             cnbTipo.SelectedIndex = -1;
             pictureFoto.Image = null;
             fotoBytes = null;
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

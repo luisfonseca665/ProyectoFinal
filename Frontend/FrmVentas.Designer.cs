@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             label2 = new Label();
             cboEmpleados = new ComboBox();
             dgvVenta = new DataGridView();
@@ -40,37 +39,33 @@
             ((System.ComponentModel.ISupportInitialize)dgvVenta).BeginInit();
             SuspendLayout();
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(278, 41);
-            label1.TabIndex = 0;
-            label1.Text = "Registro de ventas";
-            // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
             label2.Location = new Point(299, 25);
             label2.Name = "label2";
-            label2.Size = new Size(80, 20);
+            label2.Size = new Size(98, 23);
             label2.TabIndex = 2;
             label2.Text = "Empleado:";
             // 
             // cboEmpleados
             // 
+            cboEmpleados.BackColor = Color.FromArgb(136, 99, 75);
             cboEmpleados.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboEmpleados.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            cboEmpleados.ForeColor = Color.White;
             cboEmpleados.FormattingEnabled = true;
-            cboEmpleados.Location = new Point(385, 22);
+            cboEmpleados.Location = new Point(398, 20);
             cboEmpleados.Name = "cboEmpleados";
-            cboEmpleados.Size = new Size(240, 28);
+            cboEmpleados.Size = new Size(240, 31);
             cboEmpleados.TabIndex = 3;
             // 
             // dgvVenta
             // 
+            dgvVenta.BackgroundColor = Color.FromArgb(255, 224, 192);
             dgvVenta.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVenta.GridColor = Color.Black;
             dgvVenta.Location = new Point(24, 285);
             dgvVenta.Name = "dgvVenta";
             dgvVenta.RowHeadersWidth = 51;
@@ -79,20 +74,24 @@
             // 
             // btnConfirmar
             // 
+            btnConfirmar.BackColor = Color.FromArgb(136, 99, 75);
+            btnConfirmar.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
+            btnConfirmar.ForeColor = Color.White;
             btnConfirmar.Location = new Point(544, 483);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(94, 31);
             btnConfirmar.TabIndex = 9;
             btnConfirmar.Text = "Confirmar";
-            btnConfirmar.UseVisualStyleBackColor = true;
+            btnConfirmar.UseVisualStyleBackColor = false;
             btnConfirmar.Click += btnCobrar_Click;
             // 
             // txtTotal
             // 
             txtTotal.AutoSize = true;
-            txtTotal.Location = new Point(436, 488);
+            txtTotal.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            txtTotal.Location = new Point(445, 486);
             txtTotal.Name = "txtTotal";
-            txtTotal.Size = new Size(63, 20);
+            txtTotal.Size = new Size(77, 23);
             txtTotal.TabIndex = 10;
             txtTotal.Text = "DINERO";
             // 
@@ -106,28 +105,33 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.FromArgb(136, 99, 75);
+            button1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
             button1.Location = new Point(24, 483);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 12;
             button1.Text = "Cancelar";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(385, 488);
+            label3.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            label3.Location = new Point(367, 486);
             label3.Name = "label3";
-            label3.Size = new Size(53, 20);
+            label3.Size = new Size(72, 23);
             label3.TabIndex = 13;
             label3.Text = "TOTAL:";
+            label3.Click += label3_Click;
             // 
             // FrmVentas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Wheat;
+            BackColor = Color.FromArgb(255, 224, 192);
             ClientSize = new Size(658, 516);
             Controls.Add(label3);
             Controls.Add(button1);
@@ -137,7 +141,6 @@
             Controls.Add(dgvVenta);
             Controls.Add(cboEmpleados);
             Controls.Add(label2);
-            Controls.Add(label1);
             Name = "FrmVentas";
             Text = "FrmVentas";
             Load += FrmVentas_Load;

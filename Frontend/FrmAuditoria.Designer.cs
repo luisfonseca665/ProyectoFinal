@@ -28,27 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dvgAuditorias = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dvgAuditorias).BeginInit();
             SuspendLayout();
             // 
             // dvgAuditorias
             // 
+            dvgAuditorias.BackgroundColor = Color.FromArgb(255, 224, 192);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(136, 99, 75);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 224, 192);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dvgAuditorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dvgAuditorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dvgAuditorias.Location = new Point(31, 104);
+            dvgAuditorias.Location = new Point(25, 83);
+            dvgAuditorias.Margin = new Padding(2);
             dvgAuditorias.Name = "dvgAuditorias";
             dvgAuditorias.RowHeadersWidth = 62;
-            dvgAuditorias.Size = new Size(739, 324);
+            dvgAuditorias.Size = new Size(591, 259);
             dvgAuditorias.TabIndex = 0;
             // 
             // FrmAuditoria
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Wheat;
-            ClientSize = new Size(800, 450);
+            AutoValidate = AutoValidate.EnableAllowFocusChange;
+            BackColor = Color.FromArgb(255, 224, 192);
+            ClientSize = new Size(640, 360);
             Controls.Add(dvgAuditorias);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2);
             Name = "FrmAuditoria";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmAuditoria";

@@ -47,23 +47,31 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(19, 75);
+            label1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
+            label1.Location = new Point(10, 79);
             label1.Name = "label1";
-            label1.Size = new Size(90, 20);
+            label1.Size = new Size(99, 20);
             label1.TabIndex = 0;
             label1.Text = "Fecha Inicio:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(245, 75);
+            label2.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
+            label2.Location = new Point(258, 80);
             label2.Name = "label2";
-            label2.Size = new Size(73, 20);
+            label2.Size = new Size(80, 20);
             label2.TabIndex = 1;
             label2.Text = "Fecha Fin:";
             // 
             // dtpInicio
             // 
+            dtpInicio.CalendarForeColor = Color.White;
+            dtpInicio.CalendarMonthBackground = Color.White;
+            dtpInicio.CalendarTitleBackColor = Color.FromArgb(136, 99, 75);
+            dtpInicio.CalendarTitleForeColor = Color.FromArgb(136, 99, 75);
+            dtpInicio.CalendarTrailingForeColor = Color.FromArgb(136, 99, 75);
+            dtpInicio.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             dtpInicio.Format = DateTimePickerFormat.Short;
             dtpInicio.Location = new Point(115, 74);
             dtpInicio.Name = "dtpInicio";
@@ -72,26 +80,34 @@
             // 
             // dtpFin
             // 
+            dtpFin.CalendarMonthBackground = Color.FromArgb(136, 99, 75);
+            dtpFin.CalendarTitleBackColor = Color.FromArgb(136, 99, 75);
+            dtpFin.CalendarTrailingForeColor = Color.Black;
+            dtpFin.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             dtpFin.Format = DateTimePickerFormat.Short;
-            dtpFin.Location = new Point(324, 75);
+            dtpFin.Location = new Point(344, 76);
             dtpFin.Name = "dtpFin";
             dtpFin.Size = new Size(126, 27);
             dtpFin.TabIndex = 3;
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(485, 76);
+            btnGenerar.BackColor = Color.FromArgb(136, 99, 75);
+            btnGenerar.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            btnGenerar.ForeColor = Color.White;
+            btnGenerar.Location = new Point(485, 74);
             btnGenerar.Name = "btnGenerar";
-            btnGenerar.Size = new Size(131, 29);
+            btnGenerar.Size = new Size(131, 36);
             btnGenerar.TabIndex = 4;
             btnGenerar.Text = "Generar Reporte";
-            btnGenerar.UseVisualStyleBackColor = true;
+            btnGenerar.UseVisualStyleBackColor = false;
             btnGenerar.Click += btnGenerar_Click;
             // 
             // dgvReporte
             // 
             dgvReporte.AllowUserToAddRows = false;
             dgvReporte.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvReporte.BackgroundColor = Color.FromArgb(255, 224, 192);
             dgvReporte.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvReporte.Location = new Point(19, 116);
             dgvReporte.Name = "dgvReporte";
@@ -104,21 +120,25 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(126, 17);
+            label3.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold);
+            label3.ForeColor = Color.FromArgb(136, 99, 75);
+            label3.Location = new Point(82, 13);
             label3.Name = "label3";
-            label3.Size = new Size(423, 38);
+            label3.Size = new Size(475, 41);
             label3.TabIndex = 6;
             label3.Text = "Reporte de venta por producto";
             // 
             // btnExcel
             // 
-            btnExcel.Location = new Point(522, 431);
+            btnExcel.BackColor = Color.FromArgb(136, 99, 75);
+            btnExcel.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            btnExcel.ForeColor = Color.White;
+            btnExcel.Location = new Point(497, 431);
             btnExcel.Name = "btnExcel";
-            btnExcel.Size = new Size(94, 29);
+            btnExcel.Size = new Size(119, 34);
             btnExcel.TabIndex = 7;
             btnExcel.Text = "Exportar";
-            btnExcel.UseVisualStyleBackColor = true;
+            btnExcel.UseVisualStyleBackColor = false;
             btnExcel.Click += btnExcel_Click;
             // 
             // tabControl1
@@ -133,7 +153,7 @@
             // 
             // tbpVentasProducto
             // 
-            tbpVentasProducto.BackColor = Color.Wheat;
+            tbpVentasProducto.BackColor = Color.FromArgb(255, 224, 192);
             tbpVentasProducto.Controls.Add(label3);
             tbpVentasProducto.Controls.Add(btnExcel);
             tbpVentasProducto.Controls.Add(label1);
@@ -151,7 +171,7 @@
             // 
             // tbpComparativo
             // 
-            tbpComparativo.BackColor = Color.Wheat;
+            tbpComparativo.BackColor = Color.FromArgb(255, 224, 192);
             tbpComparativo.Location = new Point(4, 29);
             tbpComparativo.Name = "tbpComparativo";
             tbpComparativo.Padding = new Padding(3);
@@ -163,7 +183,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Wheat;
+            AutoValidate = AutoValidate.EnableAllowFocusChange;
+            BackColor = Color.FromArgb(255, 224, 192);
             ClientSize = new Size(652, 515);
             Controls.Add(tabControl1);
             Name = "FrmReportes";

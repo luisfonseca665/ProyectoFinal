@@ -121,9 +121,19 @@ namespace ProyectoFinal.Frontend
                 using (var ms = new MemoryStream())
                 {
                     img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                    _fotoActual= ms.ToArray();
+                    _fotoActual = ms.ToArray();
                 }
             }
+        }
+
+        private void txtCorreo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cnbTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
