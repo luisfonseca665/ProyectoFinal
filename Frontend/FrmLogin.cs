@@ -31,6 +31,8 @@ namespace ProyectoFinal.Frontend
 
             if (empleadoLogueado != null && empleadoLogueado.Id > 0)
             {
+                Sesion.UsuarioActual = txtUsuario.Text.Trim();
+
                 MessageBox.Show($"Bienvenido, {empleadoLogueado.Nombre} ({empleadoLogueado.Tipo}).", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
                 using (FrmMenu menu = new FrmMenu(empleadoLogueado))
@@ -58,12 +60,10 @@ namespace ProyectoFinal.Frontend
             registro.Show();
             this.Hide();
             registro.FormClosed += (s, args) => this.Show();
-
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnCerrarApp_Click(object sender, EventArgs e)
@@ -73,7 +73,6 @@ namespace ProyectoFinal.Frontend
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

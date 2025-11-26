@@ -2,21 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProyectoFinal.Backend
 {
-
     public class ProductosController
     {
-        /// <summary>
-        ///  Funcion para obtener productos
-        /// </summary>
-        /// <returns></returns>
-        /// 
         private Conexion Conexion = new Conexion();
+
         public DataTable ObtenerProductosParaVenta()
         {
             using (MySqlConnection conn = Conexion.ObtenerConexion())
@@ -34,16 +27,11 @@ namespace ProyectoFinal.Backend
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error al obtener productos: " + ex.Message);
+                    Console.WriteLine("Error: " + ex.Message);
                     return null;
                 }
             }
         }
-
-        /// <summary>
-        /// Recibe una lista de productos desde la base de datos
-        /// </summary>
-        /// <returns></returns>
 
         public List<Producto> ObtenerProductos()
         {
@@ -77,18 +65,12 @@ namespace ProyectoFinal.Backend
                 }
                 catch (MySqlException ex)
                 {
-                    System.Console.WriteLine($"Error al obtener productos ({spName}): {ex.Message}");
+                    Console.WriteLine($"Error: {ex.Message}");
                 }
             }
             return productos;
         }
 
-
-        /// <summary>
-        /// Funcion para insertar productos
-        /// </summary>
-        /// <param name="producto"></param>
-        /// <returns></returns>
         public bool InsertarProducto(Producto producto)
         {
             if (string.IsNullOrEmpty(producto.Codigo) || producto.Precio <= 0)
@@ -102,6 +84,14 @@ namespace ProyectoFinal.Backend
                 try
                 {
                     conn.Open();
+
+                    string usuario = Sesion.UsuarioActual;
+                    string sqlUsuario = $"SET @usuario_actual = '{usuario}';";
+                    using (MySqlCommand cmdUser = new MySqlCommand(sqlUsuario, conn))
+                    {
+                        cmdUser.ExecuteNonQuery();
+                    }
+
                     MySqlCommand cmd = new MySqlCommand(spName, conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -112,7 +102,6 @@ namespace ProyectoFinal.Backend
                     cmd.Parameters.AddWithValue("pstock", producto.Stock);
 
                     MySqlParameter fotoParam = new MySqlParameter("pfoto", MySqlDbType.Blob);
-
                     if (producto.Foto != null && producto.Foto.Length > 0)
                     {
                         fotoParam.Value = producto.Foto;
@@ -121,35 +110,29 @@ namespace ProyectoFinal.Backend
                     {
                         fotoParam.Value = DBNull.Value;
                     }
-
                     cmd.Parameters.Add(fotoParam);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
                 catch (MySqlException ex)
                 {
-                    System.Windows.Forms.MessageBox.Show($"Error de Base de Datos: {ex.Message}", "Error SQL", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    MessageBox.Show($"Error SQL: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
         }
 
-        /// <summary>
-        /// Funcion para actualizar productos
-        /// </summary>
-        /// <param name="producto"></param>
-        /// <returns></returns>
         public bool ActualizarProducto(Producto producto)
         {
             if (string.IsNullOrEmpty(producto.Codigo))
             {
-                MessageBox.Show("Error: El Código del producto es obligatorio para la actualización.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El Código es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (producto.Precio <= 0)
             {
-                MessageBox.Show("Error: El Precio debe ser mayor a cero.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El precio debe ser mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -159,6 +142,14 @@ namespace ProyectoFinal.Backend
                 try
                 {
                     conn.Open();
+
+                    string usuario = Sesion.UsuarioActual;
+                    string sqlUsuario = $"SET @usuario_actual = '{usuario}';";
+                    using (MySqlCommand cmdUser = new MySqlCommand(sqlUsuario, conn))
+                    {
+                        cmdUser.ExecuteNonQuery();
+                    }
+
                     MySqlCommand cmd = new MySqlCommand(spName, conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("pcodigo", producto.Codigo);
@@ -169,27 +160,19 @@ namespace ProyectoFinal.Backend
                     cmd.Parameters.AddWithValue("pdescontinuado", producto.Descontinuado);
 
                     MySqlParameter fotoParam = new MySqlParameter("pfoto", MySqlDbType.Blob);
-                    fotoParam.Value = (producto.Foto != null && producto.Foto.Length > 0)
-                                      ? (object)producto.Foto
-                                      : DBNull.Value;
-
+                    fotoParam.Value = (producto.Foto != null && producto.Foto.Length > 0) ? (object)producto.Foto : DBNull.Value;
                     cmd.Parameters.Add(fotoParam);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show($"Error de Base de Datos al actualizar:\n{ex.Message}", "Error SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error SQL: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
         }
 
-        /// <summary>
-        ///  funcion para descontinuar/Eliminación Lógica
-        /// </summary>
-        /// <param name="codigo"></param>
-        /// <returns></returns>
         public bool EliminarProducto(string codigo)
         {
             string spName = "spdeleteproducto";
@@ -198,16 +181,23 @@ namespace ProyectoFinal.Backend
                 try
                 {
                     conn.Open();
+
+                    string usuario = Sesion.UsuarioActual;
+                    string sqlUsuario = $"SET @usuario_actual = '{usuario}';";
+                    using (MySqlCommand cmdUser = new MySqlCommand(sqlUsuario, conn))
+                    {
+                        cmdUser.ExecuteNonQuery();
+                    }
+
                     MySqlCommand cmd = new MySqlCommand(spName, conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-
                     cmd.Parameters.AddWithValue("pcodigo", codigo);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
                 catch (MySqlException ex)
                 {
-                    System.Console.WriteLine($"Error al descontinuar producto ({spName}): {ex.Message}");
+                    MessageBox.Show($"Error SQL: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }

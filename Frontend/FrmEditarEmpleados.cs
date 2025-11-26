@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace ProyectoFinal.Frontend
         private EmpleadoController controller = new EmpleadoController();
         private byte[] _fotoActual;
         public Action EmpleadoActualizadoCallback { get; set; }
+
         public FrmEditarEmpleados()
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace ProyectoFinal.Frontend
                 cnbTipo.Items.Add("cajero");
             }
         }
+
         public void CargarEmpleado(Empleado e)
         {
             _empleadoId = e.Id;
@@ -38,15 +41,10 @@ namespace ProyectoFinal.Frontend
             txtTelefono.Text = e.Telefono;
             txtCorreo.Text = e.Correo;
             txtUsuario.Text = e.Usuario;
-
-            // Nota: La contraseña NO se carga por seguridad (es hash). 
-            // El usuario debe escribir una nueva si quiere cambiarla.
             txtContraseña.Text = "";
 
-            // Seleccionar tipo
             cnbTipo.SelectedItem = e.Tipo;
 
-            // Cargar Foto
             _fotoActual = e.Foto;
             if (_fotoActual != null && _fotoActual.Length > 0)
             {
@@ -58,19 +56,8 @@ namespace ProyectoFinal.Frontend
             }
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnActualizarEmpleado_Click(object sender, EventArgs e)
         {
-            // Validaciones básicas
             if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtUsuario.Text))
             {
                 MessageBox.Show("Nombre y Usuario son obligatorios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -83,10 +70,9 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            // Construir objeto
             Empleado emp = new Empleado()
             {
-                Id = _empleadoId, // Importante: ID para el WHERE del Update
+                Id = _empleadoId,
                 Nombre = txtNombre.Text.Trim(),
                 Apellidos = txtApellidos.Text.Trim(),
                 Telefono = txtTelefono.Text.Trim(),
@@ -97,13 +83,11 @@ namespace ProyectoFinal.Frontend
                 Foto = _fotoActual
             };
 
-            // Llamar al backend
-            if (controller.Actualizar(emp))
+            if (controller.ActualizarEmpleado(emp))
             {
-                MessageBox.Show("Empleado actualizado correctamente ✅", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Regresar a la tabla
+                MessageBox.Show("Empleado actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 EmpleadoActualizadoCallback?.Invoke();
+                this.Close();
             }
         }
 
@@ -126,14 +110,9 @@ namespace ProyectoFinal.Frontend
             }
         }
 
-        private void txtCorreo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cnbTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void label7_Click(object sender, EventArgs e) { }
+        private void label9_Click(object sender, EventArgs e) { }
+        private void txtCorreo_TextChanged(object sender, EventArgs e) { }
+        private void cnbTipo_SelectedIndexChanged(object sender, EventArgs e) { }
     }
 }

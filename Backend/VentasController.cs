@@ -16,11 +16,6 @@ namespace ProyectoFinal.Backend
 
         private Conexion Conexion = new Conexion();
 
-
-        /// <summary>
-        /// Obtenemos los empleados activos para asignar la venta
-        /// </summary>
-        /// <returns></returns>
         public DataTable ObtenerEmpleados()
         {
             using (MySqlConnection conn = Conexion.ObtenerConexion())
@@ -44,13 +39,6 @@ namespace ProyectoFinal.Backend
             }
         }
 
-
-        /// <summary>
-        /// Metodo para buscar un producto por su código y traer sus datos
-        /// </summary>
-        /// <param name="codigo"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
         public DataTable BuscarProductoPorCodigo(string codigo)
         {
             DataTable dt = new DataTable();
@@ -78,15 +66,6 @@ namespace ProyectoFinal.Backend
             return dt;
         }
 
-
-        /// <summary>
-        /// Registramos una venta y su detalles.
-        /// </summary>
-        /// <param name="idEmpleado"></param>
-        /// <param name="total"></param>
-        /// <param name="listaProductos"></param>
-        /// <param name="mensaje"></param>
-        /// <returns></returns>
         public bool RegistrarVenta(int idEmpleado, decimal total, List<DetalleVentaModelo> listaProductos, out string mensaje)
         {
             mensaje = string.Empty;
@@ -96,50 +75,67 @@ namespace ProyectoFinal.Backend
                 try
                 {
                     conn.Open();
+
+                    string usuario = string.IsNullOrEmpty(Sesion.UsuarioActual) ? "admin" : Sesion.UsuarioActual;
+
+                    using (MySqlCommand cmdUser = new MySqlCommand($"SET @usuario_actual = '{usuario}';", conn))
+                    {
+                        cmdUser.ExecuteNonQuery();
+                    }
+
                     MySqlTransaction transaccion = conn.BeginTransaction();
 
                     try
                     {
-                        MySqlCommand cmdVenta = new MySqlCommand("spinsertventa", conn);
-                        cmdVenta.CommandType = CommandType.StoredProcedure;
-                        cmdVenta.Transaction = transaccion;
+                        MySqlCommand cmd = new MySqlCommand();
+                        cmd.Connection = conn;
+                        cmd.Transaction = transaccion;
+                        cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmdVenta.Parameters.AddWithValue("pidempleado", idEmpleado);
-                        cmdVenta.Parameters.AddWithValue("ptotal", total);
-                        cmdVenta.Parameters.Add("pidventa", MySqlDbType.Int32).Direction = ParameterDirection.Output;
+                        cmd.CommandText = "spinsertventa";
+                        cmd.Parameters.AddWithValue("pidempleado", idEmpleado);
+                        cmd.Parameters.AddWithValue("ptotal", total);
 
-                        cmdVenta.ExecuteNonQuery();
+                        MySqlParameter paramId = new MySqlParameter("pidventa", MySqlDbType.Int32);
+                        paramId.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(paramId);
 
-                        int idVentaGenerada = Convert.ToInt32(cmdVenta.Parameters["pidventa"].Value);
+                        cmd.ExecuteNonQuery();
+
+                        int idVentaGenerada = Convert.ToInt32(paramId.Value);
+                        cmd.Parameters.Clear();
+
+                        cmd.CommandText = "spinsertdetalle_updatestock";
+
+                        cmd.Parameters.Add("pidventa", MySqlDbType.Int32);
+                        cmd.Parameters.Add("pcodigo", MySqlDbType.VarChar);
+                        cmd.Parameters.Add("pcantidad", MySqlDbType.Int32);
+                        cmd.Parameters.Add("pprecio", MySqlDbType.Decimal);
 
                         foreach (var producto in listaProductos)
                         {
-                            MySqlCommand cmdDetalle = new MySqlCommand("spinsertdetalle_updatestock", conn);
-                            cmdDetalle.CommandType = CommandType.StoredProcedure;
-                            cmdDetalle.Transaction = transaccion;
+                            cmd.Parameters["pidventa"].Value = idVentaGenerada;
+                            cmd.Parameters["pcodigo"].Value = producto.CodigoProducto;
+                            cmd.Parameters["pcantidad"].Value = producto.Cantidad;
+                            cmd.Parameters["pprecio"].Value = producto.Precio;
 
-                            cmdDetalle.Parameters.AddWithValue("pidventa", idVentaGenerada);
-                            cmdDetalle.Parameters.AddWithValue("pcodigo", producto.CodigoProducto);
-                            cmdDetalle.Parameters.AddWithValue("pcantidad", producto.Cantidad);
-                            cmdDetalle.Parameters.AddWithValue("pprecio", producto.Precio);
-
-                            cmdDetalle.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
                         }
 
                         transaccion.Commit();
-                        mensaje = "Venta registrada con éxito. ID: " + idVentaGenerada;
+                        mensaje = "Venta registrada con éxito. Folio: " + idVentaGenerada;
                         return true;
                     }
                     catch (Exception ex)
                     {
                         transaccion.Rollback();
-                        mensaje = ex.Message;
+                        mensaje = "Error al guardar venta: " + ex.Message;
                         return false;
                     }
                 }
                 catch (Exception ex)
                 {
-                    mensaje = ex.Message;
+                    mensaje = "Error de conexión: " + ex.Message;
                     return false;
                 }
             }

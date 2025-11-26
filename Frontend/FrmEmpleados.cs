@@ -15,22 +15,32 @@ namespace ProyectoFinal.Frontend
     {
         private EmpleadoController _empleado = new EmpleadoController();
         private Form factivo = null;
-        public event Action ola;
+
         public FrmEmpleados()
         {
             InitializeComponent();
         }
 
+        private void FrmEmpleados_Load(object sender, EventArgs e)
+        {
+            CargarEmpleados();
+        }
+
         private void CargarEmpleados()
         {
-            DataTable dt = _empleado.Empleados();
-            dvgEmpleados.DataSource = dt;
-            if (dvgEmpleados.Columns.Contains("foto")) dvgEmpleados.Columns["foto"].Visible = false;
+            List<Empleado> lista = _empleado.ObtenerEmpleados();
+            dvgEmpleados.DataSource = null;
+            dvgEmpleados.DataSource = lista;
+
+            if (dvgEmpleados.Columns["Foto"] != null) dvgEmpleados.Columns["Foto"].Visible = false;
+            if (dvgEmpleados.Columns["Password"] != null) dvgEmpleados.Columns["Password"].Visible = false;
+
+            dvgEmpleados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void VolverAEmpleados()
         {
-            FormPanel(new FrmEmpleados());
+            CargarEmpleados();
         }
 
         private void FormPanel(Form activo)
@@ -51,15 +61,13 @@ namespace ProyectoFinal.Frontend
             activo.Show();
         }
 
-        private void FrmEmpleados_Load(object sender, EventArgs e)
-        {
-            CargarEmpleados();
-        }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             FrmAgregarEmpleado frm = new FrmAgregarEmpleado();
-            frm.EmpleadoAgregadoCallback = VolverAEmpleados;
+            frm.EmpleadoAgregadoCallback = () => {
+                pnlApp.Controls.Clear();
+                CargarEmpleados();
+            };
             FormPanel(frm);
         }
 
@@ -71,20 +79,18 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            int idEmpleado = Convert.ToInt32(dvgEmpleados.CurrentRow.Cells["id"].Value);
-            string nombre = dvgEmpleados.CurrentRow.Cells["nombre"].Value.ToString();
+            Empleado empSeleccionado = (Empleado)dvgEmpleados.CurrentRow.DataBoundItem;
 
-            var confirmacion = MessageBox.Show($"¿Está seguro de ELIMINAR al empleado '{nombre}'?", "Confirmar Eliminación",
+            var confirmacion = MessageBox.Show($"¿Está seguro de ELIMINAR al empleado '{empSeleccionado.Nombre}'?", "Confirmar Eliminación",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirmacion == DialogResult.Yes)
             {
-                if (_empleado.Eliminar(idEmpleado))
+                if (_empleado.EliminarEmpleado(empSeleccionado.Id))
                 {
                     MessageBox.Show("Empleado eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarEmpleados();
                 }
-                // El 'else' no es necesario porque el controlador ya muestra el MessageBox de error
             }
         }
 
@@ -96,21 +102,16 @@ namespace ProyectoFinal.Frontend
                 return;
             }
 
-            DataRowView row = (DataRowView)dvgEmpleados.CurrentRow.DataBoundItem;
+            Empleado emp = (Empleado)dvgEmpleados.CurrentRow.DataBoundItem;
 
-            Empleado emp = new Empleado();
-            emp.Id = Convert.ToInt32(row["id"]);
-            emp.Nombre = row["nombre"].ToString();
-            emp.Apellidos = row["apellidos"].ToString();
-            emp.Usuario = row["usuario"].ToString();
-            emp.Correo = row["correo"].ToString();
-            emp.Telefono = row["telefono"].ToString();
-            emp.Tipo = row["tipo"].ToString();
-            // La foto puede ser DBNull, hay que manejarlo
-            emp.Foto = row["foto"] != DBNull.Value ? (byte[])row["foto"] : null;
             FrmEditarEmpleados frmActu = new FrmEditarEmpleados();
             frmActu.CargarEmpleado(emp);
-            frmActu.EmpleadoActualizadoCallback = VolverAEmpleados;
+
+            frmActu.EmpleadoActualizadoCallback = () => {
+                pnlApp.Controls.Clear();
+                CargarEmpleados();
+            };
+
             FormPanel(frmActu);
         }
     }

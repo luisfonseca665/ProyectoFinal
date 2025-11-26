@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO; 
 using System.Windows.Forms;
 using ProyectoFinal.Backend;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -127,6 +129,7 @@ namespace ProyectoFinal.Frontend
                 DateTime fechaMes2 = dtpMes2.Value;
                 DateTime inicio2 = new DateTime(fechaMes2.Year, fechaMes2.Month, 1);
                 DateTime fin2 = inicio2.AddMonths(1).AddDays(-1);
+
                 if (inicio1.Year == inicio2.Year && inicio1.Month == inicio2.Month)
                 {
                     MessageBox.Show("Debe seleccionar dos meses diferentes para realizar la comparación.", "Error de Selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -134,7 +137,10 @@ namespace ProyectoFinal.Frontend
                     chGrafica.Titles.Clear();
                     return;
                 }
+
                 List<ProductoComparativo> datos = controlador.ObtenerComparativoVentas(inicio1, fin1, inicio2, fin2);
+                _datosComparativos = datos;
+
                 ConfigurarGrafica(datos, inicio1, inicio2);
             }
             catch (Exception ex)
@@ -143,9 +149,6 @@ namespace ProyectoFinal.Frontend
             }
         }
 
-        /// <summary>
-        /// Configura y dibuja la gráfica de barras comparativa.
-        /// </summary>
         private void ConfigurarGrafica(List<ProductoComparativo> datos, DateTime inicio1, DateTime inicio2)
         {
             chGrafica.Series.Clear();
@@ -203,11 +206,80 @@ namespace ProyectoFinal.Frontend
             chGrafica.DataBind();
         }
 
-
-
         private void btnexpo_Click(object sender, EventArgs e)
         {
+            if (_datosComparativos == null || _datosComparativos.Count == 0)
+            {
+                MessageBox.Show("Primero genere la gráfica comparativa.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            ExportarComparativoExcel();
+        }
+
+        private void ExportarComparativoExcel()
+        {
+            Excel.Application excelApp = new Excel.Application();
+            Excel.Workbook workbook = excelApp.Workbooks.Add();
+            Excel.Worksheet worksheet = workbook.ActiveSheet;
+
+            try
+            {
+                worksheet.Cells[2, 2] = "Reporte Comparativo de Ventas";
+                worksheet.Range["B2"].Font.Bold = true;
+                worksheet.Range["B2"].Font.Size = 14;
+
+                worksheet.Cells[4, 2] = "Periodo 1:";
+                worksheet.Cells[4, 3] = dtpMes1.Value.ToString("MMMM yyyy");
+
+                worksheet.Cells[5, 2] = "Periodo 2:";
+                worksheet.Cells[5, 3] = dtpMes2.Value.ToString("MMMM yyyy");
+
+                int fila = 8;
+                worksheet.Cells[fila, 2] = "Producto";
+                worksheet.Cells[fila, 3] = "Ventas Mes 1";
+                worksheet.Cells[fila, 4] = "Ventas Mes 2";
+                worksheet.Cells[fila, 5] = "Diferencia ($)";
+
+                Excel.Range headers = worksheet.Range[$"B{fila}:E{fila}"];
+                headers.Font.Bold = true;
+                headers.Interior.Color = ColorTranslator.ToOle(Color.LightGray);
+                headers.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+
+                fila++;
+
+                foreach (var item in _datosComparativos)
+                {
+                    worksheet.Cells[fila, 2] = item.Nombre;
+                    worksheet.Cells[fila, 3] = item.MontoPeriodo1;
+                    worksheet.Cells[fila, 4] = item.MontoPeriodo2;
+                    worksheet.Cells[fila, 5] = item.MontoPeriodo2 - item.MontoPeriodo1;
+                    fila++;
+                }
+
+                Excel.Range rangoDatos = worksheet.Range[$"C9:E{fila - 1}"];
+                rangoDatos.NumberFormat = "$ #,##0.00";
+
+                Excel.Range todoRango = worksheet.Range[$"B8:E{fila - 1}"];
+                todoRango.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                worksheet.Columns.AutoFit();
+
+                string tempPath = Path.GetTempFileName() + ".png";
+                chGrafica.SaveImage(tempPath, ChartImageFormat.Png);
+
+                int filaImagen = fila + 2;
+                Excel.Range rangoImagen = worksheet.Range[$"B{filaImagen}"];
+                
+                dynamic shapes = worksheet.Shapes;
+                shapes.AddPicture(tempPath, 0, 1, rangoImagen.Left, rangoImagen.Top, 400, 250);
+
+                excelApp.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al exportar: " + ex.Message);
+                excelApp.Quit();
+            }
         }
     }
 }

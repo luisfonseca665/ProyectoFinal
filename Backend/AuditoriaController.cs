@@ -1,19 +1,13 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 
 namespace ProyectoFinal.Backend
 {
     public class AuditoriaController
     {
-
-        /// <summary>
-        /// Obtiene la lista de auditoría de productos desde la base de datos.
-        /// </summary>
-        /// <returns></returns>
+        
         public List<Auditoria> ObtenerAuditoria()
         {
             List<Auditoria> lista = new List<Auditoria>();
@@ -23,34 +17,35 @@ namespace ProyectoFinal.Backend
                 try
                 {
                     con.Open();
-                    string query = "SELECT * FROM auditoriaproductos ORDER BY fecha DESC";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, con))
+                    using (MySqlCommand cmd = new MySqlCommand("spGetAuditoriaTotal", con))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                Auditoria aud = new Auditoria();
-                                aud.Id = Convert.ToInt32(reader["id"]);
-                                aud.Codigo = reader["codigo"].ToString();
-                                aud.Accion = reader["accion"].ToString();
+                                lista.Add(new Auditoria()
+                                {
+                                    Origen = reader["origen"].ToString(),
+                                    Referencia = reader["referencia"].ToString(),
+                                    Accion = reader["accion"].ToString(),
 
-                                aud.ValorAnterior = Convert.ToString(reader["valoranterior"]);
-                                aud.ValorNuevo = Convert.ToString(reader["valornuevo"]);
-                                aud.Usuario = reader["usuario"].ToString();
-                                aud.Fecha = Convert.ToDateTime(reader["fecha"]);
-                                lista.Add(aud);
+                                    ValorAnterior = reader["valoranterior"] != DBNull.Value ? reader["valoranterior"].ToString() : "",
+                                    ValorNuevo = reader["valornuevo"] != DBNull.Value ? reader["valornuevo"].ToString() : "",
+
+                                    Usuario = reader["usuario"].ToString(),
+                                    Fecha = Convert.ToDateTime(reader["fecha"])
+                                });
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al leer auditoría: " + ex.Message);
+                    throw new Exception("Error al leer auditoría: " + ex.Message);
                 }
             }
-
             return lista;
         }
     }

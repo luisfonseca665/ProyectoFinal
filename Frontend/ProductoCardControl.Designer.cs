@@ -106,7 +106,7 @@
             Controls.Add(lblNombre);
             Controls.Add(picFoto);
             Name = "ProductoCardControl";
-            Size = new Size(186, 209);
+            Size = new Size(176, 224);
             ((System.ComponentModel.ISupportInitialize)picFoto).EndInit();
             ((System.ComponentModel.ISupportInitialize)numCantidad).EndInit();
             ResumeLayout(false);

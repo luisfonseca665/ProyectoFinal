@@ -2,8 +2,11 @@ DROP DATABASE IF EXISTS ventas;
 CREATE DATABASE ventas;
 USE ventas;
 
--- ================= TABLAS =================
+-- =============================================
+-- 1. TABLAS
+-- =============================================
 
+-- Tabla: Empleados (Maestra)
 CREATE TABLE empleados(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -17,6 +20,7 @@ CREATE TABLE empleados(
     activo BOOLEAN DEFAULT TRUE
 );
 
+-- Tabla: Productos (Maestra)
 CREATE TABLE productos(
     codigo VARCHAR(13) PRIMARY KEY,
     nombre VARCHAR(100),
@@ -27,6 +31,7 @@ CREATE TABLE productos(
     foto LONGBLOB
 );
 
+-- Tabla: Auditoría de Productos
 CREATE TABLE auditoriaproductos(
     id INT AUTO_INCREMENT PRIMARY KEY,
     codigo VARCHAR(13),
@@ -38,6 +43,18 @@ CREATE TABLE auditoriaproductos(
     FOREIGN KEY (codigo) REFERENCES productos(codigo)
 );
 
+-- Tabla: Auditoría de Empleados
+CREATE TABLE auditoriaempleados(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_empleado INT,
+    accion ENUM('insert','update','delete','restore'),
+    valoranterior VARCHAR(1000),
+    valornuevo VARCHAR(1000),
+    usuario VARCHAR(100),
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla: Ventas
 CREATE TABLE ventas(
     id INT AUTO_INCREMENT PRIMARY KEY,
     fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -46,6 +63,7 @@ CREATE TABLE ventas(
     FOREIGN KEY(idempleado) REFERENCES empleados(id)
 );
 
+-- Tabla: Detalle de Ventas
 CREATE TABLE detalleventas(
     id INT AUTO_INCREMENT PRIMARY KEY,
     idventa INT,
@@ -56,11 +74,13 @@ CREATE TABLE detalleventas(
     FOREIGN KEY(codigoproducto) REFERENCES productos(codigo)
 );
 
--- (Se eliminó la creación de usuarios localhost y grants)
+-- =============================================
+-- 2. PROCEDIMIENTOS ALMACENADOS
+-- =============================================
 
 DELIMITER $$
 
--- ================= PROCEDIMIENTOS ALMACENADOS =================
+-- --- MÓDULO EMPLEADOS ---
 
 CREATE PROCEDURE spinsertempleado(
     in pnombre VARCHAR(100), in papellidos VARCHAR(100), in ptelefono VARCHAR(20),
@@ -100,6 +120,8 @@ BEGIN
     UPDATE empleados SET activo = FALSE WHERE id = pid;
 END$$
 
+-- --- MÓDULO PRODUCTOS ---
+
 CREATE PROCEDURE spinsertproducto(
     IN pcodigo VARCHAR(13), IN pnombre VARCHAR(100), IN pdescripcion VARCHAR(200),
     IN pprecio DECIMAL(10,2), IN pstock INT, in pfoto LONGBLOB
@@ -130,6 +152,8 @@ BEGIN
     UPDATE productos SET descontinuado = TRUE WHERE codigo = pcodigo;
 END$$
 
+-- --- MÓDULO VENTAS ---
+
 CREATE PROCEDURE spinsertventa(
     IN pidempleado INT,
     IN ptotal DECIMAL(10,2),
@@ -155,7 +179,87 @@ BEGIN
     WHERE codigo = pcodigo;
 END$$
 
--- ================= TRIGGERS =================
+-- --- MÓDULO REPORTES ---
+
+CREATE PROCEDURE spReporteVentasPorProducto(
+    IN pInicio DATETIME, 
+    IN pFin DATETIME
+)
+BEGIN
+    SELECT 
+        P.codigo AS 'Clave',
+        P.nombre AS 'Nombre',
+        SUM(DV.cantidad) AS 'Unidades',
+        SUM(DV.cantidad * DV.precio) AS 'Monto'
+    FROM ventas V
+    INNER JOIN detalleventas DV ON V.id = DV.idventa
+    INNER JOIN productos P ON DV.codigoproducto = P.codigo
+    WHERE V.fecha BETWEEN pInicio AND pFin
+    GROUP BY P.codigo, P.nombre
+    ORDER BY Monto DESC;
+END$$
+
+-- --- MÓDULO AUDITORÍA ---
+
+-- Auditoría solo de productos
+CREATE PROCEDURE spGetAuditoria()
+BEGIN
+    SELECT 
+        id, 
+        codigo, 
+        accion, 
+        valoranterior, 
+        valornuevo, 
+        usuario, 
+        fecha
+    FROM auditoriaproductos
+    ORDER BY fecha DESC;
+END$$
+
+-- Auditoría solo de empleados
+CREATE PROCEDURE spGetAuditoriaEmpleados()
+BEGIN
+    SELECT id, id_empleado, accion, valoranterior, valornuevo, usuario, fecha 
+    FROM auditoriaempleados 
+    ORDER BY fecha DESC;
+END$$
+
+-- Auditoría Total (Unificada)
+CREATE PROCEDURE spGetAuditoriaTotal()
+BEGIN
+    SELECT 
+        'Producto' AS origen,
+        codigo AS referencia,
+        accion, 
+        valoranterior, 
+        valornuevo, 
+        usuario, 
+        fecha
+    FROM auditoriaproductos
+    
+    UNION ALL
+    
+    SELECT 
+        'Empleado' AS origen,
+        CAST(id_empleado AS CHAR) AS referencia,
+        accion, 
+        valoranterior, 
+        valornuevo, 
+        usuario, 
+        fecha
+    FROM auditoriaempleados
+    ORDER BY fecha DESC;
+END$$
+
+DELIMITER ;
+
+-- =============================================
+-- 3. TRIGGERS
+-- =============================================
+
+DELIMITER $$
+
+-- --- TRIGGERS PRODUCTOS ---
 
 CREATE TRIGGER trgprodinsert AFTER INSERT ON productos
 FOR EACH ROW
@@ -229,41 +333,77 @@ BEGIN
     END IF;
 END$$
 
+-- --- TRIGGERS EMPLEADOS ---
+
+CREATE TRIGGER trgempleadoinsert AFTER INSERT ON empleados
+FOR EACH ROW
+BEGIN
+    DECLARE usuario_tipo VARCHAR(50);
+    SET usuario_tipo = IFNULL(@usuario_actual, 'admin');
+    
+    INSERT INTO auditoriaempleados(id_empleado, accion, valoranterior, valornuevo, usuario)
+    VALUES(
+        NEW.id,
+        'insert',
+        NULL,
+        CONCAT('Nombre: ', NEW.nombre, ' ', NEW.apellidos, ', Usuario: ', NEW.usuario),
+        usuario_tipo
+    );
+END$$
+
+CREATE TRIGGER trgempleadoupdate AFTER UPDATE ON empleados
+FOR EACH ROW
+BEGIN
+    DECLARE str_anterior VARCHAR(1000) DEFAULT '';
+    DECLARE str_nuevo VARCHAR(1000) DEFAULT '';
+    DECLARE usuario_tipo VARCHAR(50);
+    
+    SET usuario_tipo = IFNULL(@usuario_actual, 'admin');
+
+    IF OLD.activo = 1 AND NEW.activo = 0 THEN
+        INSERT INTO auditoriaempleados(id_empleado, accion, valoranterior, valornuevo, usuario)
+        VALUES(NEW.id, 'delete', 'Estado: Activo', 'Estado: Inactivo', usuario_tipo);
+
+    ELSEIF OLD.activo = 0 AND NEW.activo = 1 THEN
+        INSERT INTO auditoriaempleados(id_empleado, accion, valoranterior, valornuevo, usuario)
+        VALUES(NEW.id, 'restore', 'Estado: Inactivo', 'Estado: Activo', usuario_tipo);
+
+    ELSE
+        IF OLD.nombre <> NEW.nombre THEN
+            SET str_anterior = CONCAT(str_anterior, 'Nom: ', OLD.nombre, '. ');
+            SET str_nuevo    = CONCAT(str_nuevo,    'Nom: ', NEW.nombre, '. ');
+        END IF;
+
+        IF OLD.apellidos <> NEW.apellidos THEN
+            SET str_anterior = CONCAT(str_anterior, 'Ape: ', OLD.apellidos, '. ');
+            SET str_nuevo    = CONCAT(str_nuevo,    'Ape: ', NEW.apellidos, '. ');
+        END IF;
+
+        IF OLD.usuario <> NEW.usuario THEN
+            SET str_anterior = CONCAT(str_anterior, 'User: ', OLD.usuario, '. ');
+            SET str_nuevo    = CONCAT(str_nuevo,    'User: ', NEW.usuario, '. ');
+        END IF;
+        
+        IF str_nuevo <> '' THEN
+            INSERT INTO auditoriaempleados(id_empleado, accion, valoranterior, valornuevo, usuario)
+            VALUES(NEW.id, 'update', str_anterior, str_nuevo, usuario_tipo);
+        END IF;
+    END IF;
+END$$
+
 DELIMITER ;
 
--- ================= DATOS INICIALES =================
+-- =============================================
+-- 4. DATOS INICIALES
+-- =============================================
 
 -- Usuario Admin por defecto
 INSERT INTO empleados(nombre, apellidos, telefono, correo, usuario, password, tipo, foto, activo)
 VALUES('Luis Enrique', 'Fonseca Sosa', '4451108686','i49483190@gmail.com', 'admin', sha2('12345678',256), 'admin', NULL, TRUE);
+insert into empleados(nombre, apellidos, telefono, correo, usuario, password, tipo, foto, activo)	
+values('alex', 'qa', '4451112222','x@gmail.com', 'alex',sha2('x',256),'admin' ,null, true);
 
 -- Productos de ejemplo
 INSERT INTO productos (codigo, nombre, descripcion, precio, stock, descontinuado, foto) VALUES
 ('CC-001-2025-A', 'Crumbu Chispas Gourmet', 'Galleta con tres tipos de chocolate.', 35.00, 180, FALSE, NULL),
 ('CC-002-2025-B', 'Cheesecake de Limón', 'Base de galleta de vainilla.', 38.50, 90, FALSE, NULL);
-
--- reporte nuevo NUEVOO!!
-
-DROP PROCEDURE IF EXISTS spReporteVentasPorProducto;
-
-DELIMITER $$
-
-CREATE PROCEDURE spReporteVentasPorProducto(
-    IN pInicio DATETIME, 
-    IN pFin DATETIME
-)
-BEGIN
-    SELECT 
-        P.codigo AS 'Clave',
-        P.nombre AS 'Nombre',
-        SUM(DV.cantidad) AS 'Unidades',
-        SUM(DV.cantidad * DV.precio) AS 'Monto'
-    FROM ventas V
-    INNER JOIN detalleventas DV ON V.id = DV.idventa
-    INNER JOIN productos P ON DV.codigoproducto = P.codigo
-    WHERE V.fecha BETWEEN pInicio AND pFin
-    GROUP BY P.codigo, P.nombre
-    ORDER BY Monto DESC;
-END$$
-
-DELIMITER ;

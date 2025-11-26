@@ -1,198 +1,202 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Text;
+using System.Windows.Forms;
 
 namespace ProyectoFinal.Backend
 {
     public class EmpleadoController
     {
+        private Conexion Conexion = new Conexion();
+
         public Empleado Login(string usuario, string contra)
         {
             Empleado empleado = null;
-            string query = "select id, nombre, apellidos, usuario, correo, telefono, tipo, foto, activo from empleados " +
-                           "where usuario = @usuario and password = SHA2(@contra, 256) and activo = true";
+            string query = "SELECT id, nombre, apellidos, usuario, correo, telefono, tipo, foto, activo FROM empleados WHERE usuario = @usuario AND password = SHA2(@contra, 256) AND activo = true";
 
             using (MySqlConnection conn = Conexion.ObtenerConexion())
             {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@usuario", usuario);
-                cmd.Parameters.AddWithValue("@contra", contra);
-
-                MySqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
+                try
                 {
-                    empleado = new Empleado()
-                    {
-                        Id = dr.GetInt32("id"),
-                        Nombre = dr.GetString("nombre"),
-                        Apellidos = dr.GetString("apellidos"),
-                        Usuario = dr.GetString("usuario"),
-                        Correo = dr.GetString("correo"),
-                        Telefono = dr.GetString("telefono"),
-                        Tipo = dr.GetString("tipo"),
-                        Activo = dr.GetBoolean("activo")
-                    };
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@usuario", usuario);
+                    cmd.Parameters.AddWithValue("@contra", contra);
 
-                    if (!dr.IsDBNull(dr.GetOrdinal("foto")))
+                    using (MySqlDataReader dr = cmd.ExecuteReader())
                     {
-                        long len = dr.GetBytes(dr.GetOrdinal("foto"), 0, null, 0, 0);
-                        byte[] buffer = new byte[len];
-                        dr.GetBytes(dr.GetOrdinal("foto"), 0, buffer, 0, (int)len);
-                        empleado.Foto = buffer;
+                        if (dr.Read())
+                        {
+                            empleado = new Empleado
+                            {
+                                Id = Convert.ToInt32(dr["id"]),
+                                Nombre = dr["nombre"].ToString(),
+                                Apellidos = dr["apellidos"].ToString(),
+                                Usuario = dr["usuario"].ToString(),
+                                Correo = dr["correo"].ToString(),
+                                Telefono = dr["telefono"].ToString(),
+                                Tipo = dr["tipo"].ToString(),
+                                Foto = dr["foto"] is DBNull ? null : (byte[])dr["foto"],
+                                Activo = Convert.ToBoolean(dr["activo"])
+                            };
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
             return empleado;
         }
 
-        /// <summary>
-        /// Registrar un nuevo empleado usando un Stored Procedure.
-        /// </summary>
-        /// <param name="e"></param>
-        /// <returns></returns>
-        public bool Registrar(Empleado e)
+        public List<Empleado> ObtenerEmpleados()
         {
-            if (string.IsNullOrEmpty(e.Nombre) || string.IsNullOrEmpty(e.Usuario) || string.IsNullOrEmpty(e.Password))
-            {
-                return false;
-            }
-
-            string spName = "spinsertempleado";
+            List<Empleado> lista = new List<Empleado>();
+            string query = "SELECT id, nombre, apellidos, telefono, correo, usuario, tipo, foto, activo FROM empleados WHERE activo = true";
 
             using (MySqlConnection conn = Conexion.ObtenerConexion())
             {
                 try
                 {
                     conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(spName, conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("pnombre", e.Nombre);
-                    cmd.Parameters.AddWithValue("papellidos", e.Apellidos);
-                    cmd.Parameters.AddWithValue("ptelefono", e.Telefono);
-                    cmd.Parameters.AddWithValue("pcorreo", e.Correo);
-                    cmd.Parameters.AddWithValue("pusuario", e.Usuario);
-                    cmd.Parameters.AddWithValue("ptipo", e.Tipo);
-                    cmd.Parameters.AddWithValue("ppassword", e.Password);
-                    MySqlParameter fotoParam = new MySqlParameter("pfoto", MySqlDbType.LongBlob);
-
-                    if (e.Foto != null && e.Foto.Length > 0)
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    using (MySqlDataReader dr = cmd.ExecuteReader())
                     {
-                        fotoParam.Value = e.Foto;
+                        while (dr.Read())
+                        {
+                            lista.Add(new Empleado
+                            {
+                                Id = Convert.ToInt32(dr["id"]),
+                                Nombre = dr["nombre"].ToString(),
+                                Apellidos = dr["apellidos"].ToString(),
+                                Telefono = dr["telefono"].ToString(),
+                                Correo = dr["correo"].ToString(),
+                                Usuario = dr["usuario"].ToString(),
+                                Tipo = dr["tipo"].ToString(),
+                                Foto = dr["foto"] is DBNull ? null : (byte[])dr["foto"],
+                                Activo = Convert.ToBoolean(dr["activo"])
+                            });
+                        }
                     }
-                    else
-                    {
-                        fotoParam.Value = DBNull.Value;
-                    }
-
-                    cmd.Parameters.Add(fotoParam);
-
-                    return cmd.ExecuteNonQuery() > 0;
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show($"Error de Base de Datos: {ex.Message}", "Error SQL", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                    return false;
-                }
-            }
-        }
-
-
-
-        /// <summary>
-        /// Recupera todos los empleados de la base de datos.
-        /// </summary>
-        /// <returns></returns>
-        public DataTable Empleados()
-        {
-            DataTable dt = new DataTable();
-            string query = "select foto, id, nombre, apellidos, usuario, correo, telefono, tipo, activo from empleados";
-
-            try
-            {
-                using (MySqlConnection conn = Conexion.ObtenerConexion())
-                {
-                    conn.Open();
-                    MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                    da.Fill(dt);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ERROR: " + ex.Message);
-            }
-
-            return dt;
-        }
-
-        /// <summary>
-        /// Eliminamos un empleado por su ID usando un Stored Procedure.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-
-        public bool Eliminar(int id)
-        {
-            if (id <= 0)
-            {
-                return false;
-            }
-
-            string spName = "spdeleteempleado";
-
-            using (MySqlConnection conn = Conexion.ObtenerConexion())
-            {
-                try
-                {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(spName, conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("pid", id);
-                    int filas = cmd.ExecuteNonQuery();
-                    return filas > 0;
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show($"No se pudo eliminar el registro. Error: {ex.Message}",
-                                                         "Error de Base de Datos",
-                                                         MessageBoxButtons.OK,
-                                                         MessageBoxIcon.Error);
-                    return false;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error inesperado: {ex.Message}", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            return lista;
+        }
+
+        public bool InsertarEmpleado(Empleado empleado)
+        {
+            using (MySqlConnection conn = Conexion.ObtenerConexion())
+            {
+                try
+                {
+                    conn.Open();
+
+                    string usuario = string.IsNullOrEmpty(Sesion.UsuarioActual) ? "admin" : Sesion.UsuarioActual;
+                    using (MySqlCommand cmdUser = new MySqlCommand($"SET @usuario_actual = '{usuario}';", conn))
+                    {
+                        cmdUser.ExecuteNonQuery();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand("spinsertempleado", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("pnombre", empleado.Nombre);
+                        cmd.Parameters.AddWithValue("papellidos", empleado.Apellidos);
+                        cmd.Parameters.AddWithValue("ptelefono", empleado.Telefono);
+                        cmd.Parameters.AddWithValue("pcorreo", empleado.Correo);
+                        cmd.Parameters.AddWithValue("pusuario", empleado.Usuario);
+                        cmd.Parameters.AddWithValue("ppassword", empleado.Password);
+                        cmd.Parameters.AddWithValue("ptipo", empleado.Tipo);
+
+                        MySqlParameter fotoParam = new MySqlParameter("pfoto", MySqlDbType.Blob);
+                        fotoParam.Value = (empleado.Foto != null) ? (object)empleado.Foto : DBNull.Value;
+                        cmd.Parameters.Add(fotoParam);
+
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                     return false;
                 }
             }
         }
 
-        /// <summary>
-        /// Actualiza la información de un empleado usando un Stored Procedure.
-        /// </summary>
-        /// <param name="e"></param>
-        /// <returns></returns>
-
-        public bool Actualizar(Empleado e)
+        public bool ActualizarEmpleado(Empleado empleado)
         {
             using (MySqlConnection conn = Conexion.ObtenerConexion())
             {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand("spupdateempleado", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    conn.Open();
 
-                cmd.Parameters.AddWithValue("@pid", e.Id);
-                cmd.Parameters.AddWithValue("@pnombre", e.Nombre);
-                cmd.Parameters.AddWithValue("@papellidos", e.Apellidos);
-                cmd.Parameters.AddWithValue("@ptelefono", e.Telefono);
-                cmd.Parameters.AddWithValue("@pcorreo", e.Correo);
-                cmd.Parameters.AddWithValue("@pusuario", e.Usuario);
-                cmd.Parameters.AddWithValue("@ppassword", e.Password);
-                cmd.Parameters.AddWithValue("@ptipo", e.Tipo);
-                cmd.Parameters.Add("@pfoto", MySqlDbType.LongBlob, e.Foto?.Length ?? 0).Value = e.Foto ?? (object)DBNull.Value;
-                cmd.Parameters.AddWithValue("@pactivo", true);
-                return cmd.ExecuteNonQuery() > 0;
+                    string usuario = string.IsNullOrEmpty(Sesion.UsuarioActual) ? "admin" : Sesion.UsuarioActual;
+                    using (MySqlCommand cmdUser = new MySqlCommand($"SET @usuario_actual = '{usuario}';", conn))
+                    {
+                        cmdUser.ExecuteNonQuery();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand("spupdateempleado", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("pid", empleado.Id);
+                        cmd.Parameters.AddWithValue("pnombre", empleado.Nombre);
+                        cmd.Parameters.AddWithValue("papellidos", empleado.Apellidos);
+                        cmd.Parameters.AddWithValue("ptelefono", empleado.Telefono);
+                        cmd.Parameters.AddWithValue("pcorreo", empleado.Correo);
+                        cmd.Parameters.AddWithValue("pusuario", empleado.Usuario);
+                        cmd.Parameters.AddWithValue("ppassword", empleado.Password ?? "");
+                        cmd.Parameters.AddWithValue("ptipo", empleado.Tipo);
+                        cmd.Parameters.AddWithValue("pactivo", true);
+
+                        MySqlParameter fotoParam = new MySqlParameter("pfoto", MySqlDbType.Blob);
+                        fotoParam.Value = (empleado.Foto != null) ? (object)empleado.Foto : DBNull.Value;
+                        cmd.Parameters.Add(fotoParam);
+
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            }
+        }
+
+        public bool EliminarEmpleado(int id)
+        {
+            using (MySqlConnection conn = Conexion.ObtenerConexion())
+            {
+                try
+                {
+                    conn.Open();
+
+                    string usuario = string.IsNullOrEmpty(Sesion.UsuarioActual) ? "admin" : Sesion.UsuarioActual;
+                    using (MySqlCommand cmdUser = new MySqlCommand($"SET @usuario_actual = '{usuario}';", conn))
+                    {
+                        cmdUser.ExecuteNonQuery();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand("spdeleteempleado", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("pid", id);
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
             }
         }
     }
