@@ -73,7 +73,7 @@
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(278, 59);
             btnSalir.TabIndex = 7;
-            btnSalir.Text = "Salir";
+            btnSalir.Text = "Cerrar Sesión";
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
             // 

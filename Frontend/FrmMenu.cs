@@ -91,10 +91,12 @@ namespace ProyectoFinal.Frontend
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Está seguro que desea salir?", "Confirmar Salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("¿Está seguro que deseas cerrar sesion?", "Confirmar Salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-                Application.Exit();
+                this.Close();
+                FrmLogin loginForm = new FrmLogin();
+                loginForm.Show();
             }
         }
 
