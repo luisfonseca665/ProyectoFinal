@@ -123,7 +123,6 @@
             dvgProductos.Location = new Point(0, 0);
             dvgProductos.Margin = new Padding(2);
             dvgProductos.Name = "dvgProductos";
-            dvgProductos.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(136, 99, 75);
             dataGridViewCellStyle3.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);

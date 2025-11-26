@@ -100,7 +100,10 @@ namespace ProyectoFinal.Backend
 
 
 
-        /// Obtenemos todos los empleados (activos e inactivos) en un DataTable.
+        /// <summary>
+        /// Recupera todos los empleados de la base de datos.
+        /// </summary>
+        /// <returns></returns>
         public DataTable Empleados()
         {
             DataTable dt = new DataTable();
@@ -123,6 +126,11 @@ namespace ProyectoFinal.Backend
             return dt;
         }
 
+        /// <summary>
+        /// Eliminamos un empleado por su ID usando un Stored Procedure.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         public bool Eliminar(int id)
         {
@@ -159,6 +167,12 @@ namespace ProyectoFinal.Backend
                 }
             }
         }
+
+        /// <summary>
+        /// Actualiza la información de un empleado usando un Stored Procedure.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
 
         public bool Actualizar(Empleado e)
         {

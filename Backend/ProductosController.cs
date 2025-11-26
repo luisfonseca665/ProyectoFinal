@@ -40,6 +40,11 @@ namespace ProyectoFinal.Backend
             }
         }
 
+        /// <summary>
+        /// Recibe una lista de productos desde la base de datos
+        /// </summary>
+        /// <returns></returns>
+
         public List<Producto> ObtenerProductos()
         {
             List<Producto> productos = new List<Producto>();

@@ -19,6 +19,32 @@ namespace ProyectoFinal.Frontend
         {
             InitializeComponent();
             _empleadoActual = empleado;
+            byte[] fotoBytes = _empleadoActual.Foto;
+
+            if (fotoBytes != null && fotoBytes.Length > 0)
+            {
+                try
+                {
+                 
+                    using (MemoryStream ms = new MemoryStream(fotoBytes))
+                    {
+                        pcbUsuario.Image = Image.FromStream(ms);
+                        pcbUsuario.SizeMode = PictureBoxSizeMode.Zoom;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la foto: " + ex.Message, "Error de Imagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+            }
+            if (_empleadoActual.Tipo.ToLower() == "cajero")
+            {
+                btnEmpleados.Visible = false;
+                btnAuditorias.Visible = false;
+            }
         }
 
 
@@ -100,6 +126,11 @@ namespace ProyectoFinal.Frontend
         private void btnReportes_Click(object sender, EventArgs e)
         {
             FormPanel(new FrmReportes());
+        }
+
+        private void pcbUsuario_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

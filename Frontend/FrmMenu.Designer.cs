@@ -32,7 +32,6 @@
             pnlMenu = new Panel();
             btnSalir = new Button();
             btnReportes = new Button();
-            btnUsuarios = new Button();
             btnAuditorias = new Button();
             btnEmpleados = new Button();
             btnProductos = new Button();
@@ -51,7 +50,6 @@
             pnlMenu.BackColor = Color.FromArgb(136, 99, 75);
             pnlMenu.Controls.Add(btnSalir);
             pnlMenu.Controls.Add(btnReportes);
-            pnlMenu.Controls.Add(btnUsuarios);
             pnlMenu.Controls.Add(btnAuditorias);
             pnlMenu.Controls.Add(btnEmpleados);
             pnlMenu.Controls.Add(btnProductos);
@@ -59,9 +57,9 @@
             pnlMenu.Controls.Add(pnlUsuario);
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
-            pnlMenu.Margin = new Padding(2, 2, 2, 2);
+            pnlMenu.Margin = new Padding(2);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(222, 527);
+            pnlMenu.Size = new Size(278, 659);
             pnlMenu.TabIndex = 0;
             // 
             // btnSalir
@@ -70,10 +68,10 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSalir.ForeColor = Color.White;
-            btnSalir.Location = new Point(0, 480);
-            btnSalir.Margin = new Padding(2, 2, 2, 2);
+            btnSalir.Location = new Point(0, 600);
+            btnSalir.Margin = new Padding(2);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(222, 47);
+            btnSalir.Size = new Size(278, 59);
             btnSalir.TabIndex = 7;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = true;
@@ -87,31 +85,14 @@
             btnReportes.ForeColor = Color.White;
             btnReportes.Image = Properties.Resources.icons8_report_50;
             btnReportes.ImageAlign = ContentAlignment.MiddleLeft;
-            btnReportes.Location = new Point(0, 355);
-            btnReportes.Margin = new Padding(2, 2, 2, 2);
+            btnReportes.Location = new Point(0, 386);
+            btnReportes.Margin = new Padding(2);
             btnReportes.Name = "btnReportes";
-            btnReportes.Size = new Size(222, 47);
+            btnReportes.Size = new Size(278, 59);
             btnReportes.TabIndex = 6;
             btnReportes.Text = "Reportes";
             btnReportes.UseVisualStyleBackColor = true;
             btnReportes.Click += btnReportes_Click;
-            // 
-            // btnUsuarios
-            // 
-            btnUsuarios.Dock = DockStyle.Top;
-            btnUsuarios.FlatStyle = FlatStyle.Flat;
-            btnUsuarios.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnUsuarios.ForeColor = Color.White;
-            btnUsuarios.Image = Properties.Resources.icons8_users_50;
-            btnUsuarios.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUsuarios.Location = new Point(0, 308);
-            btnUsuarios.Margin = new Padding(2, 2, 2, 2);
-            btnUsuarios.Name = "btnUsuarios";
-            btnUsuarios.Size = new Size(222, 47);
-            btnUsuarios.TabIndex = 5;
-            btnUsuarios.Text = "Usuarios";
-            btnUsuarios.UseVisualStyleBackColor = true;
-            btnUsuarios.Click += btnUsuarios_Click;
             // 
             // btnAuditorias
             // 
@@ -121,10 +102,10 @@
             btnAuditorias.ForeColor = Color.White;
             btnAuditorias.Image = (Image)resources.GetObject("btnAuditorias.Image");
             btnAuditorias.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAuditorias.Location = new Point(0, 261);
-            btnAuditorias.Margin = new Padding(2, 2, 2, 2);
+            btnAuditorias.Location = new Point(0, 327);
+            btnAuditorias.Margin = new Padding(2);
             btnAuditorias.Name = "btnAuditorias";
-            btnAuditorias.Size = new Size(222, 47);
+            btnAuditorias.Size = new Size(278, 59);
             btnAuditorias.TabIndex = 4;
             btnAuditorias.Text = "Auditorias";
             btnAuditorias.UseVisualStyleBackColor = true;
@@ -138,10 +119,10 @@
             btnEmpleados.ForeColor = Color.White;
             btnEmpleados.Image = Properties.Resources.icons8_employees_48;
             btnEmpleados.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmpleados.Location = new Point(0, 214);
-            btnEmpleados.Margin = new Padding(2, 2, 2, 2);
+            btnEmpleados.Location = new Point(0, 268);
+            btnEmpleados.Margin = new Padding(2);
             btnEmpleados.Name = "btnEmpleados";
-            btnEmpleados.Size = new Size(222, 47);
+            btnEmpleados.Size = new Size(278, 59);
             btnEmpleados.TabIndex = 3;
             btnEmpleados.Text = "Empleados";
             btnEmpleados.UseVisualStyleBackColor = true;
@@ -155,10 +136,10 @@
             btnProductos.ForeColor = Color.White;
             btnProductos.Image = Properties.Resources.icons8_products_48;
             btnProductos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProductos.Location = new Point(0, 167);
-            btnProductos.Margin = new Padding(2, 2, 2, 2);
+            btnProductos.Location = new Point(0, 209);
+            btnProductos.Margin = new Padding(2);
             btnProductos.Name = "btnProductos";
-            btnProductos.Size = new Size(222, 47);
+            btnProductos.Size = new Size(278, 59);
             btnProductos.TabIndex = 2;
             btnProductos.Text = "Productos";
             btnProductos.UseVisualStyleBackColor = true;
@@ -172,10 +153,10 @@
             btnComprar.ForeColor = Color.White;
             btnComprar.Image = Properties.Resources.icons8_buy_50;
             btnComprar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnComprar.Location = new Point(0, 120);
-            btnComprar.Margin = new Padding(2, 2, 2, 2);
+            btnComprar.Location = new Point(0, 150);
+            btnComprar.Margin = new Padding(2);
             btnComprar.Name = "btnComprar";
-            btnComprar.Size = new Size(222, 47);
+            btnComprar.Size = new Size(278, 59);
             btnComprar.TabIndex = 0;
             btnComprar.Text = "Comprar";
             btnComprar.UseVisualStyleBackColor = true;
@@ -187,9 +168,9 @@
             pnlUsuario.Controls.Add(pcbUsuario);
             pnlUsuario.Dock = DockStyle.Top;
             pnlUsuario.Location = new Point(0, 0);
-            pnlUsuario.Margin = new Padding(2, 2, 2, 2);
+            pnlUsuario.Margin = new Padding(2);
             pnlUsuario.Name = "pnlUsuario";
-            pnlUsuario.Size = new Size(222, 120);
+            pnlUsuario.Size = new Size(278, 150);
             pnlUsuario.TabIndex = 0;
             // 
             // lblusuario
@@ -197,46 +178,48 @@
             lblusuario.AutoSize = true;
             lblusuario.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblusuario.ForeColor = Color.White;
-            lblusuario.Location = new Point(125, 58);
+            lblusuario.Location = new Point(156, 72);
             lblusuario.Margin = new Padding(2, 0, 2, 0);
             lblusuario.Name = "lblusuario";
-            lblusuario.Size = new Size(77, 20);
+            lblusuario.Size = new Size(94, 25);
             lblusuario.TabIndex = 1;
             lblusuario.Text = "USUARIO";
             lblusuario.Click += lblusuario_Click;
             // 
             // pcbUsuario
             // 
+            pcbUsuario.BackgroundImageLayout = ImageLayout.Stretch;
             pcbUsuario.Dock = DockStyle.Left;
             pcbUsuario.Image = (Image)resources.GetObject("pcbUsuario.Image");
             pcbUsuario.Location = new Point(0, 0);
-            pcbUsuario.Margin = new Padding(2, 2, 2, 2);
+            pcbUsuario.Margin = new Padding(2);
             pcbUsuario.Name = "pcbUsuario";
-            pcbUsuario.Size = new Size(120, 120);
+            pcbUsuario.Size = new Size(150, 150);
             pcbUsuario.SizeMode = PictureBoxSizeMode.Zoom;
             pcbUsuario.TabIndex = 0;
             pcbUsuario.TabStop = false;
+            pcbUsuario.Click += pcbUsuario_Click;
             // 
             // pnlApp
             // 
             pnlApp.BackColor = Color.FromArgb(255, 224, 192);
             pnlApp.Dock = DockStyle.Fill;
-            pnlApp.Location = new Point(222, 0);
-            pnlApp.Margin = new Padding(2, 2, 2, 2);
+            pnlApp.Location = new Point(278, 0);
+            pnlApp.Margin = new Padding(2);
             pnlApp.Name = "pnlApp";
-            pnlApp.Size = new Size(658, 527);
+            pnlApp.Size = new Size(822, 659);
             pnlApp.TabIndex = 1;
             pnlApp.Paint += pnlApp_Paint;
             // 
             // FrmMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(880, 527);
+            ClientSize = new Size(1100, 659);
             Controls.Add(pnlApp);
             Controls.Add(pnlMenu);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "FrmMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmMenu";
@@ -256,7 +239,6 @@
         private Panel pnlApp;
         private Button btnComprar;
         private Button btnReportes;
-        private Button btnUsuarios;
         private Button btnAuditorias;
         private Button btnEmpleados;
         private Button btnProductos;

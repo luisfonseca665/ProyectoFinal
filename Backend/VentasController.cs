@@ -16,6 +16,11 @@ namespace ProyectoFinal.Backend
 
         private Conexion Conexion = new Conexion();
 
+
+        /// <summary>
+        /// Obtenemos los empleados activos para asignar la venta
+        /// </summary>
+        /// <returns></returns>
         public DataTable ObtenerEmpleados()
         {
             using (MySqlConnection conn = Conexion.ObtenerConexion())
@@ -39,6 +44,13 @@ namespace ProyectoFinal.Backend
             }
         }
 
+
+        /// <summary>
+        /// Metodo para buscar un producto por su código y traer sus datos
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public DataTable BuscarProductoPorCodigo(string codigo)
         {
             DataTable dt = new DataTable();
@@ -66,6 +78,15 @@ namespace ProyectoFinal.Backend
             return dt;
         }
 
+
+        /// <summary>
+        /// Registramos una venta y su detalles.
+        /// </summary>
+        /// <param name="idEmpleado"></param>
+        /// <param name="total"></param>
+        /// <param name="listaProductos"></param>
+        /// <param name="mensaje"></param>
+        /// <returns></returns>
         public bool RegistrarVenta(int idEmpleado, decimal total, List<DetalleVentaModelo> listaProductos, out string mensaje)
         {
             mensaje = string.Empty;

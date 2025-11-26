@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dvgAuditorias = new DataGridView();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dvgAuditorias).BeginInit();
             SuspendLayout();
             // 
             // dvgAuditorias
             // 
             dvgAuditorias.BackgroundColor = Color.FromArgb(255, 224, 192);
+            dvgAuditorias.BorderStyle = BorderStyle.Fixed3D;
+            dvgAuditorias.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(136, 99, 75);
             dataGridViewCellStyle1.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
@@ -45,20 +49,43 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dvgAuditorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dvgAuditorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dvgAuditorias.Location = new Point(25, 83);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(136, 99, 75);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Wheat;
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dvgAuditorias.DefaultCellStyle = dataGridViewCellStyle2;
+            dvgAuditorias.Location = new Point(31, 104);
             dvgAuditorias.Margin = new Padding(2);
             dvgAuditorias.Name = "dvgAuditorias";
+            dvgAuditorias.ReadOnly = true;
+            dvgAuditorias.RowHeadersVisible = false;
             dvgAuditorias.RowHeadersWidth = 62;
-            dvgAuditorias.Size = new Size(591, 259);
+            dvgAuditorias.Size = new Size(739, 324);
             dvgAuditorias.TabIndex = 0;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold);
+            label4.ForeColor = Color.FromArgb(136, 99, 75);
+            label4.Location = new Point(226, 33);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(421, 48);
+            label4.TabIndex = 13;
+            label4.Text = "Cambios en el sistema.";
             // 
             // FrmAuditoria
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(640, 360);
+            ClientSize = new Size(800, 450);
+            Controls.Add(label4);
             Controls.Add(dvgAuditorias);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
@@ -68,10 +95,12 @@
             Load += FrmAuditoria_Load;
             ((System.ComponentModel.ISupportInitialize)dvgAuditorias).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dvgAuditorias;
+        private Label label4;
     }
 }

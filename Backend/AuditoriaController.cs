@@ -9,6 +9,11 @@ namespace ProyectoFinal.Backend
 {
     public class AuditoriaController
     {
+
+        /// <summary>
+        /// Obtiene la lista de auditoría de productos desde la base de datos.
+        /// </summary>
+        /// <returns></returns>
         public List<Auditoria> ObtenerAuditoria()
         {
             List<Auditoria> lista = new List<Auditoria>();
