@@ -44,19 +44,20 @@
             // pnlApp
             // 
             pnlApp.Controls.Add(dvgEmpleados);
-            pnlApp.Location = new Point(11, 11);
+            pnlApp.Location = new Point(9, 9);
             pnlApp.Margin = new Padding(2);
             pnlApp.Name = "pnlApp";
-            pnlApp.Size = new Size(779, 460);
+            pnlApp.Size = new Size(623, 368);
             pnlApp.TabIndex = 18;
             // 
             // dvgEmpleados
             // 
+            dvgEmpleados.Anchor = AnchorStyles.None;
             dvgEmpleados.BackgroundColor = Color.FromArgb(255, 224, 192);
             dvgEmpleados.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(136, 99, 75);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 224, 192);
             dataGridViewCellStyle1.SelectionForeColor = Color.White;
@@ -71,11 +72,9 @@
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dvgEmpleados.DefaultCellStyle = dataGridViewCellStyle2;
-            dvgEmpleados.Dock = DockStyle.Fill;
             dvgEmpleados.Location = new Point(0, 0);
             dvgEmpleados.Margin = new Padding(2);
             dvgEmpleados.Name = "dvgEmpleados";
-            dvgEmpleados.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(136, 99, 75);
             dataGridViewCellStyle3.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -87,8 +86,9 @@
             dvgEmpleados.RowHeadersVisible = false;
             dvgEmpleados.RowHeadersWidth = 62;
             dvgEmpleados.ScrollBars = ScrollBars.None;
-            dvgEmpleados.Size = new Size(779, 460);
+            dvgEmpleados.Size = new Size(978, 515);
             dvgEmpleados.TabIndex = 13;
+            dvgEmpleados.CellContentClick += dvgEmpleados_CellContentClick;
             // 
             // btnActualizar
             // 
@@ -99,10 +99,10 @@
             btnActualizar.ForeColor = Color.White;
             btnActualizar.Image = (Image)resources.GetObject("btnActualizar.Image");
             btnActualizar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnActualizar.Location = new Point(626, 488);
+            btnActualizar.Location = new Point(849, 550);
             btnActualizar.Margin = new Padding(2);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(172, 108);
+            btnActualizar.Size = new Size(138, 86);
             btnActualizar.TabIndex = 17;
             btnActualizar.Text = "Actualizar";
             btnActualizar.TextAlign = ContentAlignment.MiddleRight;
@@ -118,10 +118,10 @@
             btnEliminar.ForeColor = Color.White;
             btnEliminar.Image = (Image)resources.GetObject("btnEliminar.Image");
             btnEliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminar.Location = new Point(319, 488);
+            btnEliminar.Location = new Point(461, 550);
             btnEliminar.Margin = new Padding(2);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(164, 108);
+            btnEliminar.Size = new Size(131, 86);
             btnEliminar.TabIndex = 16;
             btnEliminar.Text = "Eliminar";
             btnEliminar.TextAlign = ContentAlignment.MiddleRight;
@@ -137,10 +137,10 @@
             btnAgregar.ForeColor = Color.White;
             btnAgregar.Image = (Image)resources.GetObject("btnAgregar.Image");
             btnAgregar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregar.Location = new Point(11, 488);
+            btnAgregar.Location = new Point(11, 550);
             btnAgregar.Margin = new Padding(2);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(160, 108);
+            btnAgregar.Size = new Size(128, 86);
             btnAgregar.TabIndex = 15;
             btnAgregar.Text = "Agregar";
             btnAgregar.TextAlign = ContentAlignment.MiddleRight;
@@ -149,10 +149,10 @@
             // 
             // FrmEmpleados
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(801, 602);
+            ClientSize = new Size(1008, 647);
             Controls.Add(pnlApp);
             Controls.Add(btnActualizar);
             Controls.Add(btnEliminar);

@@ -57,12 +57,11 @@
             // btnAgregar
             // 
             btnAgregar.BackColor = Color.FromArgb(136, 99, 75);
-            btnAgregar.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            btnAgregar.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(474, 388);
-            btnAgregar.Margin = new Padding(4);
+            btnAgregar.Location = new Point(779, 560);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(258, 41);
+            btnAgregar.Size = new Size(206, 43);
             btnAgregar.TabIndex = 35;
             btnAgregar.Text = "Agregar Empleado";
             btnAgregar.UseVisualStyleBackColor = false;
@@ -71,12 +70,11 @@
             // btnFoto
             // 
             btnFoto.BackColor = Color.FromArgb(136, 99, 75);
-            btnFoto.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            btnFoto.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             btnFoto.ForeColor = Color.White;
-            btnFoto.Location = new Point(535, 165);
-            btnFoto.Margin = new Padding(4);
+            btnFoto.Location = new Point(779, 227);
             btnFoto.Name = "btnFoto";
-            btnFoto.Size = new Size(196, 50);
+            btnFoto.Size = new Size(203, 40);
             btnFoto.TabIndex = 34;
             btnFoto.Text = "Seleccionar foto";
             btnFoto.UseVisualStyleBackColor = false;
@@ -85,10 +83,9 @@
             // pictureFoto
             // 
             pictureFoto.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureFoto.Location = new Point(504, 223);
-            pictureFoto.Margin = new Padding(4);
+            pictureFoto.Location = new Point(703, 273);
             pictureFoto.Name = "pictureFoto";
-            pictureFoto.Size = new Size(193, 146);
+            pictureFoto.Size = new Size(279, 270);
             pictureFoto.SizeMode = PictureBoxSizeMode.Zoom;
             pictureFoto.TabIndex = 33;
             pictureFoto.TabStop = false;
@@ -96,45 +93,41 @@
             // cnbTipo
             // 
             cnbTipo.BackColor = Color.FromArgb(136, 99, 75);
-            cnbTipo.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cnbTipo.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             cnbTipo.FormattingEnabled = true;
-            cnbTipo.Location = new Point(535, 119);
-            cnbTipo.Margin = new Padding(4);
+            cnbTipo.Location = new Point(779, 169);
             cnbTipo.Name = "cnbTipo";
-            cnbTipo.Size = new Size(195, 36);
+            cnbTipo.Size = new Size(203, 36);
             cnbTipo.TabIndex = 32;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
-            label8.Location = new Point(478, 179);
-            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
+            label8.Location = new Point(703, 235);
             label8.Name = "label8";
-            label8.Size = new Size(69, 28);
+            label8.Size = new Size(82, 32);
             label8.TabIndex = 31;
             label8.Text = "Foto: ";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
-            label7.Location = new Point(474, 119);
-            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
+            label7.Location = new Point(703, 165);
             label7.Name = "label7";
-            label7.Size = new Size(69, 28);
+            label7.Size = new Size(81, 32);
             label7.TabIndex = 30;
             label7.Text = "Tipo: ";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            label6.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(15, 400);
-            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Location = new Point(12, 566);
             label6.Name = "label6";
-            label6.Size = new Size(136, 28);
+            label6.Size = new Size(160, 32);
             label6.TabIndex = 29;
             label6.Text = "Contraseña: ";
             label6.Click += label6_Click;
@@ -143,108 +136,99 @@
             // 
             txtContraseña.BackColor = Color.FromArgb(136, 99, 75);
             txtContraseña.BorderStyle = BorderStyle.FixedSingle;
-            txtContraseña.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            txtContraseña.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             txtContraseña.ForeColor = Color.White;
-            txtContraseña.Location = new Point(166, 396);
-            txtContraseña.Margin = new Padding(4);
+            txtContraseña.Location = new Point(178, 566);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PasswordChar = '*';
-            txtContraseña.Size = new Size(271, 34);
+            txtContraseña.Size = new Size(478, 34);
             txtContraseña.TabIndex = 28;
             // 
             // txtUsuario
             // 
             txtUsuario.BackColor = Color.FromArgb(136, 99, 75);
             txtUsuario.BorderStyle = BorderStyle.FixedSingle;
-            txtUsuario.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            txtUsuario.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             txtUsuario.ForeColor = Color.White;
-            txtUsuario.Location = new Point(119, 335);
-            txtUsuario.Margin = new Padding(4);
+            txtUsuario.Location = new Point(137, 490);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(318, 34);
+            txtUsuario.Size = new Size(519, 34);
             txtUsuario.TabIndex = 27;
             // 
             // txtCorreo
             // 
             txtCorreo.BackColor = Color.FromArgb(136, 99, 75);
             txtCorreo.BorderStyle = BorderStyle.FixedSingle;
-            txtCorreo.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            txtCorreo.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             txtCorreo.ForeColor = Color.White;
-            txtCorreo.Location = new Point(119, 272);
-            txtCorreo.Margin = new Padding(4);
+            txtCorreo.Location = new Point(137, 410);
             txtCorreo.Name = "txtCorreo";
-            txtCorreo.Size = new Size(318, 34);
+            txtCorreo.Size = new Size(519, 34);
             txtCorreo.TabIndex = 26;
             // 
             // txtApellidos
             // 
             txtApellidos.BackColor = Color.FromArgb(136, 99, 75);
             txtApellidos.BorderStyle = BorderStyle.FixedSingle;
-            txtApellidos.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            txtApellidos.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             txtApellidos.ForeColor = Color.White;
-            txtApellidos.Location = new Point(132, 162);
-            txtApellidos.Margin = new Padding(4);
+            txtApellidos.Location = new Point(137, 252);
             txtApellidos.Name = "txtApellidos";
-            txtApellidos.Size = new Size(304, 34);
+            txtApellidos.Size = new Size(519, 34);
             txtApellidos.TabIndex = 25;
             // 
             // txtTelefono
             // 
             txtTelefono.BackColor = Color.FromArgb(136, 99, 75);
             txtTelefono.BorderStyle = BorderStyle.FixedSingle;
-            txtTelefono.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            txtTelefono.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             txtTelefono.ForeColor = Color.White;
-            txtTelefono.Location = new Point(132, 218);
-            txtTelefono.Margin = new Padding(4);
+            txtTelefono.Location = new Point(137, 329);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(304, 34);
+            txtTelefono.Size = new Size(519, 34);
             txtTelefono.TabIndex = 24;
             // 
             // txtNombre
             // 
             txtNombre.BackColor = Color.FromArgb(136, 99, 75);
             txtNombre.BorderStyle = BorderStyle.FixedSingle;
-            txtNombre.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            txtNombre.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             txtNombre.ForeColor = Color.White;
-            txtNombre.Location = new Point(122, 114);
-            txtNombre.Margin = new Padding(4);
+            txtNombre.Location = new Point(137, 165);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(314, 34);
+            txtNombre.Size = new Size(519, 34);
             txtNombre.TabIndex = 23;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            label5.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(15, 278);
-            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Location = new Point(16, 410);
             label5.Name = "label5";
-            label5.Size = new Size(92, 28);
+            label5.Size = new Size(107, 32);
             label5.TabIndex = 22;
             label5.Text = "Correo: ";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            label4.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(15, 222);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(12, 331);
             label4.Name = "label4";
-            label4.Size = new Size(113, 28);
+            label4.Size = new Size(132, 32);
             label4.TabIndex = 21;
             label4.Text = "Teléfono: ";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            label3.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(15, 340);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(16, 490);
             label3.Name = "label3";
-            label3.Size = new Size(101, 28);
+            label3.Size = new Size(119, 32);
             label3.TabIndex = 20;
             label3.Text = "Usuario: ";
             label3.Click += label3_Click;
@@ -252,24 +236,22 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(15, 162);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(12, 247);
             label2.Name = "label2";
-            label2.Size = new Size(117, 28);
+            label2.Size = new Size(138, 32);
             label2.TabIndex = 19;
             label2.Text = "Apellidos: ";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            label1.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(15, 114);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(12, 165);
             label1.Name = "label1";
-            label1.Size = new Size(105, 28);
+            label1.Size = new Size(124, 32);
             label1.TabIndex = 18;
             label1.Text = "Nombre: ";
             // 
@@ -282,7 +264,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(760, 96);
+            panel1.Size = new Size(1008, 77);
             panel1.TabIndex = 36;
             // 
             // btnCerrarApp
@@ -290,10 +272,10 @@
             btnCerrarApp.Dock = DockStyle.Right;
             btnCerrarApp.FlatStyle = FlatStyle.Popup;
             btnCerrarApp.Image = (Image)resources.GetObject("btnCerrarApp.Image");
-            btnCerrarApp.Location = new Point(664, 0);
+            btnCerrarApp.Location = new Point(931, 0);
             btnCerrarApp.Margin = new Padding(2);
             btnCerrarApp.Name = "btnCerrarApp";
-            btnCerrarApp.Size = new Size(96, 96);
+            btnCerrarApp.Size = new Size(77, 77);
             btnCerrarApp.TabIndex = 37;
             btnCerrarApp.UseVisualStyleBackColor = true;
             btnCerrarApp.Click += btnCerrarApp_Click;
@@ -301,22 +283,22 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Segoe UI Black", 25F, FontStyle.Bold);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(146, 25);
+            label9.Location = new Point(259, 9);
             label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(321, 48);
+            label9.Size = new Size(375, 57);
             label9.TabIndex = 7;
             label9.Text = "Crumbul Cookies";
             label9.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FrmRegistroNU
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(760, 462);
+            ClientSize = new Size(1008, 647);
             Controls.Add(panel1);
             Controls.Add(btnAgregar);
             Controls.Add(btnFoto);

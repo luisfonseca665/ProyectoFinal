@@ -64,7 +64,8 @@ namespace ProyectoFinal.Frontend
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             FrmAgregarEmpleado frm = new FrmAgregarEmpleado();
-            frm.EmpleadoAgregadoCallback = () => {
+            frm.EmpleadoAgregadoCallback = () =>
+            {
                 pnlApp.Controls.Clear();
                 CargarEmpleados();
             };
@@ -107,12 +108,18 @@ namespace ProyectoFinal.Frontend
             FrmEditarEmpleados frmActu = new FrmEditarEmpleados();
             frmActu.CargarEmpleado(emp);
 
-            frmActu.EmpleadoActualizadoCallback = () => {
+            frmActu.EmpleadoActualizadoCallback = () =>
+            {
                 pnlApp.Controls.Clear();
                 CargarEmpleados();
             };
 
             FormPanel(frmActu);
+        }
+
+        private void dvgEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

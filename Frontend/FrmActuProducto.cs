@@ -172,5 +172,30 @@ namespace ProyectoFinal.Frontend
         {
 
         }
+
+        private void nudStock_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmActuProducto_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrecio_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbProducto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

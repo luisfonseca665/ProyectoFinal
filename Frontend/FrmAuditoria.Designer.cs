@@ -51,40 +51,39 @@
             dvgAuditorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(136, 99, 75);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Black", 13F, FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = Color.Wheat;
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dvgAuditorias.DefaultCellStyle = dataGridViewCellStyle2;
-            dvgAuditorias.Location = new Point(31, 104);
+            dvgAuditorias.Location = new Point(25, 83);
             dvgAuditorias.Margin = new Padding(2);
             dvgAuditorias.Name = "dvgAuditorias";
             dvgAuditorias.ReadOnly = true;
             dvgAuditorias.RowHeadersVisible = false;
             dvgAuditorias.RowHeadersWidth = 62;
-            dvgAuditorias.Size = new Size(739, 324);
+            dvgAuditorias.Size = new Size(957, 540);
             dvgAuditorias.TabIndex = 0;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold);
+            label4.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold);
             label4.ForeColor = Color.FromArgb(136, 99, 75);
-            label4.Location = new Point(226, 33);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(261, 20);
             label4.Name = "label4";
-            label4.Size = new Size(421, 48);
+            label4.Size = new Size(434, 50);
             label4.TabIndex = 13;
             label4.Text = "Cambios en el sistema.";
             // 
             // FrmAuditoria
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1008, 647);
             Controls.Add(label4);
             Controls.Add(dvgAuditorias);
             FormBorderStyle = FormBorderStyle.None;

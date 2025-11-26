@@ -50,7 +50,7 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(8, 125);
+            lblNombre.Location = new Point(8, 130);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(64, 20);
             lblNombre.TabIndex = 1;
@@ -60,7 +60,7 @@
             // lblPrecio
             // 
             lblPrecio.AutoSize = true;
-            lblPrecio.Location = new Point(31, 145);
+            lblPrecio.Location = new Point(8, 169);
             lblPrecio.Name = "lblPrecio";
             lblPrecio.Size = new Size(50, 20);
             lblPrecio.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // numCantidad
             // 
-            numCantidad.Location = new Point(104, 143);
+            numCantidad.Location = new Point(104, 162);
             numCantidad.Name = "numCantidad";
             numCantidad.Size = new Size(52, 27);
             numCantidad.TabIndex = 3;
@@ -76,7 +76,7 @@
             // btnReset
             // 
             btnReset.BackColor = Color.IndianRed;
-            btnReset.Location = new Point(31, 176);
+            btnReset.Location = new Point(3, 192);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(40, 29);
             btnReset.TabIndex = 4;
@@ -87,7 +87,7 @@
             // btnAgregar
             // 
             btnAgregar.BackColor = Color.GreenYellow;
-            btnAgregar.Location = new Point(78, 176);
+            btnAgregar.Location = new Point(78, 192);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(78, 29);
             btnAgregar.TabIndex = 5;

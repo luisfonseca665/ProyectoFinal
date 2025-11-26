@@ -46,14 +46,14 @@
             btnAgregar.BackColor = Color.FromArgb(136, 99, 75);
             btnAgregar.CausesValidation = false;
             btnAgregar.FlatStyle = FlatStyle.Flat;
-            btnAgregar.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            btnAgregar.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             btnAgregar.ForeColor = Color.White;
             btnAgregar.Image = (Image)resources.GetObject("btnAgregar.Image");
             btnAgregar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregar.Location = new Point(12, 521);
+            btnAgregar.Location = new Point(10, 550);
             btnAgregar.Margin = new Padding(2);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(160, 108);
+            btnAgregar.Size = new Size(149, 86);
             btnAgregar.TabIndex = 10;
             btnAgregar.Text = "Agregar";
             btnAgregar.TextAlign = ContentAlignment.MiddleRight;
@@ -65,14 +65,14 @@
             btnEliminar.BackColor = Color.FromArgb(136, 99, 75);
             btnEliminar.CausesValidation = false;
             btnEliminar.FlatStyle = FlatStyle.Flat;
-            btnEliminar.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            btnEliminar.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             btnEliminar.ForeColor = Color.White;
             btnEliminar.Image = (Image)resources.GetObject("btnEliminar.Image");
             btnEliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminar.Location = new Point(340, 521);
+            btnEliminar.Location = new Point(441, 544);
             btnEliminar.Margin = new Padding(2);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(146, 108);
+            btnEliminar.Size = new Size(152, 92);
             btnEliminar.TabIndex = 11;
             btnEliminar.Text = "Eliminar";
             btnEliminar.TextAlign = ContentAlignment.MiddleRight;
@@ -84,14 +84,14 @@
             btnActualizar.BackColor = Color.FromArgb(136, 99, 75);
             btnActualizar.CausesValidation = false;
             btnActualizar.FlatStyle = FlatStyle.Flat;
-            btnActualizar.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
+            btnActualizar.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             btnActualizar.ForeColor = Color.White;
             btnActualizar.Image = (Image)resources.GetObject("btnActualizar.Image");
             btnActualizar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnActualizar.Location = new Point(634, 521);
+            btnActualizar.Location = new Point(824, 550);
             btnActualizar.Margin = new Padding(2);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(172, 108);
+            btnActualizar.Size = new Size(163, 86);
             btnActualizar.TabIndex = 12;
             btnActualizar.Text = "Actualizar";
             btnActualizar.TextAlign = ContentAlignment.MiddleRight;
@@ -105,7 +105,7 @@
             dvgProductos.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(136, 99, 75);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 224, 192);
             dataGridViewCellStyle1.SelectionForeColor = Color.White;
@@ -134,25 +134,25 @@
             dvgProductos.RowHeadersVisible = false;
             dvgProductos.RowHeadersWidth = 62;
             dvgProductos.ScrollBars = ScrollBars.None;
-            dvgProductos.Size = new Size(795, 484);
+            dvgProductos.Size = new Size(987, 515);
             dvgProductos.TabIndex = 13;
             dvgProductos.CellContentClick += dvgProductos_CellContentClick;
             // 
             // pnlApp
             // 
             pnlApp.Controls.Add(dvgProductos);
-            pnlApp.Location = new Point(12, 12);
+            pnlApp.Location = new Point(10, 10);
             pnlApp.Margin = new Padding(2);
             pnlApp.Name = "pnlApp";
-            pnlApp.Size = new Size(795, 484);
+            pnlApp.Size = new Size(636, 387);
             pnlApp.TabIndex = 14;
             // 
             // FrmProductos
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(828, 648);
+            ClientSize = new Size(1008, 647);
             Controls.Add(pnlApp);
             Controls.Add(btnActualizar);
             Controls.Add(btnEliminar);
