@@ -59,7 +59,7 @@
             pnlMenu.Location = new Point(0, 0);
             pnlMenu.Margin = new Padding(2);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(278, 659);
+            pnlMenu.Size = new Size(278, 808);
             pnlMenu.TabIndex = 0;
             // 
             // btnSalir
@@ -68,7 +68,7 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSalir.ForeColor = Color.White;
-            btnSalir.Location = new Point(0, 600);
+            btnSalir.Location = new Point(0, 749);
             btnSalir.Margin = new Padding(2);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(278, 59);
@@ -207,7 +207,7 @@
             pnlApp.Location = new Point(278, 0);
             pnlApp.Margin = new Padding(2);
             pnlApp.Name = "pnlApp";
-            pnlApp.Size = new Size(822, 659);
+            pnlApp.Size = new Size(981, 808);
             pnlApp.TabIndex = 1;
             pnlApp.Paint += pnlApp_Paint;
             // 
@@ -215,7 +215,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1100, 659);
+            ClientSize = new Size(1259, 808);
             Controls.Add(pnlApp);
             Controls.Add(pnlMenu);
             FormBorderStyle = FormBorderStyle.None;
