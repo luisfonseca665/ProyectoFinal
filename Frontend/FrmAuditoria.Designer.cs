@@ -57,13 +57,13 @@
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dvgAuditorias.DefaultCellStyle = dataGridViewCellStyle2;
-            dvgAuditorias.Location = new Point(25, 83);
+            dvgAuditorias.Location = new Point(11, 68);
             dvgAuditorias.Margin = new Padding(2);
             dvgAuditorias.Name = "dvgAuditorias";
             dvgAuditorias.ReadOnly = true;
             dvgAuditorias.RowHeadersVisible = false;
             dvgAuditorias.RowHeadersWidth = 62;
-            dvgAuditorias.Size = new Size(957, 540);
+            dvgAuditorias.Size = new Size(750, 540);
             dvgAuditorias.TabIndex = 0;
             // 
             // label4
@@ -71,7 +71,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold);
             label4.ForeColor = Color.FromArgb(136, 99, 75);
-            label4.Location = new Point(261, 20);
+            label4.Location = new Point(154, 4);
             label4.Name = "label4";
             label4.Size = new Size(434, 50);
             label4.TabIndex = 13;
@@ -83,7 +83,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(1008, 647);
+            ClientSize = new Size(781, 647);
             Controls.Add(label4);
             Controls.Add(dvgAuditorias);
             FormBorderStyle = FormBorderStyle.None;

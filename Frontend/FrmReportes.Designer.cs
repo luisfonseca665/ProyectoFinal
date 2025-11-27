@@ -132,7 +132,7 @@
             dgvReporte.ReadOnly = true;
             dgvReporte.RowHeadersVisible = false;
             dgvReporte.RowHeadersWidth = 51;
-            dgvReporte.Size = new Size(697, 255);
+            dgvReporte.Size = new Size(697, 306);
             dgvReporte.TabIndex = 5;
             // 
             // label3
@@ -151,7 +151,7 @@
             btnExcel.BackColor = Color.FromArgb(136, 99, 75);
             btnExcel.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             btnExcel.ForeColor = Color.White;
-            btnExcel.Location = new Point(577, 409);
+            btnExcel.Location = new Point(577, 462);
             btnExcel.Name = "btnExcel";
             btnExcel.Size = new Size(137, 43);
             btnExcel.TabIndex = 7;
@@ -167,7 +167,7 @@
             tabControl1.Location = new Point(2, 10);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(747, 488);
+            tabControl1.Size = new Size(747, 541);
             tabControl1.TabIndex = 8;
             // 
             // tbpVentasProducto
@@ -185,7 +185,7 @@
             tbpVentasProducto.Location = new Point(4, 26);
             tbpVentasProducto.Name = "tbpVentasProducto";
             tbpVentasProducto.Padding = new Padding(3);
-            tbpVentasProducto.Size = new Size(739, 458);
+            tbpVentasProducto.Size = new Size(739, 511);
             tbpVentasProducto.TabIndex = 0;
             tbpVentasProducto.Text = "Ventas por producto";
             // 
@@ -305,7 +305,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(758, 510);
+            ClientSize = new Size(758, 563);
             Controls.Add(tabControl1);
             Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "FrmReportes";
