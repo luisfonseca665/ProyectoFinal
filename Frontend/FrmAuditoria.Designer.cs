@@ -57,13 +57,13 @@
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dvgAuditorias.DefaultCellStyle = dataGridViewCellStyle2;
-            dvgAuditorias.Location = new Point(11, 68);
+            dvgAuditorias.Location = new Point(14, 85);
             dvgAuditorias.Margin = new Padding(2);
             dvgAuditorias.Name = "dvgAuditorias";
             dvgAuditorias.ReadOnly = true;
             dvgAuditorias.RowHeadersVisible = false;
             dvgAuditorias.RowHeadersWidth = 62;
-            dvgAuditorias.Size = new Size(750, 540);
+            dvgAuditorias.Size = new Size(938, 675);
             dvgAuditorias.TabIndex = 0;
             // 
             // label4
@@ -71,19 +71,20 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold);
             label4.ForeColor = Color.FromArgb(136, 99, 75);
-            label4.Location = new Point(154, 4);
+            label4.Location = new Point(192, 5);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(434, 50);
+            label4.Size = new Size(519, 60);
             label4.TabIndex = 13;
             label4.Text = "Cambios en el sistema.";
             // 
             // FrmAuditoria
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(781, 647);
+            ClientSize = new Size(981, 808);
             Controls.Add(label4);
             Controls.Add(dvgAuditorias);
             FormBorderStyle = FormBorderStyle.None;

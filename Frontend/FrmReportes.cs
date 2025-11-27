@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.IO; 
+using System.IO;
 using System.Windows.Forms;
 using ProyectoFinal.Backend;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -154,13 +154,12 @@ namespace ProyectoFinal.Frontend
             chGrafica.Series.Clear();
             chGrafica.ChartAreas.Clear();
             chGrafica.Titles.Clear();
-            if (chGrafica.ChartAreas.Count > 0)
-            {
-                chGrafica.ChartAreas[0].AxisX.CustomLabels.Clear();
-            }
+            chGrafica.Legends.Clear();
+
             chGrafica.Titles.Add("Comparativa entre meses");
             ChartArea chartArea = new ChartArea();
             chGrafica.ChartAreas.Add(chartArea);
+
             string nombrePeriodo1 = inicio1.ToString("MMMM yyyy");
             string nombrePeriodo2 = inicio2.ToString("MMMM yyyy");
 
@@ -194,13 +193,16 @@ namespace ProyectoFinal.Frontend
             chGrafica.Series.Add(serie1);
             chGrafica.Series.Add(serie2);
 
+            Legend legend = new Legend();
+            chGrafica.Legends.Add(legend);
+            chGrafica.Legends[0].Docking = Docking.Bottom;
+            chGrafica.Legends[0].Alignment = StringAlignment.Center;
+
             chartArea.AxisY.LabelStyle.Format = "$#,##0.00";
             chartArea.AxisY.Interval = 500;
             chartArea.AxisY.Minimum = 0;
             chartArea.AxisY.Maximum = 5000;
 
-            chGrafica.Legends[0].Docking = Docking.Bottom;
-            chGrafica.Legends[0].Alignment = StringAlignment.Center;
             chartArea.AxisX.IsMarginVisible = false;
 
             chGrafica.DataBind();
@@ -269,7 +271,7 @@ namespace ProyectoFinal.Frontend
 
                 int filaImagen = fila + 2;
                 Excel.Range rangoImagen = worksheet.Range[$"B{filaImagen}"];
-                
+
                 dynamic shapes = worksheet.Shapes;
                 shapes.AddPicture(tempPath, 0, 1, rangoImagen.Left, rangoImagen.Top, 400, 250);
 
@@ -280,6 +282,17 @@ namespace ProyectoFinal.Frontend
                 MessageBox.Show("Error al exportar: " + ex.Message);
                 excelApp.Quit();
             }
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            DateTime hoy = DateTime.Now;
+            dtpInicio.Value = new DateTime(hoy.Year, hoy.Month, 1);
+            tbpComparativo.Controls.Add(chGrafica);
+            chGrafica.Dock = DockStyle.Fill;
+            chGrafica.Location = new Point(30, 200);
+            chGrafica.Size = new Size(876, 418);
+            chGrafica.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         }
     }
 }

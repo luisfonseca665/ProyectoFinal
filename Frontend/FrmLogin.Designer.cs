@@ -46,11 +46,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold);
-            label1.Location = new Point(147, 283);
+            label1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            label1.Location = new Point(71, 198);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(128, 37);
+            label1.Size = new Size(112, 32);
             label1.TabIndex = 0;
             label1.Text = "Usuario:";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -61,20 +61,20 @@
             txtUsuario.BorderStyle = BorderStyle.FixedSingle;
             txtUsuario.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             txtUsuario.ForeColor = Color.White;
-            txtUsuario.Location = new Point(279, 283);
+            txtUsuario.Location = new Point(196, 198);
             txtUsuario.Margin = new Padding(2);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(497, 34);
+            txtUsuario.Size = new Size(307, 39);
             txtUsuario.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold);
-            label2.Location = new Point(147, 364);
+            label2.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            label2.Location = new Point(71, 298);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(175, 37);
+            label2.Size = new Size(153, 32);
             label2.TabIndex = 2;
             label2.Text = "Contraseña:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -85,23 +85,23 @@
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             txtPassword.ForeColor = Color.White;
-            txtPassword.Location = new Point(364, 369);
+            txtPassword.Location = new Point(240, 296);
             txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(412, 34);
+            txtPassword.Size = new Size(263, 39);
             txtPassword.TabIndex = 1;
             // 
             // btniniciarsesion
             // 
             btniniciarsesion.BackColor = Color.FromArgb(136, 99, 79);
             btniniciarsesion.FlatStyle = FlatStyle.Flat;
-            btniniciarsesion.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
+            btniniciarsesion.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             btniniciarsesion.ForeColor = Color.White;
-            btniniciarsesion.Location = new Point(407, 538);
+            btniniciarsesion.Location = new Point(180, 420);
             btniniciarsesion.Margin = new Padding(2);
             btniniciarsesion.Name = "btniniciarsesion";
-            btniniciarsesion.Size = new Size(251, 56);
+            btniniciarsesion.Size = new Size(223, 40);
             btniniciarsesion.TabIndex = 2;
             btniniciarsesion.Text = "Iniciar Sesion.";
             btniniciarsesion.UseVisualStyleBackColor = false;
@@ -110,8 +110,8 @@
             // lblRegistro
             // 
             lblRegistro.AutoSize = true;
-            lblRegistro.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            lblRegistro.Location = new Point(375, 606);
+            lblRegistro.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            lblRegistro.Location = new Point(561, 424);
             lblRegistro.Margin = new Padding(2, 0, 2, 0);
             lblRegistro.Name = "lblRegistro";
             lblRegistro.Size = new Size(313, 32);
@@ -128,7 +128,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1008, 77);
+            panel1.Size = new Size(945, 96);
             panel1.TabIndex = 6;
             // 
             // btnCerrarApp
@@ -136,10 +136,10 @@
             btnCerrarApp.Dock = DockStyle.Right;
             btnCerrarApp.FlatStyle = FlatStyle.Popup;
             btnCerrarApp.Image = (Image)resources.GetObject("btnCerrarApp.Image");
-            btnCerrarApp.Location = new Point(931, 0);
+            btnCerrarApp.Location = new Point(849, 0);
             btnCerrarApp.Margin = new Padding(2);
             btnCerrarApp.Name = "btnCerrarApp";
-            btnCerrarApp.Size = new Size(77, 77);
+            btnCerrarApp.Size = new Size(96, 96);
             btnCerrarApp.TabIndex = 1;
             btnCerrarApp.UseVisualStyleBackColor = true;
             btnCerrarApp.Click += btnCerrarApp_Click;
@@ -149,10 +149,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Black", 28F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(270, 9);
+            label3.Location = new Point(180, 22);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(418, 62);
+            label3.Size = new Size(496, 74);
             label3.TabIndex = 7;
             label3.Text = "Crumbul Cookies";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -161,10 +161,10 @@
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox1.Location = new Point(407, 81);
+            pictureBox1.Location = new Point(581, 102);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(265, 198);
+            pictureBox1.Size = new Size(293, 282);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
@@ -172,10 +172,10 @@
             // 
             // FrmLogin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(1008, 647);
+            ClientSize = new Size(945, 532);
             Controls.Add(pictureBox1);
             Controls.Add(panel1);
             Controls.Add(lblRegistro);

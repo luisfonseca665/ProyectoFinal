@@ -50,10 +50,10 @@
             btnAgregar.ForeColor = Color.White;
             btnAgregar.Image = (Image)resources.GetObject("btnAgregar.Image");
             btnAgregar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregar.Location = new Point(10, 550);
+            btnAgregar.Location = new Point(11, 688);
             btnAgregar.Margin = new Padding(2);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(149, 86);
+            btnAgregar.Size = new Size(186, 108);
             btnAgregar.TabIndex = 10;
             btnAgregar.Text = "Agregar";
             btnAgregar.TextAlign = ContentAlignment.MiddleRight;
@@ -69,10 +69,10 @@
             btnEliminar.ForeColor = Color.White;
             btnEliminar.Image = (Image)resources.GetObject("btnEliminar.Image");
             btnEliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminar.Location = new Point(441, 544);
+            btnEliminar.Location = new Point(386, 685);
             btnEliminar.Margin = new Padding(2);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(152, 92);
+            btnEliminar.Size = new Size(190, 115);
             btnEliminar.TabIndex = 11;
             btnEliminar.Text = "Eliminar";
             btnEliminar.TextAlign = ContentAlignment.MiddleRight;
@@ -88,10 +88,10 @@
             btnActualizar.ForeColor = Color.White;
             btnActualizar.Image = (Image)resources.GetObject("btnActualizar.Image");
             btnActualizar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnActualizar.Location = new Point(824, 550);
+            btnActualizar.Location = new Point(742, 685);
             btnActualizar.Margin = new Padding(2);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(163, 86);
+            btnActualizar.Size = new Size(204, 108);
             btnActualizar.TabIndex = 12;
             btnActualizar.Text = "Actualizar";
             btnActualizar.TextAlign = ContentAlignment.MiddleRight;
@@ -100,7 +100,6 @@
             // 
             // dvgProductos
             // 
-            dvgProductos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dvgProductos.BackgroundColor = Color.FromArgb(255, 224, 192);
             dvgProductos.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -120,6 +119,7 @@
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dvgProductos.DefaultCellStyle = dataGridViewCellStyle2;
+            dvgProductos.Dock = DockStyle.Fill;
             dvgProductos.Location = new Point(0, 0);
             dvgProductos.Margin = new Padding(2);
             dvgProductos.Name = "dvgProductos";
@@ -134,25 +134,26 @@
             dvgProductos.RowHeadersVisible = false;
             dvgProductos.RowHeadersWidth = 62;
             dvgProductos.ScrollBars = ScrollBars.None;
-            dvgProductos.Size = new Size(987, 515);
+            dvgProductos.Size = new Size(981, 642);
             dvgProductos.TabIndex = 13;
             dvgProductos.CellContentClick += dvgProductos_CellContentClick;
             // 
             // pnlApp
             // 
             pnlApp.Controls.Add(dvgProductos);
-            pnlApp.Location = new Point(10, 10);
+            pnlApp.Dock = DockStyle.Top;
+            pnlApp.Location = new Point(0, 0);
             pnlApp.Margin = new Padding(2);
             pnlApp.Name = "pnlApp";
-            pnlApp.Size = new Size(636, 387);
+            pnlApp.Size = new Size(981, 642);
             pnlApp.TabIndex = 14;
             // 
             // FrmProductos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(1008, 647);
+            ClientSize = new Size(981, 808);
             Controls.Add(pnlApp);
             Controls.Add(btnActualizar);
             Controls.Add(btnEliminar);

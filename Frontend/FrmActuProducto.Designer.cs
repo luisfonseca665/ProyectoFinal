@@ -49,12 +49,12 @@
             // btnActualizarProducto
             // 
             btnActualizarProducto.BackColor = Color.FromArgb(136, 99, 75);
-            btnActualizarProducto.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
+            btnActualizarProducto.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             btnActualizarProducto.ForeColor = Color.White;
-            btnActualizarProducto.Location = new Point(722, 539);
+            btnActualizarProducto.Location = new Point(609, 559);
             btnActualizarProducto.Margin = new Padding(2);
             btnActualizarProducto.Name = "btnActualizarProducto";
-            btnActualizarProducto.Size = new Size(228, 44);
+            btnActualizarProducto.Size = new Size(300, 43);
             btnActualizarProducto.TabIndex = 6;
             btnActualizarProducto.Text = "Actualizar Producto.";
             btnActualizarProducto.UseVisualStyleBackColor = false;
@@ -63,12 +63,12 @@
             // btnFoto
             // 
             btnFoto.BackColor = Color.FromArgb(136, 99, 75);
-            btnFoto.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
+            btnFoto.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             btnFoto.ForeColor = Color.White;
-            btnFoto.Location = new Point(722, 192);
+            btnFoto.Location = new Point(695, 151);
             btnFoto.Margin = new Padding(2);
             btnFoto.Name = "btnFoto";
-            btnFoto.Size = new Size(228, 45);
+            btnFoto.Size = new Size(214, 42);
             btnFoto.TabIndex = 5;
             btnFoto.Text = "Actualizar foto.";
             btnFoto.UseVisualStyleBackColor = false;
@@ -77,10 +77,10 @@
             // pbProducto
             // 
             pbProducto.BackgroundImageLayout = ImageLayout.Stretch;
-            pbProducto.Location = new Point(658, 252);
+            pbProducto.Location = new Point(609, 221);
             pbProducto.Margin = new Padding(2);
             pbProducto.Name = "pbProducto";
-            pbProducto.Size = new Size(292, 245);
+            pbProducto.Size = new Size(300, 304);
             pbProducto.SizeMode = PictureBoxSizeMode.Zoom;
             pbProducto.TabIndex = 25;
             pbProducto.TabStop = false;
@@ -90,12 +90,12 @@
             // 
             txtPrecio.BackColor = Color.FromArgb(136, 99, 75);
             txtPrecio.BorderStyle = BorderStyle.FixedSingle;
-            txtPrecio.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            txtPrecio.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
             txtPrecio.ForeColor = Color.White;
-            txtPrecio.Location = new Point(118, 551);
+            txtPrecio.Location = new Point(114, 568);
             txtPrecio.Margin = new Padding(2);
             txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(469, 34);
+            txtPrecio.Size = new Size(452, 34);
             txtPrecio.TabIndex = 3;
             txtPrecio.TextChanged += txtPrecio_TextChanged;
             // 
@@ -104,11 +104,11 @@
             nudStock.BackColor = Color.FromArgb(136, 99, 75);
             nudStock.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             nudStock.ForeColor = Color.White;
-            nudStock.Location = new Point(722, 94);
+            nudStock.Location = new Point(717, 64);
             nudStock.Margin = new Padding(2);
             nudStock.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             nudStock.Name = "nudStock";
-            nudStock.Size = new Size(228, 34);
+            nudStock.Size = new Size(192, 39);
             nudStock.TabIndex = 4;
             nudStock.ValueChanged += nudStock_ValueChanged;
             // 
@@ -116,45 +116,46 @@
             // 
             txtDescripcion.BackColor = Color.FromArgb(136, 99, 75);
             txtDescripcion.BorderStyle = BorderStyle.FixedSingle;
-            txtDescripcion.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            txtDescripcion.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
             txtDescripcion.ForeColor = Color.White;
-            txtDescripcion.Location = new Point(19, 300);
+            txtDescripcion.Location = new Point(11, 293);
             txtDescripcion.Margin = new Padding(2);
             txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(568, 186);
+            txtDescripcion.Size = new Size(555, 232);
             txtDescripcion.TabIndex = 2;
             // 
             // txtNombre
             // 
             txtNombre.BackColor = Color.FromArgb(136, 99, 75);
             txtNombre.BorderStyle = BorderStyle.FixedSingle;
-            txtNombre.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            txtNombre.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
             txtNombre.ForeColor = Color.White;
-            txtNombre.Location = new Point(134, 197);
+            txtNombre.Location = new Point(132, 159);
             txtNombre.Margin = new Padding(2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(453, 34);
+            txtNombre.Size = new Size(434, 34);
             txtNombre.TabIndex = 1;
             // 
             // txtCodigo
             // 
             txtCodigo.BackColor = Color.FromArgb(136, 99, 75);
             txtCodigo.BorderStyle = BorderStyle.FixedSingle;
-            txtCodigo.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            txtCodigo.Font = new Font("Segoe UI Black", 10F, FontStyle.Bold);
             txtCodigo.ForeColor = Color.White;
-            txtCodigo.Location = new Point(134, 94);
+            txtCodigo.Location = new Point(110, 64);
             txtCodigo.Margin = new Padding(2);
             txtCodigo.Name = "txtCodigo";
-            txtCodigo.Size = new Size(453, 34);
+            txtCodigo.Size = new Size(456, 34);
             txtCodigo.TabIndex = 0;
+            txtCodigo.TextChanged += txtCodigo_TextChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.FlatStyle = FlatStyle.Flat;
-            label6.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            label6.Location = new Point(631, 192);
+            label6.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            label6.Location = new Point(609, 161);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(75, 32);
@@ -165,8 +166,8 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            label5.Location = new Point(19, 266);
+            label5.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            label5.Location = new Point(11, 241);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(158, 32);
@@ -177,8 +178,8 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            label4.Location = new Point(19, 546);
+            label4.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            label4.Location = new Point(11, 584);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(95, 32);
@@ -189,8 +190,8 @@
             // 
             label3.AutoSize = true;
             label3.FlatStyle = FlatStyle.Flat;
-            label3.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            label3.Location = new Point(631, 92);
+            label3.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            label3.Location = new Point(609, 66);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(87, 32);
@@ -202,8 +203,8 @@
             // 
             label2.AutoSize = true;
             label2.FlatStyle = FlatStyle.Flat;
-            label2.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            label2.Location = new Point(19, 192);
+            label2.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            label2.Location = new Point(11, 161);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(117, 32);
@@ -214,8 +215,8 @@
             // 
             label1.AutoSize = true;
             label1.FlatStyle = FlatStyle.Flat;
-            label1.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            label1.Location = new Point(19, 94);
+            label1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            label1.Location = new Point(11, 66);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(104, 32);
@@ -225,10 +226,10 @@
             // 
             // FrmActuProducto
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(1008, 647);
+            ClientSize = new Size(958, 647);
             Controls.Add(btnActualizarProducto);
             Controls.Add(btnFoto);
             Controls.Add(pbProducto);

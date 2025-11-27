@@ -44,10 +44,11 @@
             // pnlApp
             // 
             pnlApp.Controls.Add(dvgEmpleados);
-            pnlApp.Location = new Point(9, 9);
+            pnlApp.Dock = DockStyle.Top;
+            pnlApp.Location = new Point(0, 0);
             pnlApp.Margin = new Padding(2);
             pnlApp.Name = "pnlApp";
-            pnlApp.Size = new Size(623, 368);
+            pnlApp.Size = new Size(981, 668);
             pnlApp.TabIndex = 18;
             // 
             // dvgEmpleados
@@ -72,7 +73,7 @@
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dvgEmpleados.DefaultCellStyle = dataGridViewCellStyle2;
-            dvgEmpleados.Location = new Point(0, 0);
+            dvgEmpleados.Location = new Point(14, 16);
             dvgEmpleados.Margin = new Padding(2);
             dvgEmpleados.Name = "dvgEmpleados";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -86,7 +87,7 @@
             dvgEmpleados.RowHeadersVisible = false;
             dvgEmpleados.RowHeadersWidth = 62;
             dvgEmpleados.ScrollBars = ScrollBars.None;
-            dvgEmpleados.Size = new Size(978, 515);
+            dvgEmpleados.Size = new Size(956, 638);
             dvgEmpleados.TabIndex = 13;
             dvgEmpleados.CellContentClick += dvgEmpleados_CellContentClick;
             // 
@@ -99,10 +100,10 @@
             btnActualizar.ForeColor = Color.White;
             btnActualizar.Image = (Image)resources.GetObject("btnActualizar.Image");
             btnActualizar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnActualizar.Location = new Point(849, 550);
+            btnActualizar.Location = new Point(768, 688);
             btnActualizar.Margin = new Padding(2);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(138, 86);
+            btnActualizar.Size = new Size(172, 108);
             btnActualizar.TabIndex = 17;
             btnActualizar.Text = "Actualizar";
             btnActualizar.TextAlign = ContentAlignment.MiddleRight;
@@ -118,10 +119,10 @@
             btnEliminar.ForeColor = Color.White;
             btnEliminar.Image = (Image)resources.GetObject("btnEliminar.Image");
             btnEliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminar.Location = new Point(461, 550);
+            btnEliminar.Location = new Point(395, 689);
             btnEliminar.Margin = new Padding(2);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(131, 86);
+            btnEliminar.Size = new Size(164, 108);
             btnEliminar.TabIndex = 16;
             btnEliminar.Text = "Eliminar";
             btnEliminar.TextAlign = ContentAlignment.MiddleRight;
@@ -137,10 +138,10 @@
             btnAgregar.ForeColor = Color.White;
             btnAgregar.Image = (Image)resources.GetObject("btnAgregar.Image");
             btnAgregar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregar.Location = new Point(11, 550);
+            btnAgregar.Location = new Point(14, 688);
             btnAgregar.Margin = new Padding(2);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(128, 86);
+            btnAgregar.Size = new Size(160, 108);
             btnAgregar.TabIndex = 15;
             btnAgregar.Text = "Agregar";
             btnAgregar.TextAlign = ContentAlignment.MiddleRight;
@@ -149,10 +150,10 @@
             // 
             // FrmEmpleados
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(1008, 647);
+            ClientSize = new Size(981, 808);
             Controls.Add(pnlApp);
             Controls.Add(btnActualizar);
             Controls.Add(btnEliminar);
