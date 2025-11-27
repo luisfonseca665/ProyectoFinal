@@ -116,7 +116,7 @@
             flowLayoutPanel1.Location = new Point(10, 46);
             flowLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(748, 257);
+            flowLayoutPanel1.Size = new Size(748, 225);
             flowLayoutPanel1.TabIndex = 11;
             // 
             // button1

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label1 = new Label();
             label2 = new Label();
             dtpInicio = new DateTimePicker();
@@ -58,7 +58,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            label1.Location = new Point(6, 72);
+            label1.Location = new Point(17, 66);
             label1.Name = "label1";
             label1.Size = new Size(159, 32);
             label1.TabIndex = 0;
@@ -68,7 +68,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            label2.Location = new Point(407, 72);
+            label2.Location = new Point(46, 103);
             label2.Name = "label2";
             label2.Size = new Size(130, 32);
             label2.TabIndex = 1;
@@ -83,9 +83,9 @@
             dtpInicio.CalendarTrailingForeColor = Color.FromArgb(136, 99, 75);
             dtpInicio.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             dtpInicio.Format = DateTimePickerFormat.Short;
-            dtpInicio.Location = new Point(166, 72);
+            dtpInicio.Location = new Point(182, 66);
             dtpInicio.Name = "dtpInicio";
-            dtpInicio.Size = new Size(235, 34);
+            dtpInicio.Size = new Size(181, 34);
             dtpInicio.TabIndex = 2;
             // 
             // dtpFin
@@ -95,9 +95,9 @@
             dtpFin.CalendarTrailingForeColor = Color.Black;
             dtpFin.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             dtpFin.Format = DateTimePickerFormat.Short;
-            dtpFin.Location = new Point(543, 69);
+            dtpFin.Location = new Point(182, 103);
             dtpFin.Name = "dtpFin";
-            dtpFin.Size = new Size(224, 34);
+            dtpFin.Size = new Size(179, 34);
             dtpFin.TabIndex = 3;
             // 
             // btnGenerar
@@ -105,9 +105,9 @@
             btnGenerar.BackColor = Color.FromArgb(136, 99, 75);
             btnGenerar.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             btnGenerar.ForeColor = Color.White;
-            btnGenerar.Location = new Point(796, 65);
+            btnGenerar.Location = new Point(599, 102);
             btnGenerar.Name = "btnGenerar";
-            btnGenerar.Size = new Size(131, 45);
+            btnGenerar.Size = new Size(115, 38);
             btnGenerar.TabIndex = 4;
             btnGenerar.Text = "Generar Reporte";
             btnGenerar.UseVisualStyleBackColor = false;
@@ -118,21 +118,21 @@
             dgvReporte.AllowUserToAddRows = false;
             dgvReporte.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvReporte.BackgroundColor = Color.FromArgb(255, 224, 192);
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(136, 99, 75);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 224, 192);
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvReporte.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(136, 99, 75);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 224, 192);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvReporte.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvReporte.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvReporte.Location = new Point(19, 116);
+            dgvReporte.Location = new Point(17, 150);
             dgvReporte.Name = "dgvReporte";
             dgvReporte.ReadOnly = true;
             dgvReporte.RowHeadersVisible = false;
             dgvReporte.RowHeadersWidth = 51;
-            dgvReporte.Size = new Size(916, 360);
+            dgvReporte.Size = new Size(697, 255);
             dgvReporte.TabIndex = 5;
             // 
             // label3
@@ -140,7 +140,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Black", 20F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(136, 99, 75);
-            label3.Location = new Point(176, 3);
+            label3.Location = new Point(110, 17);
             label3.Name = "label3";
             label3.Size = new Size(538, 46);
             label3.TabIndex = 6;
@@ -151,9 +151,9 @@
             btnExcel.BackColor = Color.FromArgb(136, 99, 75);
             btnExcel.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             btnExcel.ForeColor = Color.White;
-            btnExcel.Location = new Point(796, 482);
+            btnExcel.Location = new Point(577, 409);
             btnExcel.Name = "btnExcel";
-            btnExcel.Size = new Size(139, 41);
+            btnExcel.Size = new Size(137, 43);
             btnExcel.TabIndex = 7;
             btnExcel.Text = "Exportar";
             btnExcel.UseVisualStyleBackColor = false;
@@ -163,10 +163,11 @@
             // 
             tabControl1.Controls.Add(tbpVentasProducto);
             tabControl1.Controls.Add(tbpComparativo);
-            tabControl1.Location = new Point(2, 12);
+            tabControl1.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tabControl1.Location = new Point(2, 10);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(959, 562);
+            tabControl1.Size = new Size(747, 488);
             tabControl1.TabIndex = 8;
             // 
             // tbpVentasProducto
@@ -180,10 +181,11 @@
             tbpVentasProducto.Controls.Add(dtpInicio);
             tbpVentasProducto.Controls.Add(btnGenerar);
             tbpVentasProducto.Controls.Add(dtpFin);
-            tbpVentasProducto.Location = new Point(4, 29);
+            tbpVentasProducto.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbpVentasProducto.Location = new Point(4, 26);
             tbpVentasProducto.Name = "tbpVentasProducto";
-            tbpVentasProducto.Padding = new Padding(3, 3, 3, 3);
-            tbpVentasProducto.Size = new Size(951, 529);
+            tbpVentasProducto.Padding = new Padding(3);
+            tbpVentasProducto.Size = new Size(739, 458);
             tbpVentasProducto.TabIndex = 0;
             tbpVentasProducto.Text = "Ventas por producto";
             // 
@@ -198,10 +200,10 @@
             tbpComparativo.Controls.Add(dtpMes1);
             tbpComparativo.Controls.Add(btnAceptar);
             tbpComparativo.Controls.Add(dtpMes2);
-            tbpComparativo.Location = new Point(4, 29);
+            tbpComparativo.Location = new Point(4, 26);
             tbpComparativo.Name = "tbpComparativo";
-            tbpComparativo.Padding = new Padding(3, 3, 3, 3);
-            tbpComparativo.Size = new Size(951, 529);
+            tbpComparativo.Padding = new Padding(3);
+            tbpComparativo.Size = new Size(739, 458);
             tbpComparativo.TabIndex = 1;
             tbpComparativo.Text = "Reporte Comparativo";
             // 
@@ -210,9 +212,9 @@
             btnexpo.BackColor = Color.FromArgb(136, 99, 75);
             btnexpo.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             btnexpo.ForeColor = Color.White;
-            btnexpo.Location = new Point(765, 88);
+            btnexpo.Location = new Point(581, 80);
             btnexpo.Name = "btnexpo";
-            btnexpo.Size = new Size(180, 38);
+            btnexpo.Size = new Size(145, 43);
             btnexpo.TabIndex = 13;
             btnexpo.Text = "Exportar";
             btnexpo.UseVisualStyleBackColor = false;
@@ -221,10 +223,10 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Dock = DockStyle.Bottom;
-            flowLayoutPanel1.Location = new Point(3, 188);
-            flowLayoutPanel1.Margin = new Padding(2, 2, 2, 2);
+            flowLayoutPanel1.Location = new Point(3, 177);
+            flowLayoutPanel1.Margin = new Padding(2);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(945, 338);
+            flowLayoutPanel1.Size = new Size(733, 278);
             flowLayoutPanel1.TabIndex = 9;
             // 
             // label4
@@ -232,7 +234,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold);
             label4.ForeColor = Color.FromArgb(136, 99, 75);
-            label4.Location = new Point(56, 15);
+            label4.Location = new Point(186, 13);
             label4.Name = "label4";
             label4.Size = new Size(411, 50);
             label4.TabIndex = 12;
@@ -242,7 +244,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            label5.Location = new Point(35, 104);
+            label5.Location = new Point(11, 84);
             label5.Name = "label5";
             label5.Size = new Size(90, 32);
             label5.TabIndex = 7;
@@ -252,7 +254,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            label6.Location = new Point(373, 104);
+            label6.Location = new Point(306, 84);
             label6.Name = "label6";
             label6.Size = new Size(92, 32);
             label6.TabIndex = 8;
@@ -267,9 +269,9 @@
             dtpMes1.CalendarTrailingForeColor = Color.FromArgb(136, 99, 75);
             dtpMes1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             dtpMes1.Format = DateTimePickerFormat.Custom;
-            dtpMes1.Location = new Point(140, 101);
+            dtpMes1.Location = new Point(115, 82);
             dtpMes1.Name = "dtpMes1";
-            dtpMes1.Size = new Size(227, 34);
+            dtpMes1.Size = new Size(186, 34);
             dtpMes1.TabIndex = 9;
             // 
             // btnAceptar
@@ -277,9 +279,9 @@
             btnAceptar.BackColor = Color.FromArgb(136, 99, 75);
             btnAceptar.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
             btnAceptar.ForeColor = Color.White;
-            btnAceptar.Location = new Point(765, 147);
+            btnAceptar.Location = new Point(581, 130);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(180, 36);
+            btnAceptar.Size = new Size(145, 42);
             btnAceptar.TabIndex = 11;
             btnAceptar.Text = "Generar Reporte";
             btnAceptar.UseVisualStyleBackColor = false;
@@ -292,19 +294,20 @@
             dtpMes2.CalendarTrailingForeColor = Color.Black;
             dtpMes2.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             dtpMes2.Format = DateTimePickerFormat.Short;
-            dtpMes2.Location = new Point(471, 101);
+            dtpMes2.Location = new Point(405, 82);
             dtpMes2.Name = "dtpMes2";
-            dtpMes2.Size = new Size(210, 34);
+            dtpMes2.Size = new Size(171, 34);
             dtpMes2.TabIndex = 10;
             // 
             // FrmReportes
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(990, 600);
+            ClientSize = new Size(758, 510);
             Controls.Add(tabControl1);
+            Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "FrmReportes";
             Text = "FrmReportes";
             ((System.ComponentModel.ISupportInitialize)dgvReporte).EndInit();

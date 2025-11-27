@@ -77,7 +77,7 @@
             // btnReset
             // 
             btnReset.BackColor = Color.IndianRed;
-            btnReset.Location = new Point(3, 163);
+            btnReset.Location = new Point(16, 169);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(35, 25);
             btnReset.TabIndex = 4;
