@@ -125,7 +125,7 @@
             txtCodigo.Margin = new Padding(2);
             txtCodigo.Name = "txtCodigo";
             txtCodigo.Size = new Size(453, 34);
-            txtCodigo.TabIndex = 6;
+            txtCodigo.TabIndex = 0;
             txtCodigo.TextChanged += txtCodigo_TextChanged;
             // 
             // txtNombre
@@ -138,7 +138,7 @@
             txtNombre.Margin = new Padding(2);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(453, 34);
-            txtNombre.TabIndex = 7;
+            txtNombre.TabIndex = 1;
             // 
             // txtDescripcion
             // 
@@ -151,7 +151,7 @@
             txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(576, 186);
-            txtDescripcion.TabIndex = 8;
+            txtDescripcion.TabIndex = 2;
             txtDescripcion.TextChanged += txtDescripcion_TextChanged;
             // 
             // nudStock
@@ -163,7 +163,7 @@
             nudStock.Margin = new Padding(2);
             nudStock.Name = "nudStock";
             nudStock.Size = new Size(230, 34);
-            nudStock.TabIndex = 9;
+            nudStock.TabIndex = 4;
             nudStock.ValueChanged += nudStock_ValueChanged;
             // 
             // txtPrecio
@@ -176,7 +176,7 @@
             txtPrecio.Margin = new Padding(2);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(469, 34);
-            txtPrecio.TabIndex = 10;
+            txtPrecio.TabIndex = 3;
             // 
             // pbProducto
             // 
@@ -198,7 +198,7 @@
             btnFoto.Margin = new Padding(2);
             btnFoto.Name = "btnFoto";
             btnFoto.Size = new Size(233, 40);
-            btnFoto.TabIndex = 12;
+            btnFoto.TabIndex = 5;
             btnFoto.Text = "Seleccionar foto.";
             btnFoto.UseVisualStyleBackColor = false;
             btnFoto.Click += btnFoto_Click;
@@ -212,7 +212,7 @@
             btnAgregarProducto.Margin = new Padding(2);
             btnAgregarProducto.Name = "btnAgregarProducto";
             btnAgregarProducto.Size = new Size(233, 43);
-            btnAgregarProducto.TabIndex = 13;
+            btnAgregarProducto.TabIndex = 6;
             btnAgregarProducto.Text = "Agregar Producto.";
             btnAgregarProducto.UseVisualStyleBackColor = false;
             btnAgregarProducto.Click += btnAgregarProducto_Click;

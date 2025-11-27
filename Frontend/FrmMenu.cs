@@ -18,6 +18,7 @@ namespace ProyectoFinal.Frontend
         public FrmMenu(Empleado empleado)
         {
             InitializeComponent();
+            pnlApp.AutoScroll = true;
             _empleadoActual = empleado;
             byte[] fotoBytes = _empleadoActual.Foto;
 
@@ -59,6 +60,7 @@ namespace ProyectoFinal.Frontend
             factivo = activo;
             activo.TopLevel = false;
             activo.FormBorderStyle = FormBorderStyle.None;
+
             activo.Dock = DockStyle.Fill;
 
             pnlApp.Controls.Clear();

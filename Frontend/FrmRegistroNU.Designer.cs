@@ -62,7 +62,7 @@
             btnAgregar.Location = new Point(779, 560);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(206, 43);
-            btnAgregar.TabIndex = 35;
+            btnAgregar.TabIndex = 8;
             btnAgregar.Text = "Agregar Empleado";
             btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
@@ -75,7 +75,7 @@
             btnFoto.Location = new Point(779, 227);
             btnFoto.Name = "btnFoto";
             btnFoto.Size = new Size(203, 40);
-            btnFoto.TabIndex = 34;
+            btnFoto.TabIndex = 7;
             btnFoto.Text = "Seleccionar foto";
             btnFoto.UseVisualStyleBackColor = false;
             btnFoto.Click += btnFoto_Click;
@@ -98,7 +98,7 @@
             cnbTipo.Location = new Point(779, 169);
             cnbTipo.Name = "cnbTipo";
             cnbTipo.Size = new Size(203, 36);
-            cnbTipo.TabIndex = 32;
+            cnbTipo.TabIndex = 6;
             // 
             // label8
             // 
@@ -142,7 +142,7 @@
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PasswordChar = '*';
             txtContraseña.Size = new Size(478, 34);
-            txtContraseña.TabIndex = 28;
+            txtContraseña.TabIndex = 5;
             // 
             // txtUsuario
             // 
@@ -153,7 +153,7 @@
             txtUsuario.Location = new Point(137, 490);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(519, 34);
-            txtUsuario.TabIndex = 27;
+            txtUsuario.TabIndex = 4;
             // 
             // txtCorreo
             // 
@@ -164,7 +164,7 @@
             txtCorreo.Location = new Point(137, 410);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(519, 34);
-            txtCorreo.TabIndex = 26;
+            txtCorreo.TabIndex = 3;
             // 
             // txtApellidos
             // 
@@ -175,7 +175,7 @@
             txtApellidos.Location = new Point(137, 252);
             txtApellidos.Name = "txtApellidos";
             txtApellidos.Size = new Size(519, 34);
-            txtApellidos.TabIndex = 25;
+            txtApellidos.TabIndex = 1;
             // 
             // txtTelefono
             // 
@@ -186,7 +186,7 @@
             txtTelefono.Location = new Point(137, 329);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(519, 34);
-            txtTelefono.TabIndex = 24;
+            txtTelefono.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -197,7 +197,7 @@
             txtNombre.Location = new Point(137, 165);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(519, 34);
-            txtNombre.TabIndex = 23;
+            txtNombre.TabIndex = 0;
             // 
             // label5
             // 

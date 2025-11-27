@@ -108,8 +108,8 @@
             txtNombre.ForeColor = Color.White;
             txtNombre.Location = new Point(142, 57);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(436, 34);
-            txtNombre.TabIndex = 5;
+            txtNombre.Size = new Size(407, 34);
+            txtNombre.TabIndex = 0;
             txtNombre.TextChanged += txtNombre_TextChanged;
             // 
             // txtTelefono
@@ -119,8 +119,8 @@
             txtTelefono.ForeColor = Color.White;
             txtTelefono.Location = new Point(142, 239);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(436, 34);
-            txtTelefono.TabIndex = 6;
+            txtTelefono.Size = new Size(407, 34);
+            txtTelefono.TabIndex = 2;
             txtTelefono.TextChanged += txtTelefono_TextChanged;
             // 
             // txtApellidos
@@ -130,8 +130,8 @@
             txtApellidos.ForeColor = Color.White;
             txtApellidos.Location = new Point(142, 145);
             txtApellidos.Name = "txtApellidos";
-            txtApellidos.Size = new Size(436, 34);
-            txtApellidos.TabIndex = 7;
+            txtApellidos.Size = new Size(407, 34);
+            txtApellidos.TabIndex = 1;
             txtApellidos.TextChanged += txtApellidos_TextChanged;
             // 
             // txtCorreo
@@ -141,8 +141,8 @@
             txtCorreo.ForeColor = Color.White;
             txtCorreo.Location = new Point(142, 338);
             txtCorreo.Name = "txtCorreo";
-            txtCorreo.Size = new Size(436, 34);
-            txtCorreo.TabIndex = 8;
+            txtCorreo.Size = new Size(407, 34);
+            txtCorreo.TabIndex = 3;
             txtCorreo.TextChanged += txtCorreo_TextChanged;
             // 
             // txtUsuario
@@ -152,8 +152,8 @@
             txtUsuario.ForeColor = Color.White;
             txtUsuario.Location = new Point(142, 424);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(436, 34);
-            txtUsuario.TabIndex = 9;
+            txtUsuario.Size = new Size(407, 34);
+            txtUsuario.TabIndex = 4;
             txtUsuario.TextChanged += txtUsuario_TextChanged;
             // 
             // txtContraseña
@@ -164,8 +164,8 @@
             txtContraseña.Location = new Point(178, 505);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PasswordChar = '*';
-            txtContraseña.Size = new Size(400, 34);
-            txtContraseña.TabIndex = 10;
+            txtContraseña.Size = new Size(371, 34);
+            txtContraseña.TabIndex = 5;
             txtContraseña.TextChanged += txtContraseña_TextChanged;
             // 
             // label6
@@ -207,15 +207,15 @@
             cnbTipo.FormattingEnabled = true;
             cnbTipo.Location = new Point(698, 57);
             cnbTipo.Name = "cnbTipo";
-            cnbTipo.Size = new Size(264, 36);
-            cnbTipo.TabIndex = 14;
+            cnbTipo.Size = new Size(235, 36);
+            cnbTipo.TabIndex = 6;
             cnbTipo.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // pictureFoto
             // 
             pictureFoto.Location = new Point(623, 189);
             pictureFoto.Name = "pictureFoto";
-            pictureFoto.Size = new Size(339, 267);
+            pictureFoto.Size = new Size(310, 267);
             pictureFoto.SizeMode = PictureBoxSizeMode.Zoom;
             pictureFoto.TabIndex = 15;
             pictureFoto.TabStop = false;
@@ -228,8 +228,8 @@
             btnFoto.ForeColor = Color.White;
             btnFoto.Location = new Point(698, 136);
             btnFoto.Name = "btnFoto";
-            btnFoto.Size = new Size(264, 41);
-            btnFoto.TabIndex = 16;
+            btnFoto.Size = new Size(235, 41);
+            btnFoto.TabIndex = 7;
             btnFoto.Text = "Seleccionar foto";
             btnFoto.UseVisualStyleBackColor = false;
             btnFoto.Click += btnFoto_Click;
@@ -241,8 +241,8 @@
             btnAgregar.ForeColor = Color.White;
             btnAgregar.Location = new Point(698, 497);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(264, 42);
-            btnAgregar.TabIndex = 17;
+            btnAgregar.Size = new Size(235, 42);
+            btnAgregar.TabIndex = 8;
             btnAgregar.Text = "Agregar Empleado";
             btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
@@ -252,7 +252,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(990, 600);
+            ClientSize = new Size(944, 558);
             Controls.Add(btnAgregar);
             Controls.Add(btnFoto);
             Controls.Add(pictureFoto);

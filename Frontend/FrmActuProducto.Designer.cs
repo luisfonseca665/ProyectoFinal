@@ -55,7 +55,7 @@
             btnActualizarProducto.Margin = new Padding(2);
             btnActualizarProducto.Name = "btnActualizarProducto";
             btnActualizarProducto.Size = new Size(228, 44);
-            btnActualizarProducto.TabIndex = 27;
+            btnActualizarProducto.TabIndex = 6;
             btnActualizarProducto.Text = "Actualizar Producto.";
             btnActualizarProducto.UseVisualStyleBackColor = false;
             btnActualizarProducto.Click += btnActualizarProducto_Click;
@@ -69,7 +69,7 @@
             btnFoto.Margin = new Padding(2);
             btnFoto.Name = "btnFoto";
             btnFoto.Size = new Size(228, 45);
-            btnFoto.TabIndex = 26;
+            btnFoto.TabIndex = 5;
             btnFoto.Text = "Actualizar foto.";
             btnFoto.UseVisualStyleBackColor = false;
             btnFoto.Click += btnFoto_Click;
@@ -96,7 +96,7 @@
             txtPrecio.Margin = new Padding(2);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(469, 34);
-            txtPrecio.TabIndex = 24;
+            txtPrecio.TabIndex = 3;
             txtPrecio.TextChanged += txtPrecio_TextChanged;
             // 
             // nudStock
@@ -109,7 +109,7 @@
             nudStock.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             nudStock.Name = "nudStock";
             nudStock.Size = new Size(228, 34);
-            nudStock.TabIndex = 23;
+            nudStock.TabIndex = 4;
             nudStock.ValueChanged += nudStock_ValueChanged;
             // 
             // txtDescripcion
@@ -123,7 +123,7 @@
             txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(568, 186);
-            txtDescripcion.TabIndex = 22;
+            txtDescripcion.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -135,7 +135,7 @@
             txtNombre.Margin = new Padding(2);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(453, 34);
-            txtNombre.TabIndex = 21;
+            txtNombre.TabIndex = 1;
             // 
             // txtCodigo
             // 
@@ -147,7 +147,7 @@
             txtCodigo.Margin = new Padding(2);
             txtCodigo.Name = "txtCodigo";
             txtCodigo.Size = new Size(453, 34);
-            txtCodigo.TabIndex = 20;
+            txtCodigo.TabIndex = 0;
             // 
             // label6
             // 

@@ -57,7 +57,7 @@
             btnActualizarEmpleado.Location = new Point(706, 501);
             btnActualizarEmpleado.Name = "btnActualizarEmpleado";
             btnActualizarEmpleado.Size = new Size(245, 38);
-            btnActualizarEmpleado.TabIndex = 35;
+            btnActualizarEmpleado.TabIndex = 8;
             btnActualizarEmpleado.Text = "Actualizar";
             btnActualizarEmpleado.UseVisualStyleBackColor = false;
             btnActualizarEmpleado.Click += btnActualizarEmpleado_Click;
@@ -70,7 +70,7 @@
             btnFoto.Location = new Point(706, 138);
             btnFoto.Name = "btnFoto";
             btnFoto.Size = new Size(245, 39);
-            btnFoto.TabIndex = 34;
+            btnFoto.TabIndex = 7;
             btnFoto.Text = "Seleccionar foto";
             btnFoto.UseVisualStyleBackColor = false;
             btnFoto.Click += btnFoto_Click;
@@ -94,7 +94,7 @@
             cnbTipo.Location = new Point(706, 56);
             cnbTipo.Name = "cnbTipo";
             cnbTipo.Size = new Size(245, 36);
-            cnbTipo.TabIndex = 32;
+            cnbTipo.TabIndex = 6;
             cnbTipo.SelectedIndexChanged += cnbTipo_SelectedIndexChanged;
             // 
             // label8
@@ -136,7 +136,7 @@
             txtContraseña.Location = new Point(178, 505);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(400, 34);
-            txtContraseña.TabIndex = 28;
+            txtContraseña.TabIndex = 5;
             // 
             // txtUsuario
             // 
@@ -146,7 +146,7 @@
             txtUsuario.Location = new Point(142, 424);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(436, 34);
-            txtUsuario.TabIndex = 27;
+            txtUsuario.TabIndex = 4;
             // 
             // txtCorreo
             // 
@@ -156,7 +156,7 @@
             txtCorreo.Location = new Point(142, 338);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(436, 34);
-            txtCorreo.TabIndex = 26;
+            txtCorreo.TabIndex = 3;
             txtCorreo.TextChanged += txtCorreo_TextChanged;
             // 
             // txtApellidos
@@ -167,7 +167,7 @@
             txtApellidos.Location = new Point(142, 145);
             txtApellidos.Name = "txtApellidos";
             txtApellidos.Size = new Size(436, 34);
-            txtApellidos.TabIndex = 25;
+            txtApellidos.TabIndex = 1;
             // 
             // txtTelefono
             // 
@@ -177,7 +177,7 @@
             txtTelefono.Location = new Point(142, 239);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(436, 34);
-            txtTelefono.TabIndex = 24;
+            txtTelefono.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -187,7 +187,7 @@
             txtNombre.Location = new Point(142, 57);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(436, 34);
-            txtNombre.TabIndex = 23;
+            txtNombre.TabIndex = 0;
             // 
             // label5
             // 

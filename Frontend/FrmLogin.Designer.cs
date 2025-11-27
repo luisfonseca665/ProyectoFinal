@@ -65,7 +65,7 @@
             txtUsuario.Margin = new Padding(2);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(497, 34);
-            txtUsuario.TabIndex = 1;
+            txtUsuario.TabIndex = 0;
             // 
             // label2
             // 
@@ -90,7 +90,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(412, 34);
-            txtPassword.TabIndex = 3;
+            txtPassword.TabIndex = 1;
             // 
             // btniniciarsesion
             // 
@@ -102,7 +102,7 @@
             btniniciarsesion.Margin = new Padding(2);
             btniniciarsesion.Name = "btniniciarsesion";
             btniniciarsesion.Size = new Size(251, 56);
-            btniniciarsesion.TabIndex = 4;
+            btniniciarsesion.TabIndex = 2;
             btniniciarsesion.Text = "Iniciar Sesion.";
             btniniciarsesion.UseVisualStyleBackColor = false;
             btniniciarsesion.Click += btniniciarsesion_Click;
@@ -115,7 +115,7 @@
             lblRegistro.Margin = new Padding(2, 0, 2, 0);
             lblRegistro.Name = "lblRegistro";
             lblRegistro.Size = new Size(313, 32);
-            lblRegistro.TabIndex = 5;
+            lblRegistro.TabIndex = 3;
             lblRegistro.Text = "¿No tienes cuenta? Da clic";
             lblRegistro.Click += lblRegistro_Click;
             // 
@@ -140,7 +140,7 @@
             btnCerrarApp.Margin = new Padding(2);
             btnCerrarApp.Name = "btnCerrarApp";
             btnCerrarApp.Size = new Size(77, 77);
-            btnCerrarApp.TabIndex = 8;
+            btnCerrarApp.TabIndex = 1;
             btnCerrarApp.UseVisualStyleBackColor = true;
             btnCerrarApp.Click += btnCerrarApp_Click;
             // 

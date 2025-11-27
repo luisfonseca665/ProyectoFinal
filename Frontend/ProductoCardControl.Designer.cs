@@ -40,9 +40,9 @@
             // 
             // picFoto
             // 
-            picFoto.Location = new Point(31, 3);
+            picFoto.Location = new Point(32, 3);
             picFoto.Name = "picFoto";
-            picFoto.Size = new Size(125, 119);
+            picFoto.Size = new Size(109, 101);
             picFoto.SizeMode = PictureBoxSizeMode.Zoom;
             picFoto.TabIndex = 0;
             picFoto.TabStop = false;
@@ -50,9 +50,10 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(8, 130);
+            lblNombre.Font = new Font("Segoe UI", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNombre.Location = new Point(3, 117);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(64, 20);
+            lblNombre.Size = new Size(57, 17);
             lblNombre.TabIndex = 1;
             lblNombre.Text = "Nombre";
             lblNombre.TextAlign = ContentAlignment.TopCenter;
@@ -60,25 +61,25 @@
             // lblPrecio
             // 
             lblPrecio.AutoSize = true;
-            lblPrecio.Location = new Point(8, 169);
+            lblPrecio.Location = new Point(7, 144);
             lblPrecio.Name = "lblPrecio";
-            lblPrecio.Size = new Size(50, 20);
+            lblPrecio.Size = new Size(44, 17);
             lblPrecio.TabIndex = 2;
             lblPrecio.Text = "Precio";
             // 
             // numCantidad
             // 
-            numCantidad.Location = new Point(104, 162);
+            numCantidad.Location = new Point(108, 138);
             numCantidad.Name = "numCantidad";
-            numCantidad.Size = new Size(52, 27);
+            numCantidad.Size = new Size(46, 25);
             numCantidad.TabIndex = 3;
             // 
             // btnReset
             // 
             btnReset.BackColor = Color.IndianRed;
-            btnReset.Location = new Point(3, 192);
+            btnReset.Location = new Point(3, 163);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(40, 29);
+            btnReset.Size = new Size(35, 25);
             btnReset.TabIndex = 4;
             btnReset.Text = "X";
             btnReset.UseVisualStyleBackColor = false;
@@ -87,9 +88,9 @@
             // btnAgregar
             // 
             btnAgregar.BackColor = Color.GreenYellow;
-            btnAgregar.Location = new Point(78, 192);
+            btnAgregar.Location = new Point(86, 169);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(78, 29);
+            btnAgregar.Size = new Size(68, 25);
             btnAgregar.TabIndex = 5;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = false;
@@ -97,7 +98,7 @@
             // 
             // ProductoCardControl
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btnAgregar);
             Controls.Add(btnReset);
@@ -105,8 +106,9 @@
             Controls.Add(lblPrecio);
             Controls.Add(lblNombre);
             Controls.Add(picFoto);
+            Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "ProductoCardControl";
-            Size = new Size(176, 224);
+            Size = new Size(166, 202);
             ((System.ComponentModel.ISupportInitialize)picFoto).EndInit();
             ((System.ComponentModel.ISupportInitialize)numCantidad).EndInit();
             ResumeLayout(false);
