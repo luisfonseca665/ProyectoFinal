@@ -11,13 +11,25 @@ using ProyectoFinal.Backend;
 
 namespace ProyectoFinal.Frontend
 {
+    /// <summary>
+    /// Representa el formulario de inicio de sesión.
+    /// </summary>
     public partial class FrmLogin : Form
     {
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="FrmLogin"/>.
+        /// </summary>
         public FrmLogin()
         {
             InitializeComponent();
         }
 
+
+        /// <summary>
+        /// Ayuda a iniciar sesión en la aplicación.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btniniciarsesion_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
@@ -54,6 +66,11 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+        /// <summary>
+        /// Etiqueta para registrar un nuevo usuario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblRegistro_Click(object sender, EventArgs e)
         {
             FrmRegistroNU registro = new FrmRegistroNU();

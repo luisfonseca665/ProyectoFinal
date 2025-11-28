@@ -6,10 +6,20 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Backend
 {
+    /// <summary>
+    /// Metodo para manejar los empleados
+    /// </summary>
     public class EmpleadoController
     {
         private Conexion Conexion = new Conexion();
 
+
+        /// <summary>
+        /// Metodo para iniciar sesion en la aplicacion
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="contra"></param>
+        /// <returns></returns>
         public Empleado Login(string usuario, string contra)
         {
             Empleado empleado = null;
@@ -51,6 +61,11 @@ namespace ProyectoFinal.Backend
             return empleado;
         }
 
+
+        /// <summary>
+        /// Metodo para obtener la lista de empleados
+        /// </summary>
+        /// <returns></returns>
         public List<Empleado> ObtenerEmpleados()
         {
             List<Empleado> lista = new List<Empleado>();
@@ -89,6 +104,12 @@ namespace ProyectoFinal.Backend
             return lista;
         }
 
+
+        /// <summary>
+        /// Metodo para insertar un empleado utilizando un procedimiento almacenado
+        /// </summary>
+        /// <param name="empleado"></param>
+        /// <returns></returns>
         public bool InsertarEmpleado(Empleado empleado)
         {
             using (MySqlConnection conn = Conexion.ObtenerConexion())
@@ -129,6 +150,13 @@ namespace ProyectoFinal.Backend
             }
         }
 
+
+
+        /// <summary>
+        /// Metodo para actualizar un empleado utilizando un procedimiento almacenado
+        /// </summary>
+        /// <param name="empleado"></param>
+        /// <returns></returns>
         public bool ActualizarEmpleado(Empleado empleado)
         {
             using (MySqlConnection conn = Conexion.ObtenerConexion())
@@ -171,8 +199,15 @@ namespace ProyectoFinal.Backend
             }
         }
 
+
+        /// <summary>
+        /// Metodo para eliminar un empleado utilizando un procedimiento almacenado
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool EliminarEmpleado(int id)
         {
+
             using (MySqlConnection conn = Conexion.ObtenerConexion())
             {
                 try

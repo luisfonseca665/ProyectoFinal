@@ -13,16 +13,29 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Frontend
 {
+
+    /// <summary>
+    /// Representa el formulario para registrar nuevos empleados.
+    /// </summary>
     public partial class FrmRegistroNU : Form
     {
         private EmpleadoController controller = new EmpleadoController();
         private byte[] fotoBytes = null;
 
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="FrmRegistroNU"/>.
+        /// </summary>
         public FrmRegistroNU()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Cargar el formulario y configurar el combo box de tipo de empleado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmRegistroNU_Load(object sender, EventArgs e)
         {
             cnbTipo.Items.Clear();
@@ -31,6 +44,11 @@ namespace ProyectoFinal.Frontend
             cnbTipo.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Boton para cargar la foto del empleado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -57,6 +75,11 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+        /// <summary>
+        /// boton para agregar un nuevo empleado con validaciones.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
@@ -149,6 +172,11 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+        /// <summary>
+        /// Boton para cerrar la aplicacion y volver al login.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCerrarApp_Click(object sender, EventArgs e)
         {
             FrmLogin login = new FrmLogin();

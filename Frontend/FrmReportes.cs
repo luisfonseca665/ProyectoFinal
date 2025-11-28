@@ -10,16 +10,28 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ProyectoFinal.Frontend
 {
+    /// <summary>
+    /// Representa el formulario para generar reportes de ventas.
+    /// </summary>
     public partial class FrmReportes : Form
     {
         ReportesController controlador = new ReportesController();
         private List<ProductoComparativo> _datosComparativos;
 
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="FrmReportes"/>.
+        /// </summary>
         public FrmReportes()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Cargar el formulario y establecer fechas predeterminadas.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmReportes_Load(object sender, EventArgs e)
         {
             DateTime hoy = DateTime.Now;
@@ -29,6 +41,12 @@ namespace ProyectoFinal.Frontend
             dtpMes2.Value = hoy.AddMonths(-1);
         }
 
+
+        /// <summary>
+        /// Boton que genera el reporte de ventas por rango de fechas.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             try
@@ -49,7 +67,11 @@ namespace ProyectoFinal.Frontend
                 MessageBox.Show(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Boton para exportar el reporte de ventas a Excel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExcel_Click(object sender, EventArgs e)
         {
             if (dgvReporte.Rows.Count == 0)
@@ -61,6 +83,9 @@ namespace ProyectoFinal.Frontend
             ExportarExcel();
         }
 
+        /// <summary>
+        /// Boton para exportar el reporte de ventas a Excel y ventas.
+        /// </summary>
         private void ExportarExcel()
         {
             Excel.Application excelApp = new Excel.Application();
@@ -118,6 +143,11 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+        /// <summary>
+        /// Boton para generar el documento excel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -149,6 +179,12 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+        /// <summary>
+        /// Metodo para configurar la grafica
+        /// </summary>
+        /// <param name="datos"></param>
+        /// <param name="inicio1"></param>
+        /// <param name="inicio2"></param>
         private void ConfigurarGrafica(List<ProductoComparativo> datos, DateTime inicio1, DateTime inicio2)
         {
             chGrafica.Series.Clear();
@@ -208,6 +244,11 @@ namespace ProyectoFinal.Frontend
             chGrafica.DataBind();
         }
 
+        /// <summary>
+        /// Boton para exportar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnexpo_Click(object sender, EventArgs e)
         {
             if (_datosComparativos == null || _datosComparativos.Count == 0)
@@ -219,6 +260,9 @@ namespace ProyectoFinal.Frontend
             ExportarComparativoExcel();
         }
 
+        /// <summary>
+        /// Metodo para exportar la grafica en excel
+        /// </summary>
         private void ExportarComparativoExcel()
         {
             Excel.Application excelApp = new Excel.Application();
@@ -284,6 +328,12 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+
+        /// <summary>
+        /// Cargar los componentes en el panel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
             DateTime hoy = DateTime.Now;

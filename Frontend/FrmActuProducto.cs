@@ -11,16 +11,30 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Frontend
 {
+
+    /// <summary>
+    /// Representa el formulario para actualizar un producto.
+    /// y permite modificar sus detalles.
+    /// </summary>
     public partial class FrmActuProducto : Form
     {
         private byte[] _fotoActual;
         private ProductosController _producto = new ProductosController();
 
         public Action ProductoActualizadoCallback { get; set; }
+
+        /// <summary>
+        /// Inicializa una nueva instancia de FrmActuProducto.
+        /// </summary>
         public FrmActuProducto()
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Carga los datos del producto en el formulario.
+        /// </summary>
+        /// <param name="producto"></param>
         public void CargarProducto(Producto producto)
         {
             txtCodigo.Text = producto.Codigo;
@@ -32,6 +46,12 @@ namespace ProyectoFinal.Frontend
             MostrarFoto(producto.Foto);
             txtCodigo.ReadOnly = true;
         }
+
+
+        /// <summary>
+        /// Muestra la foto del producto en el PictureBox.
+        /// </summary>
+        /// <param name="fotoBytes"></param>
         private void MostrarFoto(byte[] fotoBytes)
         {
             if (fotoBytes != null && fotoBytes.Length > 0)
@@ -47,6 +67,13 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+
+
+        /// <summary>
+        /// Funciona para seleccionar y cargar una foto para el producto utilizando un OpenFileDialog.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
@@ -65,6 +92,13 @@ namespace ProyectoFinal.Frontend
                 }
             }
         }
+
+
+        /// <summary>
+        /// Muestra un cuadro de diálogo para seleccionar y cargar una foto para el producto.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void btnActualizarProducto_Click(object sender, EventArgs e)
         {

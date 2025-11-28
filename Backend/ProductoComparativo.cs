@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProyectoFinal.Backend
 {
+    /// <summary>
+    /// Nos da el get y set de los productos comparativos
+    /// </summary>
     public class ProductoComparativo
     {
         public string Clave { get; set; }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProyectoFinal.Backend
 {
+    /// <summary>
+    /// Proporciona la sesión actual del usuario.
+    /// </summary>
     internal class Sesion
     {
         public static string UsuarioActual = "admin";

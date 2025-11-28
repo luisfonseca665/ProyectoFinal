@@ -11,8 +11,12 @@ namespace ProyectoFinal.Backend
         private Conexion Conexion = new Conexion();
 
         /// <summary>
-        /// Obtiene un DataTable con las ventas totales y unidades por producto para un rango de fechas.
+        /// Obtiene un DataTable con las ventas totales y unidades por producto para un rango de fechas
         /// </summary>
+        /// <param name="inicio"></param>
+        /// <param name="fin"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public DataTable ObtenerVentasPorRango(DateTime inicio, DateTime fin)
         {
             DataTable dt = new DataTable();
@@ -47,8 +51,14 @@ namespace ProyectoFinal.Backend
         }
 
         /// <summary>
-        /// Combina los resultados de ventas de dos periodos en una lista comparativa.
+        /// Combina los resultados de ventas de dos periodos en una lista comparativa
         /// </summary>
+        /// <param name="inicio1"></param>
+        /// <param name="fin1"></param>
+        /// <param name="inicio2"></param>
+        /// <param name="fin2"></param>
+        /// <returns></returns>
+
         public List<ProductoComparativo> ObtenerComparativoVentas(DateTime inicio1, DateTime fin1, DateTime inicio2, DateTime fin2)
         {
             DataTable dtPeriodo1 = ObtenerVentasPorRango(inicio1, fin1);

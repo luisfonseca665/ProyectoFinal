@@ -4,9 +4,12 @@ namespace ProyectoFinal.Backend
 {
     public class Auditoria
     {
-        public string Origen { get; set; }        // Dice si es "Producto" o "Empleado"
-        public string Referencia { get; set; }    // Guarda el Código o el ID
-        public string Accion { get; set; }        // Insert, Update, Delete
+        /// <summary>
+        /// Get y Set del origen de la accion realizada
+        /// </summary>
+        public string Origen { get; set; }
+        public string Referencia { get; set; }
+        public string Accion { get; set; }
         public string ValorAnterior { get; set; }
         public string ValorNuevo { get; set; }
         public string Usuario { get; set; }

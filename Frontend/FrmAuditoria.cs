@@ -5,20 +5,36 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Frontend
 {
+    /// <summary>
+    /// Representa el formulario para visualizar las auditorías del sistema.
+    /// </summary>
     public partial class FrmAuditoria : Form
     {
         private AuditoriaController controller = new AuditoriaController();
 
+
+        /// <summary>
+        /// Inicializa una nueva instancia de FrmAuditoria.
+        /// </summary>
         public FrmAuditoria()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Carga las auditorías al cargar el formulario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmAuditoria_Load(object sender, EventArgs e)
         {
             CargarDatos();
         }
 
+
+        /// <summary>
+        /// Función para cargar los datos de auditoría en el DataGridView.
+        /// </summary>
         private void CargarDatos()
         {
             try
@@ -34,6 +50,10 @@ namespace ProyectoFinal.Frontend
                 MessageBox.Show(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Cofiguración visual del DataGridView.
+        /// </summary>
 
         private void DiseñarGrid()
         {

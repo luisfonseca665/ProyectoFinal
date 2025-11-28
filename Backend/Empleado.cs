@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProyectoFinal.Backend
 {
-
+    /// <summary>
+    /// Get y Set de los empleados
+    /// </summary>
     public class Empleado
     {
         public int Id { get; set; }

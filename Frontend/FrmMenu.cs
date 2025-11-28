@@ -11,10 +11,18 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Frontend
 {
+    /// <summary>
+    /// Representa el formulario principal del menú de la aplicación.
+    /// </summary>
     public partial class FrmMenu : Form
     {
         private Empleado _empleadoActual;
         private Form factivo = null;
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="FrmMenu"/>.
+        /// </summary>
+        /// <param name="empleado"></param>
         public FrmMenu(Empleado empleado)
         {
             InitializeComponent();
@@ -48,7 +56,10 @@ namespace ProyectoFinal.Frontend
             }
         }
 
-
+        /// <summary>
+        /// Pantalla activa dentro del panel principal.
+        /// </summary>
+        /// <param name="activo"></param>
         private void FormPanel(Form activo)
         {
             if (factivo != null)
@@ -80,6 +91,11 @@ namespace ProyectoFinal.Frontend
                 btnAuditorias.Visible = false;
             }
         }
+        /// <summary>
+        /// Boton para abrir el formulario de ventas.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void btnTienda_Click(object sender, EventArgs e)
         {
@@ -91,6 +107,11 @@ namespace ProyectoFinal.Frontend
 
         }
 
+        /// <summary>
+        /// Boton para cerrar sesion y volver al formulario de login.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSalir_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show("¿Está seguro que deseas cerrar sesion?", "Confirmar Salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -107,26 +128,55 @@ namespace ProyectoFinal.Frontend
 
         }
 
+        /// <summary>
+        /// Boton para abrir el formulario de empleados.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             FormPanel(new FrmEmpleados());
         }
 
+
+        /// <summary>
+        /// Boton para abrir el formulario de productos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnProductos_Click(object sender, EventArgs e)
         {
             FormPanel(new FrmProductos());
         }
 
+
+        /// <summary>
+        /// Boton para abrir el formulario de auditorias.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAuditorias_Click(object sender, EventArgs e)
         {
             FormPanel(new FrmAuditoria());
         }
 
+
+        /// <summary>
+        /// Boton para abrir el formulario de usuarios.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             FormPanel(new FrmEmpleados());
         }
 
+
+        /// <summary>
+        /// Boton para abrir el formulario de reportes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReportes_Click(object sender, EventArgs e)
         {
             FormPanel(new FrmReportes());

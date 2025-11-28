@@ -5,9 +5,17 @@ using System.Data;
 
 namespace ProyectoFinal.Backend
 {
+    /// <summary>
+    /// Clase para manejar la auditoría
+    /// </summary>
     public class AuditoriaController
     {
-        
+
+        /// <summary>
+        /// Menoto para obtener la auditoría completa
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public List<Auditoria> ObtenerAuditoria()
         {
             List<Auditoria> lista = new List<Auditoria>();

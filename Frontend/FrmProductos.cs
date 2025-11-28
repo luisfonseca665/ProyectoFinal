@@ -11,22 +11,37 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Frontend
 {
+    /// <summary>
+    /// Representa el formulario para gestionar productos.
+    /// </summary>
     public partial class FrmProductos : Form
     {
         private ProductosController _productos = new ProductosController();
         private Form factivo = null;
         public event Action ola;
         Empleado _em = new Empleado();
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="FrmProductos"/>.
+        /// </summary>
         public FrmProductos()
         {
             InitializeComponent();
             CargarProductos();
         }
 
+
+        /// <summary>
+        /// Pantalla de regreso a productos.
+        /// </summary>
         private void VolverAProductos()
         {
             FormPanel(new FrmProductos());
         }
+
+        /// <summary>
+        /// Funcion para cargar los productos en el DataGridView.
+        /// </summary>
         private void CargarProductos()
         {
             List<Producto> lista = _productos.ObtenerProductos();
@@ -37,6 +52,12 @@ namespace ProyectoFinal.Frontend
             dvgProductos.Columns["Foto"].Visible = false;
         }
 
+
+
+        /// <summary>
+        /// Pantalla para mostrar formularios dentro del panel principal.
+        /// </summary>
+        /// <param name="activo"></param>
         private void FormPanel(Form activo)
         {
             if (factivo != null)
@@ -57,6 +78,13 @@ namespace ProyectoFinal.Frontend
             activo.Show();
         }
 
+
+
+        /// <summary>
+        /// Boton para eliminar un producto seleccionado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (dvgProductos.CurrentRow == null)
@@ -84,6 +112,12 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+        /// <summary>
+        /// Boton para agregar un nuevo producto.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             FrmAgregarProducto ola = new FrmAgregarProducto();
@@ -91,6 +125,12 @@ namespace ProyectoFinal.Frontend
             FormPanel(ola);
         }
 
+
+        /// <summary>
+        /// Boton para actualizar un producto seleccionado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             if (dvgProductos.CurrentRow == null)

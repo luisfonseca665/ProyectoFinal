@@ -13,6 +13,9 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Frontend
 {
+    /// <summary>
+    /// Representa el formulario para agregar un nuevo empleado al sistema.
+    /// </summary>
     public partial class FrmAgregarEmpleado : Form
     {
         private EmpleadoController controller = new EmpleadoController();
@@ -20,10 +23,21 @@ namespace ProyectoFinal.Frontend
 
         public Action EmpleadoAgregadoCallback { get; set; }
 
+
+        /// <summary>
+        /// Inicializa una nueva instancia de FrmAgregarEmpleado.
+        /// </summary>
+
         public FrmAgregarEmpleado()
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Carga los tipos de empleados en el ComboBox al cargar el formulario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void FrmAgregarEmpleado_Load(object sender, EventArgs e)
         {
@@ -33,6 +47,12 @@ namespace ProyectoFinal.Frontend
             cnbTipo.SelectedIndex = 0;
         }
 
+
+        /// <summary>
+        /// Agrega un nuevo empleado al sistema cuando se hace clic en el botón "Agregar".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
@@ -124,6 +144,12 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+
+        /// <summary>
+        /// Ayuda a seleccionar y cargar una foto para el empleado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();

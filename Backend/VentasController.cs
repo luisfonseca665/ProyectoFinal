@@ -5,8 +5,14 @@ using MySql.Data.MySqlClient;
 
 namespace ProyectoFinal.Backend
 {
+    /// <summary>
+    /// Proporciona métodos para manejar las ventas
+    /// </summary>
     public class VentasController
     {
+        /// <summary>
+        /// Representa el detalle de una venta
+        /// </summary>
         public class DetalleVentaModelo
         {
             public string CodigoProducto { get; set; }
@@ -16,6 +22,11 @@ namespace ProyectoFinal.Backend
 
         private Conexion Conexion = new Conexion();
 
+
+        /// <summary>
+        /// Metodo para obtener los empleados activos
+        /// </summary>
+        /// <returns></returns>
         public DataTable ObtenerEmpleados()
         {
             using (MySqlConnection conn = Conexion.ObtenerConexion())
@@ -39,6 +50,12 @@ namespace ProyectoFinal.Backend
             }
         }
 
+        /// <summary>
+        /// Metodo para buscar un producto por su codigo
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public DataTable BuscarProductoPorCodigo(string codigo)
         {
             DataTable dt = new DataTable();
@@ -65,6 +82,16 @@ namespace ProyectoFinal.Backend
 
             return dt;
         }
+
+
+        /// <summary>
+        /// Metodo para registrar una venta
+        /// </summary>
+        /// <param name="idEmpleado"></param>
+        /// <param name="total"></param>
+        /// <param name="listaProductos"></param>
+        /// <param name="mensaje"></param>
+        /// <returns></returns>
 
         public bool RegistrarVenta(int idEmpleado, decimal total, List<DetalleVentaModelo> listaProductos, out string mensaje)
         {

@@ -6,10 +6,18 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Backend
 {
+
+    /// <summary>
+    /// proporciona métodos para gestionar productos en la base de datos.
+    /// </summary>
     public class ProductosController
     {
         private Conexion Conexion = new Conexion();
 
+        /// <summary>
+        /// Metodo para obtener los productos disponibles para la venta
+        /// </summary>
+        /// <returns></returns>
         public DataTable ObtenerProductosParaVenta()
         {
             using (MySqlConnection conn = Conexion.ObtenerConexion())
@@ -33,6 +41,11 @@ namespace ProyectoFinal.Backend
             }
         }
 
+
+        /// <summary>
+        /// Recibe la lista de productos desde la base de datos
+        /// </summary>
+        /// <returns></returns>
         public List<Producto> ObtenerProductos()
         {
             List<Producto> productos = new List<Producto>();
@@ -71,6 +84,12 @@ namespace ProyectoFinal.Backend
             return productos;
         }
 
+
+        /// <summary>
+        /// Inserta un nuevo producto en la base de datos utilizando un procedimiento almacenado
+        /// </summary>
+        /// <param name="producto"></param>
+        /// <returns></returns>
         public bool InsertarProducto(Producto producto)
         {
             if (string.IsNullOrEmpty(producto.Codigo) || producto.Precio <= 0)
@@ -122,6 +141,12 @@ namespace ProyectoFinal.Backend
             }
         }
 
+
+        /// <summary>
+        /// Metodo para actualizar un producto existente en la base de datos utilizando un procedimiento almacenado
+        /// </summary>
+        /// <param name="producto"></param>
+        /// <returns></returns>
         public bool ActualizarProducto(Producto producto)
         {
             if (string.IsNullOrEmpty(producto.Codigo))
@@ -173,6 +198,12 @@ namespace ProyectoFinal.Backend
             }
         }
 
+
+        /// <summary>
+        /// Metodo para eliminar un producto de la base de datos utilizando un procedimiento almacenado
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         public bool EliminarProducto(string codigo)
         {
             string spName = "spdeleteproducto";

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProyectoFinal.Backend
 {
+    /// <summary>
+    /// Representa un producto con sus propiedades.
+    /// </summary>
     public class Producto
     {
         public string Codigo { get; set; }

@@ -11,21 +11,38 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Frontend
 {
+    /// <summary>
+    /// Representa el formulario para gestionar empleados.
+    /// </summary>
     public partial class FrmEmpleados : Form
     {
         private EmpleadoController _empleado = new EmpleadoController();
         private Form factivo = null;
 
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="FrmEmpleados"/>.
+        /// </summary>
         public FrmEmpleados()
         {
             InitializeComponent();
         }
 
+
+        /// <summary>
+        /// Cargar los empleados al cargar el formulario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmEmpleados_Load(object sender, EventArgs e)
         {
             CargarEmpleados();
         }
 
+
+        /// <summary>
+        /// Funcion para cargar los empleados en el DataGridView.
+        /// </summary>
         private void CargarEmpleados()
         {
             List<Empleado> lista = _empleado.ObtenerEmpleados();
@@ -37,12 +54,18 @@ namespace ProyectoFinal.Frontend
 
             dvgEmpleados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
-
+        /// <summary>
+        /// Recarga la lista de empleados al volver del formulario de agregar o editar empleado.
+        /// </summary>
         private void VolverAEmpleados()
         {
             CargarEmpleados();
         }
 
+        /// <summary>
+        /// Pantalla para mostrar formularios dentro del panel principal.
+        /// </summary>
+        /// <param name="activo"></param>
         private void FormPanel(Form activo)
         {
             if (factivo != null)

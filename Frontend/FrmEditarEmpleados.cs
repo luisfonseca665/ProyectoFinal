@@ -12,6 +12,10 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Frontend
 {
+
+    /// <summary>
+    /// Representa el formulario para editar los detalles de un empleado existente.
+    /// </summary>
     public partial class FrmEditarEmpleados : Form
     {
         private int _empleadoId;
@@ -19,11 +23,21 @@ namespace ProyectoFinal.Frontend
         private byte[] _fotoActual;
         public Action EmpleadoActualizadoCallback { get; set; }
 
+
+        /// <summary>
+        /// Inicializa una nueva instancia de FrmEditarEmpleados.
+        /// </summary>
         public FrmEditarEmpleados()
         {
             InitializeComponent();
         }
 
+
+        /// <summary>
+        /// Carga los tipos de empleados en el ComboBox al cargar el formulario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmEditarEmpleados_Load(object sender, EventArgs e)
         {
             if (cnbTipo.Items.Count == 0)
@@ -32,6 +46,11 @@ namespace ProyectoFinal.Frontend
                 cnbTipo.Items.Add("cajero");
             }
         }
+
+        /// <summary>
+        /// Función para cargar los datos del empleado en el formulario.
+        /// </summary>
+        /// <param name="e"></param>
 
         public void CargarEmpleado(Empleado e)
         {
@@ -56,6 +75,11 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+        /// <summary>
+        /// Nos permite actualizar los datos del empleado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnActualizarEmpleado_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtUsuario.Text))
@@ -91,6 +115,11 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+        /// <summary>
+        /// Boton queayuda a subir la foto del empleado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();

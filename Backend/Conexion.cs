@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ProyectoFinal.Backend
 {
+
+    /// <summary>
+    /// Nos da la conexion a la base de datos
+    /// </summary>
     public class Conexion
     {
         private static string cadena = "server=localhost;database=ventas;user=root;password=1111; Allow User Variables=True;";

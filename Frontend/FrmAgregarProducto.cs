@@ -11,16 +11,32 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Frontend
 {
+
+
+    /// <summary>
+    /// Representa el formulario para agregar un nuevo producto al sistema.
+    /// </summary>
     public partial class FrmAgregarProducto : Form
     {
         private byte[] _foto;
         public Action ProductoAgregadoCallback { get; set; }
+
+        /// <summary>
+        /// Inicializa una nueva instancia de FrmAgregarProducto.
+        /// </summary>
         public FrmAgregarProducto()
         {
             InitializeComponent();
         }
 
 
+
+
+        /// <summary>
+        /// Nos permite subir la foto del producto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog openfile = new OpenFileDialog();
@@ -41,6 +57,12 @@ namespace ProyectoFinal.Frontend
             }
         }
 
+
+        /// <summary>
+        /// Nos permite agregar un nuevo producto al sistema
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
 
